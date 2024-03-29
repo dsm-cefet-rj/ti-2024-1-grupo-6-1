@@ -1,0 +1,10 @@
+.lista{
+    display: flex;
+    flex-direction: row;    
+    justify-content: flex-end;
+}
+
+.item{
+    margin-right: 100px;
+    font-size: px;
+}

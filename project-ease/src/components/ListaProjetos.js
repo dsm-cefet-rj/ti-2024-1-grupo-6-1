@@ -3,20 +3,20 @@ import styles from './layout/MeusProjetos.module.css'
 import {Link} from 'react-router-dom';
 
 
-function ListaProjetos(){
+function ListaProjetos({nome, orcamento, categoria}){
     return(
         
-            <form className ={styles.projeto}>
-                <h1 className ={styles.nomeProjeto}><strong>Teste123</strong></h1>
-                <p className ={styles.orçamento}><strong>Orçamento: </strong>R$20000</p>
-                <p1 className ={styles.categoria}><strong>Categoria: </strong>Infraestrutura</p1>
+            <div className ={styles.projeto}>
+                <h1 className ={styles.nomeProjeto}><strong>{nome}</strong></h1>
+                <p className ={styles.orçamento}><strong>Orçamento: </strong>R${orcamento}</p>
+                <p className ={styles.categoria}><strong>Categoria: </strong>{categoria}</p>
                 <Link to="/editarProjeto">
                     <button className ={styles.editar}>Editar</button>
                 </Link>
                 <button className ={styles.excluir}>Excluir</button>
 
 
-            </form>
+            </div>
    
     )
 }

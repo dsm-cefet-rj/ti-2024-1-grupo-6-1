@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import styles from './layout/CriarProjeto.module.css'
 
 function CriarProjeto(){
 
@@ -24,18 +25,26 @@ function CriarProjeto(){
         console.log('projeto: ' + projeto.nome)
         console.log('orcamento: ' + projeto.orcamento)
         console.log('categoria: ' + projeto.categoria)
+        console.log('subcategoria: ' + projeto.subcategoria)
     }
 
     return(
-        <form onSubmit={novoProjeto}>
-            <label>Nome: </label>
-            <input type='text' placeholder='nome' name='nome' onChange={handleOnChange}></input><br></br>
-            <label>Orçamento: </label>
-            <input type='number' placeholder='orçamento' name='orcamento' onChange={handleOnChange}></input><br></br>
-            <label>Categoria: </label>
-            <input type='text' placeholder='categoria' name='categoria' onChange={handleOnChange}></input><br></br>
-            <button>Confirmar</button>
-        </form>
+        <div className={styles.estilo}>
+            <h1 className={styles.titulo}> Crie o seu projeto</h1>
+            <p className={styles.subtitulo}> Após clicar em confirmar vá para a aba "projetos"</p>
+            <form className={styles.estiloForm}onSubmit={novoProjeto}>
+                <label className={styles.texto}>Nome: </label>
+                <input className={styles.input} type='text' placeholder='Digite o nome' name='nome' onChange={handleOnChange}></input><br></br>
+                <label className={styles.texto}>Orçamento: </label>
+                <input className={styles.input} type='number' placeholder='Digite o orçamento' name='orcamento' onChange={handleOnChange}></input><br></br>
+                <label className={styles.texto}>Categoria: </label>
+                <input className={styles.input} type='text' placeholder='Selecione a categoria' name='categoria' onChange={handleOnChange}></input><br></br>
+                <label className={styles.texto}> Subcategoria: </label>
+                <input className={styles.input} type='text' placeholder='Selecione a subcategoria' name='subcategoria' onChange={handleOnChange}></input><br></br>
+                <button className={styles.botao}>Confirmar</button>
+
+            </form>
+        </div>
     )
 }
 

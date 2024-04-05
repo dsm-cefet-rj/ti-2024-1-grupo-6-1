@@ -17,7 +17,20 @@ function Projetos(){
         }).then((respJson) => setProjeto(respJson))  // leva a resposta para o setProjeto para ter acesso aos dados
         .catch((erro) => console.log("Erro ao pegar seus projetos " + erro))
     }, []) 
-    
+
+   
+    function removerProjeto(id){
+        fetch(`http://localhost:5000/projetos/${id}`, { 
+            method: "DELETE",
+            headers: {'Content-Type': 'application/json'},
+        }).then((resp)=>{
+           return resp.json()
+        }).then(()=>{
+            setProjeto(projeto.filter(projeto => projeto.id !== id));
+        })
+        .catch((err) => console.log("Erro ao tentar remover projeto: "+err))
+    }
+
     return( //retorna o html
         <div className ={styles.projetos}>
             <h1 className ={styles.meusProjetos}><strong>Meus Projetos</strong></h1>
@@ -29,7 +42,7 @@ function Projetos(){
 
                 projeto &&
                 projeto.map((p) => (   //pega todo o projeto(p) que esta dentro dessa lista projeto
-                <ListaProjetos key={p.id} nome={p.nome} orcamento={p.orcamento} categoria={p.categoria} />
+                <ListaProjetos key={p.id} id={p.id} nome={p.nome} orcamento={p.orcamento} categoria={p.categoria} handleRemove={removerProjeto}/>
                 ))  
             }
             </div>

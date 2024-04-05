@@ -1,0 +1,54 @@
+.conteudo {
+    margin-bottom: 20px;
+    border-top: 0.4px solid black;
+}
+
+.conteudoPrincipal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.conteudoPrincipalEscrito {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+.conteudoPrincipalEscritoTitulo {
+    font-family: "Anta", sans-serif;
+    font-weight: 400;
+    font-size: 64px;
+    color: black;
+}
+
+.conteudoPrincipalEscritoSubtitulo{
+    font-family: "Sarala", sans-serif;
+    font-weight: 400;
+    font-size: 22px;
+    color: black;
+}
+
+.conteudoPrincipalEscritoBotao{
+    background-color: #ecd6c4;
+    height: 60px;
+    width: 180px;
+    border: none;   
+    box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    font-family: "Sarala", sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    color: black;
+}
+
+.conteudoPrincipalEscritoBotao:hover {
+    background-color: rgba(236, 214, 196, 0.53);
+}
+
+.conteudoPrincipalImagem{
+    height: 430px;
+    margin-top: 47px;
+}

@@ -1,28 +1,38 @@
 {
-    "projetos": [
-      {
-        "id": "fbc7",
-        "nome": "PSW",
-        "orcamento": "10000",
-        "categoria": "Infraestrutura"
-      },
-      {
-        "id": "f84b",
-        "nome": "Projeto5",
-        "orcamento": "4000",
-        "categoria": "Design"
-      },
-      {
-        "id": "6fa0",
-        "nome": "Teste10",
-        "orcamento": "3000",
-        "categoria": "Desenvolvimento"
-      },
-      {
-        "id": "b794",
-        "nome": "Funciona",
-        "orcamento": "2000000",
-        "categoria": "Financeiro"
-      }  
-    ]
-  }
+  "projetos": [
+    {
+      "id": "fbc7",
+      "nome": "PSW",
+      "orcamento": "10000",
+      "categoria": "Infraestrutura"
+    },
+    {
+      "id": "f84b",
+      "nome": "Projeto5",
+      "orcamento": "4000",
+      "categoria": "Design"
+    },
+    {
+      "id": "6fa0",
+      "nome": "Teste10",
+      "orcamento": "3000",
+      "categoria": "Desenvolvimento"
+    },
+    {
+      "id": "b794",
+      "nome": "Funciona",
+      "orcamento": "2000000",
+      "categoria": "Financeiro"
+    },
+    {
+      "id": "b4ed",
+      "nome": "Css",
+      "orcamento": "100",
+      "categoria": "Design",
+      "subcategoria": "Apresentação"
+    }
+  ],
+  "categorias":[
+    
+  ]
+}

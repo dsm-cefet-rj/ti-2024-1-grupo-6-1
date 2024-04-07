@@ -13,26 +13,27 @@
       "categoria": "Design"
     },
     {
-      "id": "6fa0",
-      "nome": "Teste10",
-      "orcamento": "3000",
-      "categoria": "Desenvolvimento"
+      "id": "8f93",
+      "nome": "excluir",
+      "orcamento": "1000",
+      "categoria": "Botao",
+      "subcategoria": "nao"
     },
     {
-      "id": "b794",
-      "nome": "Funciona",
-      "orcamento": "2000000",
-      "categoria": "Financeiro"
+      "id": "cf48",
+      "nome": "Project Ease",
+      "orcamento": "2000",
+      "categoria": "Desenvolvimento",
+      "subcategoria": "Aplicativo Web"
     },
     {
-      "id": "b4ed",
-      "nome": "Css",
-      "orcamento": "100",
-      "categoria": "Design",
-      "subcategoria": "Apresentação"
+      "id": "a4a1",
+      "nome": "Project Ease",
+      "orcamento": "2000",
+      "categoria": "Desenvolvimento",
+      "subcategoria": "Aplicativo Web"
     }
   ],
   "categorias":[
-    
   ]
 }

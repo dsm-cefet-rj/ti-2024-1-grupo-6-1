@@ -22,7 +22,7 @@ body {
   display: flex;
   margin-top: 50px;
   justify-content: center;
-  height: 300px;
+  height: 250px;
 }
 
 #idForm {
@@ -66,15 +66,17 @@ body {
   background-color: white;
   border-radius: 5px;
   width: 100%;
+  margin-bottom: 15px;
   padding: 10px;
   height: 45px;
   align-items: center;
 }
 
-#botaoExcluir{
+.botaoExcluir{
   height: 40px;
   width: 100px;
   margin-top: 0px;
+  margin-left: 10px;
 }
 
 .footer {
@@ -92,4 +94,35 @@ body {
 
 .footer__rodape p {
   margin: 2px;
+}
+
+.modalContainer{
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  background-color: rgb(220, 222, 224);
+  width: 100%;
+  height: 100%;
+}
+
+.modal{
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 2px 4px gray;
+  padding: 30px;
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  width: 25%;
+  position: fixed;
+  top: 20%;
+  margin-left: 37%;
+  z-index: 999;
+  justify-content: center;
+}
+
+.botaoCategoria{
+  display: flex;
+  align-items: center;
 }

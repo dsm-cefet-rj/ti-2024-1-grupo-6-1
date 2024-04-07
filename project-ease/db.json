@@ -34,6 +34,16 @@
       "subcategoria": "Aplicativo Web"
     }
   ],
-  "categorias":[
+  "categorias": [
+    {
+      "categoria": "Desnvolvimento",
+      "subcategoria": "Front",
+      "id": "a144"
+    },
+    {
+      "id": "5044",
+      "categoria": "Engenharia"
+    }
+
   ]
 }

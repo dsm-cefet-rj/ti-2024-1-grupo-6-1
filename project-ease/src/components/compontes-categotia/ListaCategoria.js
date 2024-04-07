@@ -14,13 +14,15 @@ function MostrarCategoriaNaDiv() {
             .catch((erro) => console.log("Erro ao pegar seus projetos " + erro))
     }, [])
 
+
     return (
         <>
 
             {
                 categoria &&
                 categoria.map((p) => (   //pega todo o projeto(p) que esta dentro dessa lista projeto
-                    <ListaCategoria categoria={p.categoria} subcategoria={p.subcategoria}/>
+                    <ListaCategoria id={p.id} categoria={p.categoria}/>
+                    
                 ))
             }
 

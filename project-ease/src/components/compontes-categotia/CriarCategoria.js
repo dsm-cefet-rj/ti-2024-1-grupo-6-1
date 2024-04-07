@@ -3,8 +3,8 @@ import styles from '../layout/categoria.module.css'
 import MostrarCategoriaNaDiv from './ListaCategoria'
 
 
-function Categoria(props) {
-    const [categoria, setCategoria] = useState({});
+function Categoria() {
+    const [categorias, setCategoria] = useState({});
 
     const handleSubmit = (e) => {
         // e.preventDefault() // não atualiza a página
@@ -12,18 +12,15 @@ function Categoria(props) {
             //post - publica,    get - pega,    patch/put - atualiza
             method: "POST",
             headers: { "Content-type": 'application/json' },   // colocando um json
-            body: JSON.stringify(categoria)   //transforma em uma string json
+            body: JSON.stringify(categorias)   //transforma em uma string json
         }).then((resp) => {  // pega a resposta do banco de dados
-            alert("enviado com sucesso")
             return resp.json()  //transforma a string em um objeto
         }).then((respJson) => console.log(respJson))  //imprime a resposta
             .catch((erro) => console.log("Erro ao inserir no banco de dados"))
 
     }
     function handleOnChange(e) {
-        setCategoria({ ...categoria, [e.target.name]: e.target.value })
-        console.log('categoria: ' + categoria.categoria)
-        console.log('subcategoria: ' + categoria.subcategoria)
+        setCategoria({ ...categorias, [e.target.name]: e.target.value })
     }
 
     const estilo = {
@@ -40,7 +37,7 @@ function Categoria(props) {
                         <h3 style={estilo}>Insira a categoria</h3>
                         <p style={{ marginLeft: '30px' }} id={styles.criarCategoria}>Crie uma categoria de projeto</p>
                         <form id={styles.estilosForm} onSubmit={handleSubmit}>
-                            <input className={styles.input} placeholder="Insira o nome da categoria" type="text" name="categoria" value={categoria.categoria} onChange={handleOnChange} id={styles.nome}></input>
+                            <input className={styles.input} placeholder="Insira o nome da categoria" type="text" name="categoria" value={categorias.categoria} onChange={handleOnChange} id={styles.nome}></input>
                             <button id={styles.botaoForm} style={{ width: '320px', height: '40px' }}>Cadastrar categoria</button>
                         </form>
                     </div>

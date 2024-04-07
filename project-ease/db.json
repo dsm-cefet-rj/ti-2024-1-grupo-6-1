@@ -42,11 +42,44 @@
   ],
   "categorias": [
     {
-      "categoria": "Desnvolvimento",
-      "subcategoria": "Front",
-      "id": "a144"
+      "id": "18bb",
+      "categoria": "Nova Categoria"
     },
     {
+      "id": "2840",
+      "categoria": "Categoria 1"
+    }
+  ],
+  "subcategoria": [
+    {
+      "id": "c580",
+      "idCategoria": "18bb",
+      "subcategoria": " Subcategoria da nova categoria"
+    },
+    {
+      "id": "162b",
+      "idCategoria": "18bb",
+      "subcategoria": " Subcategoria1 da nova categoria"
+    },
+    {
+      "id": "723b",
+      "idCategoria": "18bb",
+      "subcategoria": " Subcategoria2 da nova categoria"
+    },
+    {
+      "id": "5e85",
+      "idCategoria": "2840",
+      "subcategoria": "Subcategoria da categoria 1"
+    },
+    {
+      "id": "5e6d",
+      "idCategoria": "2840",
+      "subcategoria": "Subcategoria1 da categoria 1"
+    },
+    {
+      "id": "491d",
+      "idCategoria": "2840",
+      "subcategoria": "Subcategoria2 da categoria 1"
       "id": "5044",
       "categoria": "Engenharia"
     },

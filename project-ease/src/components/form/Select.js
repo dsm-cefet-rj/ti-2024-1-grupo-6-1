@@ -9,7 +9,7 @@ function Select({text, name, option, handleOnChange, value}){
                 {
                     option.map((option)=>
                     (
-                        <option value={option.id} key={option.id}>{option.name}</option>
+                        <option value={option.id} key={option.id}>{option.categoria}</option>
                     )
                 )}
             </select>

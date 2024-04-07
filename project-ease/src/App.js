@@ -7,7 +7,7 @@ import Login from './components/Login';
 import Navbar from './components/layout/Navbar';
 import EditarProjeto from './components/EditarProjeto';
 import CriarProjeto from './components/CriarProjeto';
-import Categoria from './components/Categoria';
+import Categoria from './components/compontes-categotia/CriarCategoria';
 import Footer from './components/layout/Footer';
 
 function App() {

@@ -3,19 +3,23 @@ import styles from './layout/MeusProjetos.module.css'
 import {Link} from 'react-router-dom';
 
 
-function ListaProjetos({nome, orcamento, categoria}){
+function ListaProjetos({id, nome, orcamento, categoria, handleRemove}){
+
+    const remover = (e) => {
+        e.preventDefault()
+        handleRemove(id)
+    }
+
     return(
         
             <div className ={styles.projeto}>
                 <h1 className ={styles.nomeProjeto}><strong>{nome}</strong></h1>
                 <p className ={styles.orçamento}><strong>Orçamento: </strong>R${orcamento}</p>
                 <p className ={styles.categoria}><strong>Categoria: </strong>{categoria}</p>
-                <Link to="/editarProjeto">
-                    <button className ={styles.editar}>Editar</button>
+                <Link to={`/projeto/${id}`}>
+                    <button className ={styles.editar}>Ver/Editar</button>
                 </Link>
-                <button className ={styles.excluir}>Excluir</button>
-
-
+                <button className ={styles.excluir} onClick={remover}>Excluir</button>
             </div>
    
     )

@@ -1,0 +1,46 @@
+.detalhesProjeto{
+    padding: 2em;
+}
+
+.detalhesProjeto h1,
+.detalhesProjeto h2,
+.detalhesProjeto p{
+    margin-bottom: 0.5em;
+}
+
+.detalhesProjeto h1{
+    font-size: 35px;
+    background-color: #9c9999;
+    color: #050505;
+    padding: 0.4em;
+}
+
+.detalhesProjeto span{
+    font-weight: bold;
+}
+
+.detalhesConteiner,
+.formularioContainer{
+    border-bottom: 1px solid #7a7a7a;
+    margin-bottom: 1.2em;
+    padding-bottom: 1.2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+}
+
+.botao{
+    padding: 0.5em 1em;
+    font-size: 18px;
+    text-decoration: none;
+    margin: 10px;
+    cursor: pointer;
+    max-height: 40px;
+    border: none;
+}
+
+.infoProjeto{
+    width: 100%;
+    font-size: 20px;
+}

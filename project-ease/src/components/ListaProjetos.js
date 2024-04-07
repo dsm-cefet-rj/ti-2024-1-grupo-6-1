@@ -17,7 +17,7 @@ function ListaProjetos({id, nome, orcamento, categoria, handleRemove}){
                 <p className ={styles.orçamento}><strong>Orçamento: </strong>R${orcamento}</p>
                 <p className ={styles.categoria}><strong>Categoria: </strong>{categoria}</p>
                 <Link to={`/projeto/${id}`}>
-                    <button className ={styles.editar}>Editar</button>
+                    <button className ={styles.editar}>Ver/Editar</button>
                 </Link>
                 <button className ={styles.excluir} onClick={remover}>Excluir</button>
             </div>

@@ -9,7 +9,7 @@ function Projeto(){
 
     const {id} = useParams()
     const[projeto, setProjeto] = useState(null)
-    const[formulario, setFormulario] = useState(false)
+    const[formularioProjeto, setFormularioProjeto] = useState(false)
     const[message, setMessage] = useState()
     const[tipo, setTipo] = useState()
 
@@ -44,13 +44,13 @@ function Projeto(){
         .then(resp => resp.json())
         .then((data) => {
             setProjeto(data)
-            setFormulario(false)
+            setFormularioProjeto(false)
         })
         .catch(err => console.log(err))
     }
 
-    function formularioProjeto(){
-        setFormulario(!formulario)
+    function ativarFormularioProjeto(){
+        setFormularioProjeto(!formularioProjeto)
     }
     
     console.log(projeto)
@@ -60,10 +60,10 @@ function Projeto(){
             <Conteiner customClass="column">
                 <div className={styles.detalhesConteiner}>
                     <h1>Projeto: {projeto.nome}</h1>
-                    <button onClick={formularioProjeto} className={styles.botao}>
-                        {!formulario ? 'Editar Projeto' : 'Fechar'}
+                    <button onClick={ativarFormularioProjeto} className={styles.botao}>
+                        {!formularioProjeto ? 'Editar Projeto' : 'Fechar'}
                     </button>
-                    {!formulario ? (
+                    {!formularioProjeto ? (
                         <div className={styles.infoProjeto}>
                             <p>
                                 <span>Categoria: </span> {projeto.categoria.categoria}

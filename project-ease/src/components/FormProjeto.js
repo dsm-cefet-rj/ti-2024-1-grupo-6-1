@@ -5,9 +5,10 @@ import SubmitButton from './form/SubmitButton';
 
 import { useState, useEffect } from 'react';
 
-function ProjectForm({handleSubmit, btnText, projectData}){
+function FormProjeto({handleSubmit, btnText, projectData}){
 
-    const [categories, setCategories] = useState([]);
+    const [categorias, setCategorias] = useState([]);
+    const [projeto, setProjeto] = useState(projectData || {})
 
     const bdTemporario = "http://localhost:5000/categorias"
 
@@ -23,31 +24,29 @@ function ProjectForm({handleSubmit, btnText, projectData}){
                 return categorias.json()
             })
             .then((categoriasJson) => {
-                setCategories(categoriasJson)
+                setCategorias(categoriasJson)
             })
             .catch(err=>console.log("Deu erro: " + err))
         }, [])
 
-        const [project, setProject] = useState(projectData || {})
-
         const submit = (e) => {
             e.preventDefault()
-            handleSubmit(project)
+            handleSubmit(projeto)
         }
 
         function handleOnChange(e){
-            setProject({...project, [e.target.name]: e.target.value})
+            setProjeto({...projeto, [e.target.name]: e.target.value})
         }
 
         function handleSelect(e){
-            setProject({...project, categoria: {
+            setProjeto({...projeto, categoria: {
                 id: e.target.value,
                 categoria: e.target.options[e.target.selectedIndex].text
             }})
             
         }
 
-        console.log(project)
+        console.log(projeto)
 
     return(
         <form className={styles.form} onSubmit={submit}>
@@ -55,25 +54,25 @@ function ProjectForm({handleSubmit, btnText, projectData}){
                 type="text"
                 text="Nome do projeto"
                 name="nome"
-                placeholder={project.nome}
+                placeholder={projeto.nome}
                 handleOnChange={handleOnChange}
-                value={project.nome ? project.nome: ''}
+                value={projeto.nome ? projeto.nome: ''}
             />
             <Input 
                 type="number"
                 text="Orçamento do projeto"
                 name="orcamento"
-                placeholder={project.orcamento}
+                placeholder={projeto.orcamento}
                 handleOnChange={handleOnChange}
-                value={project.orcamento ? project.orcamento : ''}
+                value={projeto.orcamento ? projeto.orcamento : ''}
             />
             
             <Select
-                name="category_ig"
+                name="category_id"
                 text={"Selecione a categoria"}
-                option={categories}
+                option={categorias}
                 handleOnChange={handleSelect}
-                value={project.categoria ? project.categoria.id : ''}
+                value={projeto.categoria ? projeto.categoria.id : ''}
                 />
             
             <SubmitButton text={btnText} />
@@ -82,4 +81,4 @@ function ProjectForm({handleSubmit, btnText, projectData}){
     )
 }
 
-export default ProjectForm;
+export default FormProjeto;

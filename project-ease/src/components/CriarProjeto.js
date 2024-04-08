@@ -4,14 +4,19 @@ import styles from './layout/CriarProjeto.module.css'
 import Input from './form/Input';
 import Select from './form/Select';
 import SubmitButton from './form/SubmitButton';
+import { useNavigate } from 'react-router-dom'
 
 function CriarProjeto(){
 
     const [projeto, setProjeto] = useState({})
     const [categories, setCategories] = useState([]);
+    const navigate = useNavigate()
 
     const novoProjeto = (e)=>{
         e.preventDefault() // não atualiza a página
+        projeto.custo = 0
+        projeto.servicos = []
+        
         fetch('http://localhost:5000/projetos', {
             //post - publica,    get - pega,    patch/put - atualiza
             method: "POST",
@@ -19,7 +24,11 @@ function CriarProjeto(){
             body: JSON.stringify(projeto)   //transforma em uma string json
         }).then((resp) => {  // pega a resposta do banco de dados
             return resp.json()  //transforma a string em um objeto
-        }).then((respJson) => console.log(respJson))  //imprime a resposta
+        }).then((respJson) => {
+            console.log(respJson)
+            const state = { mensagem: "Projeto criado com sucesso!" };
+            navigate("/projects", {state});
+        })  //imprime a resposta
         .catch((erro) => console.log("Erro ao inserir no banco de dados"))
         
     }

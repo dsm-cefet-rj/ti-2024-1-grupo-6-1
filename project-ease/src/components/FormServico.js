@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Input from './form/Input';
 import SubmitButton from './form/SubmitButton';
+import styles from './layout/FormProjeto.module.css'
 
 function FormServico({handleSubmit, btnText, projectData }) {
 
@@ -17,25 +18,25 @@ function FormServico({handleSubmit, btnText, projectData }) {
     }
 
     return (
-        <form onSubmit={submit}>
+        <form className={styles.form} onSubmit={submit}>
             <Input 
                 type='text'
                 text='Nome do serviço'
-                name='name'
+                name='nome'
                 placeholder='Insira o nome do serviço'
                 handleOnChange={handleChange}
             />
             <Input 
                 type='number'
                 text='Custo do serviço'
-                name='cost'
+                name='custo'
                 placeholder='Insira o valor total'
                 handleOnChange={handleChange}
             />
             <Input 
                 type='text'
                 text='Descrição do serviço'
-                name='description'
+                name='descricao'
                 placeholder='Descreva o serviço'
                 handleOnChange={handleChange}
             />

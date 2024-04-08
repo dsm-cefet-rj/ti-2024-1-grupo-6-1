@@ -1,3 +1,5 @@
+import styles from './layout/MeusProjetos.module.css'
+
 function ListaServico({id, nome, custo, descricao, handleRemove}) {
 
     const remover = (e) => {
@@ -6,14 +8,14 @@ function ListaServico({id, nome, custo, descricao, handleRemove}) {
     }
 
     return (
-        <div>
-            <h4>{nome}</h4>
-            <p>
+        <div className ={styles.projeto}> 
+            <h4 className ={styles.nomeProjeto}>{nome}</h4>
+            <p className ={styles.orçamento}>
                 <span>Custo total:</span> R${custo}
             </p>
-            <p>{descricao}</p>
+            <p className ={styles.categoria}>{descricao}</p>
             <div>
-                <button onClick={remover}>
+                <button  className ={styles.excluir} onClick={remover}>
                     Excluir
                 </button>
             </div>

@@ -8,7 +8,7 @@ import FormProjeto from './FormProjeto'
 function Projeto(){
 
     const {id} = useParams()
-    const[projeto, setProjeto] = useState([])
+    const[projeto, setProjeto] = useState(null)
     const[formulario, setFormulario] = useState(false)
     const[message, setMessage] = useState()
     const[tipo, setTipo] = useState()
@@ -23,9 +23,11 @@ function Projeto(){
         .then((resp) => resp.json())
         .then((data) => {
             setProjeto(data)
+            console.log(data)
         })
-        .catch((erro) => console.log)
+        .catch((erro) => console.log(erro))
     },[id])
+
 
     function editPost(projeto){
         if(projeto.orcamento < projeto.custo){
@@ -51,42 +53,44 @@ function Projeto(){
         setFormulario(!formulario)
     }
     
+    console.log(projeto)
+
     return (
-        <>
-            <div className={styles.detalhesProjeto}>
-                <Conteiner customClass="column">
-                    <div className={styles.detalhesConteiner}>
-                        <h1>Projeto: {projeto.nome}</h1>
-                        <button onClick={formularioProjeto} className={styles.botao}>
-                            {!formulario ? 'Editar Projeto' : 'Fechar'}
-                        </button>
-                        {!formulario ? (
-                            <div className={styles.infoProjeto}>
-                                <p>
-                                    <span>Categoria: </span> {projeto.categoria}
-                                </p>
-                                <p>
-                                    <span>Subcategoria: </span> {projeto.subcategoria}
-                                </p>
-                                <p>
-                                    <span>Orçamento Total:</span> R${projeto.orcamento}
-                                </p>
-                                <p> 
-                                    <span>Orçamento Utilizado:</span> R${projeto.custo} 
-                                </p> 
-                            </div> //custo é o orçamento total dos serviços
-                        ) : (
-                            <div className={styles.infoProjeto}>
-                                <FormProjeto 
-                                    handleSubmit={editPost}
-                                    btnText="Concluir Edição" 
-                                    projectData={projeto}>
-                                </FormProjeto>
-                            </div>
-                        )}
-                    </div>
-                </Conteiner>
-            </div>
+        <>{projeto && (<div className={styles.detalhesProjeto}>
+            <Conteiner customClass="column">
+                <div className={styles.detalhesConteiner}>
+                    <h1>Projeto: {projeto.nome}</h1>
+                    <button onClick={formularioProjeto} className={styles.botao}>
+                        {!formulario ? 'Editar Projeto' : 'Fechar'}
+                    </button>
+                    {!formulario ? (
+                        <div className={styles.infoProjeto}>
+                            <p>
+                                <span>Categoria: </span> {projeto.categoria.categoria}
+                            </p>
+                            <p>
+                                <span>Subcategoria: </span> {projeto.subcategoria}
+                            </p>
+                            <p>
+                                <span>Orçamento Total:</span> R${projeto.orcamento}
+                            </p>
+                            <p> 
+                                <span>Orçamento Utilizado:</span> R${projeto.custo} 
+                            </p> 
+                        </div> //custo é o orçamento total dos serviços
+                    ) : (
+                        <div className={styles.infoProjeto}>
+                            <FormProjeto 
+                                handleSubmit={editPost}
+                                btnText="Concluir Edição" 
+                                projectData={projeto}>
+                            </FormProjeto>
+                        </div>
+                    )}
+                </div>
+            </Conteiner>
+        </div>)}
+            
         </>
     )
 }

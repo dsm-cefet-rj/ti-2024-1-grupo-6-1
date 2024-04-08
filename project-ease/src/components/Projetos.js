@@ -42,7 +42,7 @@ function Projetos(){
 
                 projeto &&
                 projeto.map((p) => (   //pega todo o projeto(p) que esta dentro dessa lista projeto
-                <ListaProjetos key={p.id} id={p.id} nome={p.nome} orcamento={p.orcamento} categoria={p.categoria} subcategoria={p.subcategoria} handleRemove={removerProjeto}/>
+                <ListaProjetos key={p.id} id={p.id} nome={p.nome} orcamento={p.orcamento} categoria={p.categoria.categoria} subcategoria={p.subcategoria} handleRemove={removerProjeto}/>
                 ))  
             }
             </div>

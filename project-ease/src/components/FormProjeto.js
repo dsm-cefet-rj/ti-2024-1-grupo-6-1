@@ -40,11 +40,14 @@ function ProjectForm({handleSubmit, btnText, projectData}){
         }
 
         function handleSelect(e){
-            setProject({...project, category:{
+            setProject({...project, categoria: {
                 id: e.target.value,
-                name: e.target.options[e.target.selectedIndex].text
+                categoria: e.target.options[e.target.selectedIndex].text
             }})
+            
         }
+
+        console.log(project)
 
     return(
         <form className={styles.form} onSubmit={submit}>

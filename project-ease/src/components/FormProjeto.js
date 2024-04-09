@@ -9,8 +9,10 @@ function FormProjeto({handleSubmit, btnText, projectData}){
 
     const [categorias, setCategorias] = useState([]);
     const [projeto, setProjeto] = useState(projectData || {})
+    const [subcategories, setSubCategories] = useState([]);
 
     const bdTemporario = "http://localhost:5000/categorias"
+    const bdTemporario2 = "http://localhost:5000/subcategoria"
 
     useEffect(
         () => {
@@ -29,6 +31,23 @@ function FormProjeto({handleSubmit, btnText, projectData}){
             .catch(err=>console.log("Deu erro: " + err))
         }, [])
 
+        useEffect(
+            () => {
+                fetch(bdTemporario2,{
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then((subcategorias) => {
+                    return subcategorias.json()
+                })
+                .then((subcategoriasJson) => {
+                    setSubCategories(subcategoriasJson)
+                })
+                .catch(err=>console.log("Deu erro: " + err))
+            }, [])
+
         const submit = (e) => {
             e.preventDefault()
             handleSubmit(projeto)
@@ -38,14 +57,31 @@ function FormProjeto({handleSubmit, btnText, projectData}){
             setProjeto({...projeto, [e.target.name]: e.target.value})
         }
 
-        function handleSelect(e){
-            setProjeto({...projeto, categoria: {
-                id: e.target.value,
-                categoria: e.target.options[e.target.selectedIndex].text
-            }})
-            
-        }
+        const [filteredSubcategories, setFilteredSubcategories] = useState([]);
 
+    function handleSelect(e){
+        const selectedCategoryId = e.target.value;
+        const filteredSubcategories = subcategories.filter(subcategoria => subcategoria.idCategoria === selectedCategoryId);
+        setFilteredSubcategories(filteredSubcategories);
+        setProjeto({...projeto, categoria: {
+            id: selectedCategoryId,
+            categoria: e.target.options[e.target.selectedIndex].text
+        }})
+        
+    }
+
+    function handleSubcategorySelect(e) {
+        const selectedSubcategoryId = e.target.value;
+        const selectedSubcategory = filteredSubcategories.find(subcategoria => subcategoria.id === selectedSubcategoryId);
+    
+        setProjeto({
+            ...projeto,
+            subcategoria: {
+                id: selectedSubcategoryId,
+                subcategoria: selectedSubcategory.subcategoria
+            }
+        });
+    }
         console.log(projeto)
 
     return(
@@ -75,10 +111,18 @@ function FormProjeto({handleSubmit, btnText, projectData}){
                 value={projeto.categoria ? projeto.categoria.id : ''}
                 />
             
+            <Select
+                name="subcategory_ig"
+                text={"Selecione a subcategoria"}
+                option={filteredSubcategories}
+                handleOnChange={handleSubcategorySelect}
+                value={projeto.subcategoria ? projeto.subcategoria.id : ''}
+                />
+            
             <SubmitButton text={btnText} />
 
         </form>
     )
 }
 
-export default FormProjeto;
+export default FormProjeto

@@ -33,8 +33,8 @@
         "categoria": "Nova Categoria"
       },
       "subcategoria": {
-        "id": "c580",
-        "subcategoria": " Subcategoria da nova categoria"
+        "id": "723b",
+        "subcategoria": " Subcategoria2 da nova categoria"
       },
       "custo": 1000,
       "servicos": [
@@ -51,12 +51,27 @@
       "nome": "xyz",
       "orcamento": "9000",
       "categoria": {
-        "id": "2840",
-        "categoria": "Categoria 1"
+        "id": "18bb",
+        "categoria": "Nova Categoria"
       },
       "subcategoria": {
-        "id": "5e6d",
-        "subcategoria": "Subcategoria1 da categoria 1"
+        "id": "c580",
+        "subcategoria": " Subcategoria da nova categoria"
+      },
+      "custo": 0,
+      "servicos": []
+    },
+    {
+      "id": "d11d",
+      "nome": "Funciona",
+      "orcamento": "70000",
+      "categoria": {
+        "id": "18bb",
+        "categoria": "Nova Categoria"
+      },
+      "subcategoria": {
+        "id": "723b",
+        "subcategoria": " Subcategoria2 da nova categoria"
       },
       "custo": 0,
       "servicos": []

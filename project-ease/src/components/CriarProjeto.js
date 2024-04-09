@@ -117,7 +117,7 @@ function CriarProjeto(){
     return(
         <div className={styles.estilo}>
             <h1 className={styles.titulo}> Crie o seu projeto</h1>
-            <p className={styles.subtitulo}> Após clicar em confirmar vá para a aba "projetos"</p>
+            <p className={styles.subtitulo}> Adicione serviços após a criação</p>
             <form className={styles.estiloForm}onSubmit={novoProjeto}>
             <Input 
                 type="text"

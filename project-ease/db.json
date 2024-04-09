@@ -1,67 +1,20 @@
 {
   "projetos": [
     {
-      "id": "9bc2",
-      "nome": "Projeto teste2",
-      "orcamento": "20000",
-      "categoria": {
-        "id": "18bb",
-        "categoria": "Nova Categoria"
-      },
-      "custo": 0,
-      "servicos": []
-    },
-    {
-      "id": "3209",
-      "nome": "Projeto Atualizado2",
-      "orcamento": "222",
+      "id": "dd7e",
+      "nome": "Projeto teste tudo",
+      "orcamento": "2000",
       "categoria": {
         "id": "2840",
         "categoria": "Categoria 1"
       },
-      "custo": 88,
+      "custo": 1000,
       "servicos": [
         {
-          "nome": "Terminar serviço",
-          "custo": "22",
-          "descricao": "Terminar tela serviço",
-          "id": "5c6a9d97-bed0-4dd4-bb42-3d4d9eacb009"
-        },
-        {
-          "nome": "Terminar serviço",
-          "custo": "22",
-          "descricao": "Terminar tela serviço",
-          "id": "5c6a9d97-bed0-4dd4-bb42-3d4d9eacb009"
-        },
-        {
-          "nome": "Bob constroi",
-          "custo": "22",
-          "descricao": "Construindo",
-          "id": "fa3db744-3db4-4feb-bf64-e2d83fbb2986"
-        },
-        {
-          "nome": "Serviço",
-          "custo": "22",
-          "descricao": "Pagina não deve atualizar",
-          "id": "9f584662-a695-4dc2-abef-51416453507b"
-        }
-      ]
-    },
-    {
-      "id": "aff3",
-      "nome": "Projeto teste2",
-      "orcamento": "2222",
-      "categoria": {
-        "id": "2840",
-        "categoria": "Categoria 1"
-      },
-      "custo": 2222,
-      "servicos": [
-        {
-          "nome": "Meu serviço",
-          "custo": "2222",
-          "descricao": "Faz isso",
-          "id": "0b37a7fc-2eda-460c-9254-539c2b33a36a"
+          "nome": "Novo Serviço",
+          "custo": "1000",
+          "descricao": "teste",
+          "id": "d2328fd1-8430-4f5c-8657-0e96a5cef9f5"
         }
       ]
     }

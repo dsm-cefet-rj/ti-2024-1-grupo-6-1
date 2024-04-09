@@ -27,7 +27,7 @@ function CriarProjeto(){
         }).then((respJson) => {
             console.log(respJson)
             const state = { mensagem: "Projeto criado com sucesso!" };
-            navigate("/projects", {state});
+            navigate("/projetos", {state});
         })  //imprime a resposta
         .catch((erro) => console.log("Erro ao inserir no banco de dados"))
         

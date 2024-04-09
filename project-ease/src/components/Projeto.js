@@ -63,6 +63,7 @@ function Projeto(){
     }
 
     function criarServico() {
+        setMensagem('')
 
         //ultimo serviço
         const ultimoServico = projeto.servicos[projeto.servicos.length - 1]
@@ -97,8 +98,31 @@ function Projeto(){
         .catch((erro) => console.log(erro))
     }
 
-    function removerServico() {
+    function removerServico(id, custo) {
+       setMensagem('') 
+       
+       const servicosAtualizado = projeto.servicos.filter(
+        (servico) => servico.id != id
+       )
 
+       const projetoAtualizado =  projeto
+       projetoAtualizado.servicos = servicosAtualizado
+       projetoAtualizado.custo = parseFloat(projetoAtualizado.custo) - parseFloat(custo)
+
+       fetch(`http://localhost:5000/projetos/${projetoAtualizado.id}`,{
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(projetoAtualizado)
+       })
+       .then((resp) => resp.json())
+       .then((data) => {
+            setProjeto(projetoAtualizado)
+            setServicos(servicosAtualizado)
+            setMensagem('Serviço removido')
+       })
+       .catch(erro => console.log(erro))
     }
 
 

@@ -8,15 +8,58 @@
         "id": "2840",
         "categoria": "Categoria 1"
       },
-      "custo": 1000,
+      "custo": 1500,
       "servicos": [
         {
           "nome": "Novo Serviço",
           "custo": "1000",
           "descricao": "teste",
           "id": "d2328fd1-8430-4f5c-8657-0e96a5cef9f5"
+        },
+        {
+          "nome": "Seriço2",
+          "custo": "500",
+          "descricao": "Auxilio",
+          "id": "59eca38f-cac9-4da6-9541-9996642f3c5b"
         }
       ]
+    },
+    {
+      "id": "4b06",
+      "nome": "abc",
+      "orcamento": "5000",
+      "categoria": {
+        "id": "18bb",
+        "categoria": "Nova Categoria"
+      },
+      "subcategoria": {
+        "id": "c580",
+        "subcategoria": " Subcategoria da nova categoria"
+      },
+      "custo": 1000,
+      "servicos": [
+        {
+          "nome": "Contratar",
+          "custo": "1000",
+          "descricao": "Contratar Especialista",
+          "id": "5bd65090-be79-48b7-80d1-28f591ad2c24"
+        }
+      ]
+    },
+    {
+      "id": "a3b0",
+      "nome": "xyz",
+      "orcamento": "9000",
+      "categoria": {
+        "id": "2840",
+        "categoria": "Categoria 1"
+      },
+      "subcategoria": {
+        "id": "5e6d",
+        "subcategoria": "Subcategoria1 da categoria 1"
+      },
+      "custo": 0,
+      "servicos": []
     }
   ],
   "categorias": [

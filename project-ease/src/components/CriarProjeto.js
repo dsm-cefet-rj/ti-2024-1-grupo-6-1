@@ -10,6 +10,7 @@ function CriarProjeto(){
 
     const [projeto, setProjeto] = useState({})
     const [categories, setCategories] = useState([]);
+    const [subcategories, setSubCategories] = useState([]);
     const navigate = useNavigate()
 
     const novoProjeto = (e)=>{
@@ -34,6 +35,7 @@ function CriarProjeto(){
     }
 
     const bdTemporario = "http://localhost:5000/categorias"
+    const bdTemporario2 = "http://localhost:5000/subcategoria"
 
     useEffect(
         () => {
@@ -52,20 +54,64 @@ function CriarProjeto(){
             .catch(err=>console.log("Deu erro: " + err))
         }, [])
 
+        useEffect(
+            () => {
+                fetch(bdTemporario2,{
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then((subcategorias) => {
+                    return subcategorias.json()
+                })
+                .then((subcategoriasJson) => {
+                    setSubCategories(subcategoriasJson)
+                })
+                .catch(err=>console.log("Deu erro: " + err))
+            }, [])
+
+    //const [selectedSubcategory, setSelectedSubcategory] = useState('');
+    const [filteredSubcategories, setFilteredSubcategories] = useState([]);
+
+    function handleSelect(e){
+        const selectedCategoryId = e.target.value;
+        const filteredSubcategories = subcategories.filter(subcategoria => subcategoria.idCategoria === selectedCategoryId);
+        setFilteredSubcategories(filteredSubcategories);
+        setProjeto({...projeto, categoria: {
+            id: selectedCategoryId,
+            categoria: e.target.options[e.target.selectedIndex].text
+        }})
+        
+    }
+
+    function handleSubcategorySelect(e) {
+        const selectedSubcategoryId = e.target.value;
+        const selectedSubcategory = filteredSubcategories.find(subcategoria => subcategoria.id === selectedSubcategoryId);
+    
+        setProjeto({
+            ...projeto,
+            subcategoria: {
+                id: selectedSubcategoryId,
+                subcategoria: selectedSubcategory.subcategoria
+            }
+        });
+
+        //const filteredSubcategories = subcategories.filter(subcategoria => subcategoria.idCategoria === selectedSubcategoryId);
+        //setSubCategories(filteredSubcategories);
+    }
+    
+        // Filtrar as subcategorias correspondentes à categoria selecionada
+        //const filteredSubcategories = subcategories.filter(subcategoria => subcategoria.idCategoria === selectedCategoryId);
+        //setSubCategories(filteredSubcategories);
+    
+
     function handleOnChange(e){
         setProjeto({...projeto, [e.target.name]: e.target.value}) //projeto.nome, projeto.orcamento, projeto.categoria
         console.log('projeto: ' + projeto.nome)
         console.log('orcamento: ' + projeto.orcamento)
         console.log('categoria: ' + projeto.categoria)
         console.log('subcategoria: ' + projeto.subcategoria)
-    }
-
-    function handleSelect(e){
-        setProjeto({...projeto, categoria: {
-            id: e.target.value,
-            categoria: e.target.options[e.target.selectedIndex].text
-        }})
-        
     }
 
     return(
@@ -98,6 +144,14 @@ function CriarProjeto(){
                 value={projeto.categoria ? projeto.categoria.id : ''}
                 />
             
+            <Select
+                name="subcategory_ig"
+                text={"Selecione a subcategoria"}
+                option={filteredSubcategories}
+                handleOnChange={handleSubcategorySelect}
+                value={projeto.subcategoria ? projeto.subcategoria.id : ''}
+                />
+
             <SubmitButton text={'Criar Projeto'} />
 
             </form>

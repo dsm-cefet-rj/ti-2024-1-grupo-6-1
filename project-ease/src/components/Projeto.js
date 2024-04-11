@@ -133,7 +133,7 @@ function Projeto(){
     function ativarFormularioServico(){
         setFormularioServico(!formularioServico)
     }
-    
+
     console.log(projeto)
 
     return (
@@ -146,15 +146,17 @@ function Projeto(){
                         {!formularioProjeto ? 'Editar Projeto' : 'Fechar'}
                     </button>
                     {!formularioProjeto ? (
-                        /* Causa um erro
-                           <p>
-                                <span>Categoria: </span> {projeto.categoria.categoria}
-                            </p>
-                            <p>
-                                <span>Subcategoria: </span> {projeto.subcategoria}
-                            </p>
-                        */
                         <div className={styles.infoProjeto}>
+                            {projeto.categoria && (
+                                <p>
+                                    <span>Categoria: </span> {projeto.categoria.categoria}
+                                </p>
+                            )}
+                            {projeto.subcategoria && (
+                                <p>
+                                    <span>Subcategoria: </span> {projeto.subcategoria.subcategoria}
+                                </p>
+                            )}
                             <p>
                                 <span>Orçamento Total:</span> R${projeto.orcamento}
                             </p>

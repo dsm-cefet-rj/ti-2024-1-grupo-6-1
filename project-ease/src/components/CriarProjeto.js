@@ -96,14 +96,7 @@ function CriarProjeto(){
                 subcategoria: selectedSubcategory.subcategoria
             }
         });
-
-        //const filteredSubcategories = subcategories.filter(subcategoria => subcategoria.idCategoria === selectedSubcategoryId);
-        //setSubCategories(filteredSubcategories);
     }
-    
-        // Filtrar as subcategorias correspondentes à categoria selecionada
-        //const filteredSubcategories = subcategories.filter(subcategoria => subcategoria.idCategoria === selectedCategoryId);
-        //setSubCategories(filteredSubcategories);
     
 
     function handleOnChange(e){

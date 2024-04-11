@@ -2,7 +2,7 @@
   "projetos": [
     {
       "id": "dd7e",
-      "nome": "Projeto teste tudo",
+      "nome": "Projeto teste",
       "orcamento": "2000",
       "categoria": {
         "id": "2840",
@@ -29,12 +29,12 @@
       "nome": "abc",
       "orcamento": "5000",
       "categoria": {
-        "id": "18bb",
-        "categoria": "Nova Categoria"
+        "id": "2840",
+        "categoria": "Categoria 1"
       },
       "subcategoria": {
-        "id": "723b",
-        "subcategoria": " Subcategoria2 da nova categoria"
+        "id": "5e85",
+        "subcategoria": "Subcategoria da categoria 1"
       },
       "custo": 1000,
       "servicos": [

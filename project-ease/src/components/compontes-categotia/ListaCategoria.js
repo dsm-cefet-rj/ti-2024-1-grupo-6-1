@@ -61,7 +61,7 @@ function MostrarCategoriaNaDiv() {
 
             {
                 categoria &&
-                categoria.map((p) => (   //pega todo o projeto(p) que esta dentro dessa lista projeto
+                categoria.map((p) => (   
                     <ListaCategoria id={p.id} categoria={p.categoria} handleRemove={removerCategoria} />
 
                 ))

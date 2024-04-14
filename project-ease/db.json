@@ -7,6 +7,19 @@
       "id": "175e"
     }
   ],
-  "categorias": [],
-  "subcategoria": []
+  "categorias": [
+    {
+      "id": "26f4",
+      "categoria": "oi"
+    }
+  ],
+  "subcategoria": [],
+  "login": [
+    {
+      "id": "0919",
+      "CPF": "17611551728",
+      "email": "nevessara2009@gmail.com",
+      "senha": "U2FsdGVkX18WQYqtXv651H1Rihc7W3dh1+/WJdlHIo0="
+    }
+  ]
 }

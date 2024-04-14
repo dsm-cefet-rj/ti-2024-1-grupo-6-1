@@ -7,7 +7,7 @@ import { FaGithub } from 'react-icons/fa'
 function Footer() {
     return (
         <footer className={styles.footer}>
-            <span class={styles.footer__texto}>
+            <span className={styles.footer__texto}>
                 <a href="/" className={styles.redesFooter}>
                     <FaGithub />
                 </a>

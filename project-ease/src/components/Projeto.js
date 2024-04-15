@@ -125,6 +125,55 @@ function Projeto(){
        .catch(erro => console.log(erro))
     }
 
+    function editarServico(novoServico) {
+        setMensagem('');
+    
+        // Atualiza o serviço com os novos detalhes
+        const servicosAtualizados = projeto.servicos.map(servico => {
+            if (servico.id === novoServico.id) {
+                return {
+                    ...servico,
+                    nome: novoServico.nome,
+                    custo: novoServico.custo,
+                    descricao: novoServico.descricao
+                };
+            }
+            return servico;
+        });
+    
+        // Calcula o novo custo total do projeto
+        const novoCustoTotal = servicosAtualizados.reduce((total, servico) => total + parseFloat(servico.custo), 0);
+    
+        // Validação do orçamento
+        if (novoCustoTotal > parseFloat(projeto.orcamento)) {
+            setMensagem('Orçamento ultrapassado, verifique o valor do serviço');
+            setTipo('error');
+            return false;
+        }
+    
+        // Atualiza o custo total do projeto e os serviços
+        projeto.custo = novoCustoTotal;
+        projeto.servicos = servicosAtualizados;
+    
+        // Envia a solicitação PATCH para atualizar o projeto no servidor
+        fetch(`http://localhost:5000/projetos/${projeto.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(projeto)
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            setProjeto(data);
+            setServicos(servicosAtualizados);
+            setFormularioServico(false);
+            setMensagem('Serviço atualizado');
+            setTipo('sucesso');
+        })
+        .catch(erro => console.log(erro));
+    }
+
 
     function ativarFormularioProjeto(){
         setFormularioProjeto(!formularioProjeto)
@@ -200,6 +249,7 @@ function Projeto(){
                                 descricao={servico.descricao}
                                 key={servico.id}
                                 handleRemove={removerServico}
+                                handleEdit={editarServico}
                             />
                         ))
                     }

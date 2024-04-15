@@ -36,13 +36,13 @@
         "id": "5e85",
         "subcategoria": "Subcategoria da categoria 1"
       },
-      "custo": 1000,
+      "custo": 1500,
       "servicos": [
         {
-          "nome": "Contratar",
-          "custo": "1000",
-          "descricao": "Contratar Especialista",
-          "id": "5bd65090-be79-48b7-80d1-28f591ad2c24"
+          "nome": "Contratar Dev PHP",
+          "custo": "1500",
+          "descricao": "Contratar Especialista em PHP",
+          "id": "165e0220-2a8a-48ee-a13a-2820ff6e5bb0"
         }
       ]
     },

@@ -19,6 +19,9 @@ function Categoria() {
             .catch((erro) => console.log("Erro ao inserir no banco de dados"))
 
     }
+    
+    
+
     function handleOnChange(e) {
         setCategoria({ ...categorias, [e.target.name]: e.target.value })
     }
@@ -38,7 +41,7 @@ function Categoria() {
                         <p style={{ marginLeft: '30px' }} id={styles.criarCategoria}>Crie uma categoria de projeto</p>
                         <form id={styles.estilosForm} onSubmit={handleSubmit}>
                             <input className={styles.input} placeholder="Insira o nome da categoria" type="text" name="categoria" value={categorias.categoria} onChange={handleOnChange} id={styles.nome}></input>
-                            <button id={styles.botaoForm} style={{ width: '320px', height: '40px' }}>Cadastrar categoria</button>
+                            <button className={styles.botaoForm}  style={{ width: '320px', height: '40px' }}>Cadastrar categoria</button>
                         </form>
                     </div>
                 </div>

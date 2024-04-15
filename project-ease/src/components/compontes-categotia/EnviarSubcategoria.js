@@ -5,7 +5,7 @@ function Modal({ onClose, id }) {
     const [subcategoria, setSubcategoria] = useState({});
 
     const handleCreateSubcategory = (event) => {
-        event.preventDefault();
+       // event.preventDefault();
         console.log('AQUII'+subcategoria)
         fetch(`http://localhost:5000/subcategoria`, {
             method: "POST",
@@ -29,9 +29,9 @@ function Modal({ onClose, id }) {
                     <form id={styles.estilosForm} onSubmit={handleCreateSubcategory}>
                         <label htmlFor="subcategoria">Insira o nome da subcategoria</label>
                         <input onChange={handleOnChange} className={styles.input} placeholder="Insira o nome da subcategoria" type="text" name="subcategoria" id="subcategoria" />
-                        <button style={{ width: '320px', height: '40px' }}>Cadastrar subcategoria</button>
+                        <button style={{ width: '320px', height: '40px' }} className={styles.botaoForm} >Cadastrar subcategoria</button>
                     </form>
-                    <button style={{ width: '320px', height: '40px' }} className="btnClose" onClick={onClose}>Cancelar</button>
+                    <button style={{ width: '320px', height: '40px' }} className={styles.botaoForm} onClick={onClose}>Cancelar</button>
                 </div>
             </div>
         </div>

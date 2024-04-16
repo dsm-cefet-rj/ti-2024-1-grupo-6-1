@@ -36,42 +36,56 @@
         "id": "5e85",
         "subcategoria": "Subcategoria da categoria 1"
       },
-      "custo": 1500,
-      "servicos": [
-        {
-          "nome": "Contratar Dev PHP",
-          "custo": "1500",
-          "descricao": "Contratar Especialista em PHP",
-          "id": "165e0220-2a8a-48ee-a13a-2820ff6e5bb0"
-        }
-      ]
+      "custo": 0,
+      "servicos": []
     },
     {
       "id": "a3b0",
       "nome": "xyz",
-      "orcamento": "9000",
+      "orcamento": "8000",
       "categoria": {
-        "id": "18bb",
-        "categoria": "Nova Categoria"
+        "id": "7ac7",
+        "categoria": "Financeiro"
       },
       "subcategoria": {
-        "id": "c580",
-        "subcategoria": " Subcategoria da nova categoria"
+        "id": "7803",
+        "subcategoria": "Subcategoria1"
       },
-      "custo": 0,
-      "servicos": []
+      "custo": 2399,
+      "servicos": [
+        {
+          "nome": "Ajuda",
+          "custo": "600",
+          "id": "bc5ebe6f-c1e5-4f76-ab23-f5d12d77dbec"
+        },
+        {
+          "nome": "serviço2",
+          "custo": "999",
+          "id": "6988d3e9-03b7-46d1-92d7-013596004d62"
+        },
+        {
+          "nome": "Teste10",
+          "custo": "500",
+          "id": "a256d19e-d4b1-42b6-9899-4ba735421bc8"
+        },
+        {
+          "nome": "Front",
+          "custo": "300",
+          "id": "fe45e6b2-16c5-41e2-8dbe-46f6b144f4e9"
+        }
+      ]
     },
     {
       "id": "d11d",
       "nome": "Funciona",
       "orcamento": "70000",
       "categoria": {
-        "id": "18bb",
-        "categoria": "Nova Categoria"
+        "id": "26f4",
+        "categoria": "oi"
       },
       "subcategoria": {
-        "id": "723b",
-        "subcategoria": " Subcategoria2 da nova categoria"
+        "id": "c842",
+        "subcategoria": "SubcategoriaOI"
       },
       "custo": 0,
       "servicos": []
@@ -96,6 +110,10 @@
     {
       "id": "26f4",
       "categoria": "oi"
+    },
+    {
+      "id": "7ac7",
+      "categoria": "Financeiro"
     }
   ],
   "login": [
@@ -104,6 +122,10 @@
       "CPF": "matheus",
       "email": "123",
       "senha": "U2FsdGVkX1/KzuiJPU5bJv3AT6Q80GMzRQIKkGBrRLY="
+    },
+    {
+      "id": "1ecb",
+      "senha": "U2FsdGVkX1+2UKg89shqnVuc3PpZYciTPZJyrJsIpsM="
     }
   ],
   "subcategoria": [
@@ -148,6 +170,11 @@
       "id": "c842",
       "idCategoria": "26f4",
       "subcategoria": "SubcategoriaOI"
+    },
+    {
+      "id": "7803",
+      "idCategoria": "7ac7",
+      "subcategoria": "Subcategoria1"
     }
   ]
 }

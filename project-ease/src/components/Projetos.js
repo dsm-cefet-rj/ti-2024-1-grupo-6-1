@@ -3,51 +3,50 @@ import styles from './layout/MeusProjetos.module.css'
 import ListaProjetos from './ListaProjetos';
 import {Link} from 'react-router-dom';
 
-function Projetos(){
+function Projetos() {
+    const [projetos, setProjetos] = useState([]);
 
-    const [projeto, setProjeto] = useState(null) //valor inicial
-
-    //faz automaticamente quando abre a pagina
-    useEffect(() => {    
+    useEffect(() => {
         fetch('http://localhost:5000/projetos', {
             method: 'GET',
-            headers: {"Content-type": 'application/json'},
-        }).then((resp) => {
-            return resp.json()
-        }).then((respJson) => setProjeto(respJson))  // leva a resposta para o setProjeto para ter acesso aos dados
-        .catch((erro) => console.log("Erro ao pegar seus projetos " + erro))
-    }, []) 
-
-   
-    function removerProjeto(id){
-        fetch(`http://localhost:5000/projetos/${id}`, { 
-            method: "DELETE",
-            headers: {'Content-Type': 'application/json'},
-        }).then((resp)=>{
-           return resp.json()
-        }).then(()=>{
-            setProjeto(projeto.filter(projeto => projeto.id !== id));
+            headers: { "Content-type": 'application/json' },
         })
-        .catch((err) => console.log("Erro ao tentar remover projeto: "+err))
+        .then(resp => resp.json())
+        .then(data => setProjetos(data))
+        .catch(error => console.log("Erro ao obter projetos:", error));
+    }, []);
+
+    function removerProjeto(id) {
+        fetch(`http://localhost:5000/projetos/${id}`, {
+            method: "DELETE",
+            headers: { 'Content-Type': 'application/json' },
+        })
+        .then(() => setProjetos(projetos.filter(projeto => projeto.id !== id)))
+        .catch(error => console.log("Erro ao remover projeto:", error));
     }
 
-    return( //retorna o html
-        <div className ={styles.projetos}>
-            <h1 className ={styles.meusProjetos}><strong>Meus Projetos</strong></h1>
+    return (
+        <div className={styles.projetos}>
+            <h1 className={styles.meusProjetos}><strong>Meus Projetos</strong></h1>
             <Link to="/criarProjeto">
-                <button className ={styles.criarProjeto}>Criar Projeto </button>
+                <button className={styles.criarProjeto}>Criar Projeto</button>
             </Link>
-            <div className = {styles.verProjetos}>
-            { //nesse retorno significa que esta mexendo com javascript {}
-
-                projeto &&
-                projeto.map((p) => (   //pega todo o projeto(p) que esta dentro dessa lista projeto
-                <ListaProjetos key={p.id} id={p.id} nome={p.nome} orcamento={p.orcamento} categoria={p.categoria.categoria} subcategoria={p.subcategoria} handleRemove={removerProjeto}/>
-                ))  
-            }
+            <div className={styles.verProjetos}>
+                {projetos.length > 0 && projetos.map(projeto => (
+                    <ListaProjetos
+                        key={projeto.id}
+                        id={projeto.id}
+                        nome={projeto.nome}
+                        orcamento={projeto.orcamento}
+                        categoria={projeto.categoria.categoria}
+                        subcategoria={projeto.subcategoria}
+                        handleRemove={removerProjeto}
+                    />
+                ))}
+                {projetos.length === 0 && <p>Não há projetos cadastrados.</p>}
             </div>
         </div>
-    )
+    );
 }
 
-export default Projetos
+export default Projetos;

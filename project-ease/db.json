@@ -1,16 +1,12 @@
 {
   "projetos": [
     {
-      "id": "8131"
-    },
-    {
-      "id": "175e"
-      "id": "dd7e",
+      "id": "175e",
       "nome": "Projeto teste",
       "orcamento": "2000",
       "categoria": {
-        "id": "2840",
-        "categoria": "Categoria 1"
+        "id": "26f4",
+        "categoria": "oi"
       },
       "custo": 1500,
       "servicos": [
@@ -79,6 +75,21 @@
       },
       "custo": 0,
       "servicos": []
+    },
+    {
+      "id": "8214",
+      "nome": "Funcionando",
+      "orcamento": "3000",
+      "categoria": {
+        "id": "26f4",
+        "categoria": "oi"
+      },
+      "subcategoria": {
+        "id": "c842",
+        "subcategoria": "SubcategoriaOI"
+      },
+      "custo": 0,
+      "servicos": []
     }
   ],
   "categorias": [
@@ -87,8 +98,14 @@
       "categoria": "oi"
     }
   ],
-  "subcategoria": [],
   "login": [
+    {
+      "id": "e479",
+      "CPF": "matheus",
+      "email": "123",
+      "senha": "U2FsdGVkX1/KzuiJPU5bJv3AT6Q80GMzRQIKkGBrRLY="
+    }
+  ],
   "subcategoria": [
     {
       "id": "c580",
@@ -126,6 +143,11 @@
       "CPF": "17611551728",
       "email": "nevessara2009@gmail.com",
       "senha": "U2FsdGVkX18WQYqtXv651H1Rihc7W3dh1+/WJdlHIo0="
+    },
+    {
+      "id": "c842",
+      "idCategoria": "26f4",
+      "subcategoria": "SubcategoriaOI"
     }
   ]
 }

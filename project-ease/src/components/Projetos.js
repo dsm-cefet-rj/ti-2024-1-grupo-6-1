@@ -38,7 +38,7 @@ function Projetos() {
                         id={projeto.id}
                         nome={projeto.nome}
                         orcamento={projeto.orcamento}
-                        categoria={projeto.categoria.categoria}
+                        categoria={projeto.categoria ? projeto.categoria.categoria : null}
                         subcategoria={projeto.subcategoria}
                         handleRemove={removerProjeto}
                     />

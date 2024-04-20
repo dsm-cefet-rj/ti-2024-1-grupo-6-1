@@ -114,6 +114,10 @@
     {
       "id": "7ac7",
       "categoria": "Financeiro"
+    },
+    {
+      "id": "7cce",
+      "categoria": "Design"
     }
   ],
   "login": [
@@ -175,6 +179,11 @@
       "id": "7803",
       "idCategoria": "7ac7",
       "subcategoria": "Subcategoria1"
+    },
+    {
+      "id": "f980",
+      "idCategoria": "7cce",
+      "subcategoria": "Front-end"
     }
   ]
 }

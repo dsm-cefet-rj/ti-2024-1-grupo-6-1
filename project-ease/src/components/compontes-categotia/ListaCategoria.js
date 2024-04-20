@@ -14,7 +14,7 @@ function MostrarCategoriaNaDiv() {
             return resp.json()
         }).then((respJson) => setCategoria(respJson))  // leva a resposta para o setProjeto para ter acesso aos dados
             .catch((erro) => console.log("Erro ao pegar seus projetos " + erro))
-    }, [])
+    }, [categoria])
 
     useEffect(() => {
         fetch('http://localhost:5000/subcategoria', {

@@ -5,11 +5,14 @@ import SubmitButton from './form/SubmitButton';
 
 import { useState, useEffect } from 'react';
 
-function ProjectForm({handleSubmit, btnText, projectData}){
+function FormProjeto({handleSubmit, btnText, projectData}){
 
-    const [categories, setCategories] = useState([]);
+    const [categorias, setCategorias] = useState([]);
+    const [projeto, setProjeto] = useState(projectData || {})
+    const [subcategories, setSubCategories] = useState([]);
 
     const bdTemporario = "http://localhost:5000/categorias"
+    const bdTemporario2 = "http://localhost:5000/subcategoria"
 
     useEffect(
         () => {
@@ -23,28 +26,63 @@ function ProjectForm({handleSubmit, btnText, projectData}){
                 return categorias.json()
             })
             .then((categoriasJson) => {
-                setCategories(categoriasJson)
+                setCategorias(categoriasJson)
             })
             .catch(err=>console.log("Deu erro: " + err))
         }, [])
 
-        const [project, setProject] = useState(projectData || {})
+        useEffect(
+            () => {
+                fetch(bdTemporario2,{
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then((subcategorias) => {
+                    return subcategorias.json()
+                })
+                .then((subcategoriasJson) => {
+                    setSubCategories(subcategoriasJson)
+                })
+                .catch(err=>console.log("Deu erro: " + err))
+            }, [])
 
         const submit = (e) => {
             e.preventDefault()
-            handleSubmit(project)
+            handleSubmit(projeto)
         }
 
         function handleOnChange(e){
-            setProject({...project, [e.target.name]: e.target.value})
+            setProjeto({...projeto, [e.target.name]: e.target.value})
         }
 
-        function handleSelect(e){
-            setProject({...project, category:{
-                id: e.target.value,
-                name: e.target.options[e.target.selectedIndex].text
-            }})
-        }
+        const [filteredSubcategories, setFilteredSubcategories] = useState([]);
+
+    function handleSelect(e){
+        const selectedCategoryId = e.target.value;
+        const filteredSubcategories = subcategories.filter(subcategoria => subcategoria.idCategoria === selectedCategoryId);
+        setFilteredSubcategories(filteredSubcategories);
+        setProjeto({...projeto, categoria: {
+            id: selectedCategoryId,
+            categoria: e.target.options[e.target.selectedIndex].text
+        }})
+        
+    }
+
+    function handleSubcategorySelect(e) {
+        const selectedSubcategoryId = e.target.value;
+        const selectedSubcategory = filteredSubcategories.find(subcategoria => subcategoria.id === selectedSubcategoryId);
+    
+        setProjeto({
+            ...projeto,
+            subcategoria: {
+                id: selectedSubcategoryId,
+                subcategoria: selectedSubcategory.subcategoria
+            }
+        });
+    }
+        console.log(projeto)
 
     return(
         <form className={styles.form} onSubmit={submit}>
@@ -52,25 +90,33 @@ function ProjectForm({handleSubmit, btnText, projectData}){
                 type="text"
                 text="Nome do projeto"
                 name="nome"
-                placeholder={project.nome}
+                placeholder={projeto.nome}
                 handleOnChange={handleOnChange}
-                value={project.nome ? project.nome: ''}
+                value={projeto.nome ? projeto.nome: ''}
             />
             <Input 
                 type="number"
                 text="Orçamento do projeto"
                 name="orcamento"
-                placeholder={project.orcamento}
+                placeholder={projeto.orcamento}
                 handleOnChange={handleOnChange}
-                value={project.orcamento ? project.orcamento : ''}
+                value={projeto.orcamento ? projeto.orcamento : ''}
             />
             
             <Select
-                name="category_ig"
+                name="category_id"
                 text={"Selecione a categoria"}
-                option={categories}
+                option={categorias}
                 handleOnChange={handleSelect}
-                value={project.categoria ? project.categoria.id : ''}
+                value={projeto.categoria ? projeto.categoria.id : ''}
+                />
+            
+            <Select
+                name="subcategory_ig"
+                text={"Selecione a subcategoria"}
+                option={filteredSubcategories}
+                handleOnChange={handleSubcategorySelect}
+                value={projeto.subcategoria ? projeto.subcategoria.id : ''}
                 />
             
             <SubmitButton text={btnText} />
@@ -79,4 +125,4 @@ function ProjectForm({handleSubmit, btnText, projectData}){
     )
 }
 
-export default ProjectForm;
+export default FormProjeto

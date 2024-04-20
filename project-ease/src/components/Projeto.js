@@ -4,13 +4,19 @@ import {useState, useEffect} from 'react'
 import Conteiner from './layout/Conteiner'
 import styles from './layout/Projeto.module.css'
 import FormProjeto from './FormProjeto'
+import FormServico from './FormServico';
+import ListaServico from './ListaServico'
+import Mensagem from './layout/Mensagem';
+import {parse, v4 as uuidv4} from 'uuid'
 
 function Projeto(){
 
     const {id} = useParams()
-    const[projeto, setProjeto] = useState([])
-    const[formulario, setFormulario] = useState(false)
-    const[message, setMessage] = useState()
+    const[projeto, setProjeto] = useState({})
+    const[servicos, setServicos] = useState({})
+    const[formularioProjeto, setFormularioProjeto] = useState(false)
+    const[formularioServico, setFormularioServico] = useState(false)
+    const[mensagem, setMensagem] = useState()
     const[tipo, setTipo] = useState()
 
     useEffect(() => {
@@ -23,13 +29,20 @@ function Projeto(){
         .then((resp) => resp.json())
         .then((data) => {
             setProjeto(data)
+            setServicos(data.servicos)
+            console.log(data)
         })
-        .catch((erro) => console.log)
+        .catch((erro) => console.log(erro))
     },[id])
 
-    function editPost(projeto){
-        if(projeto.orcamento < projeto.custo){
 
+    function editPost(projeto){
+        setMensagem('')
+
+        if(projeto.orcamento < projeto.custo){
+            setMensagem('O orçamento não pode ser menor que o custo do projeto!')
+            setTipo('error')
+            return false
         }
         
         fetch(`http://localhost:5000/projetos/${projeto.id}`,{
@@ -42,51 +55,159 @@ function Projeto(){
         .then(resp => resp.json())
         .then((data) => {
             setProjeto(data)
-            setFormulario(false)
+            setFormularioProjeto(false)
+            setMensagem('Projeto atualizado!')
+            setTipo('sucesso')
         })
         .catch(err => console.log(err))
     }
 
-    function formularioProjeto(){
-        setFormulario(!formulario)
+    function criarServico() {
+        setMensagem('')
+
+        //ultimo serviço
+        const ultimoServico = projeto.servicos[projeto.servicos.length - 1]
+        ultimoServico.id = uuidv4()
+        const ultimoServicoCusto = ultimoServico.custo
+        const novoCusto = parseFloat(projeto.custo) + parseFloat(ultimoServicoCusto)
+
+        //validação de valor máximo
+        if(novoCusto > parseFloat(projeto.orcamento)) {
+            setMensagem('Orçamento ultrapassado, verifique o valor do serviço')
+            setTipo('error')
+            projeto.servicos.pop()
+            return false
+        }
+
+        //adiciona o custo do serviço ao total do projeto
+        projeto.custo = novoCusto
+
+        //atualiza o projeto
+        fetch(`http://localhost:5000/projetos/${projeto.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(projeto)
+        })
+        .then((resp) => resp.json())
+        .then((data) => {
+            setServicos(data.servicos)
+            setFormularioServico(false)
+        })
+        .catch((erro) => console.log(erro))
     }
-    
+
+    function removerServico(id, custo) {
+       setMensagem('') 
+       
+       const servicosAtualizado = projeto.servicos.filter(
+        (servico) => servico.id != id
+       )
+
+       const projetoAtualizado =  projeto
+       projetoAtualizado.servicos = servicosAtualizado
+       projetoAtualizado.custo = parseFloat(projetoAtualizado.custo) - parseFloat(custo)
+
+       fetch(`http://localhost:5000/projetos/${projetoAtualizado.id}`,{
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(projetoAtualizado)
+       })
+       .then((resp) => resp.json())
+       .then((data) => {
+            setProjeto(projetoAtualizado)
+            setServicos(servicosAtualizado)
+            setMensagem('Serviço removido')
+       })
+       .catch(erro => console.log(erro))
+    }
+
+
+    function ativarFormularioProjeto(){
+        setFormularioProjeto(!formularioProjeto)
+    }
+
+    function ativarFormularioServico(){
+        setFormularioServico(!formularioServico)
+    }
+
+    console.log(projeto)
+
     return (
-        <>
-            <div className={styles.detalhesProjeto}>
-                <Conteiner customClass="column">
-                    <div className={styles.detalhesConteiner}>
-                        <h1>Projeto: {projeto.nome}</h1>
-                        <button onClick={formularioProjeto} className={styles.botao}>
-                            {!formulario ? 'Editar Projeto' : 'Fechar'}
-                        </button>
-                        {!formulario ? (
-                            <div className={styles.infoProjeto}>
+        <>{projeto && (<div className={styles.detalhesProjeto}>
+            <Conteiner customClass="column">
+                <div className={styles.detalhesConteiner}>
+                    {mensagem && <Mensagem tipo={tipo} msg={mensagem}/>}
+                    <h1>Projeto: {projeto.nome}</h1>
+                    <button onClick={ativarFormularioProjeto} className={styles.botao}>
+                        {!formularioProjeto ? 'Editar Projeto' : 'Fechar'}
+                    </button>
+                    {!formularioProjeto ? (
+                        <div className={styles.infoProjeto}>
+                            {projeto.categoria && (
                                 <p>
-                                    <span>Categoria: </span> {projeto.categoria}
+                                    <span>Categoria: </span> {projeto.categoria.categoria}
                                 </p>
+                            )}
+                            {projeto.subcategoria && (
                                 <p>
-                                    <span>Subcategoria: </span> {projeto.subcategoria}
+                                    <span>Subcategoria: </span> {projeto.subcategoria.subcategoria}
                                 </p>
-                                <p>
-                                    <span>Orçamento Total:</span> R${projeto.orcamento}
-                                </p>
-                                <p> 
-                                    <span>Orçamento Utilizado:</span> R${projeto.custo} 
-                                </p> 
-                            </div> //custo é o orçamento total dos serviços
-                        ) : (
-                            <div className={styles.infoProjeto}>
-                                <FormProjeto 
-                                    handleSubmit={editPost}
-                                    btnText="Concluir Edição" 
-                                    projectData={projeto}>
-                                </FormProjeto>
-                            </div>
+                            )}
+                            <p>
+                                <span>Orçamento Total:</span> R${projeto.orcamento}
+                            </p>
+                            <p> 
+                                <span>Orçamento Utilizado:</span> R${projeto.custo} 
+                            </p> 
+                        </div> //custo é o orçamento total dos serviços
+                    ) : (
+                        <div className={styles.infoProjeto}>
+                            <FormProjeto 
+                                handleSubmit={editPost}
+                                btnText="Concluir Edição" 
+                                projectData={projeto}>
+                            </FormProjeto>
+                        </div>
+                    )}
+                </div>
+                <div className={styles.detalhesConteiner}>
+                    <h2>Adicione um serviço:</h2>
+                    <button onClick={ativarFormularioServico} className={styles.botao}>
+                        {!formularioServico ? 'Adicionar serviço' : 'Fechar'}
+                    </button>
+                    <div className={styles.infoProjeto}>
+                        {formularioServico && (
+                            <FormServico
+                                handleSubmit={criarServico}
+                                btnText='Adicionar serviço'
+                                projectData={projeto}
+                            />
                         )}
                     </div>
+                </div>
+                <h2>Serviços</h2>
+                <Conteiner customClass='start'>
+                    {servicos.length > 0 && 
+                        servicos.map((servico) => (
+                            <ListaServico 
+                                id={servico.id}
+                                nome={servico.nome}
+                                custo={servico.custo}
+                                descricao={servico.descricao}
+                                key={servico.id}
+                                handleRemove={removerServico}
+                            />
+                        ))
+                    }
+                    {servicos.length === 0 && <p>Não há serviços cadastrados.</p>}
                 </Conteiner>
-            </div>
+            </Conteiner>
+        </div>)}
+            
         </>
     )
 }

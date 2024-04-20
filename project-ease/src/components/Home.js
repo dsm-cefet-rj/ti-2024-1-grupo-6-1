@@ -9,7 +9,7 @@ function Home(){
         <section className={styles.conteudoPrincipal}>
             <div className={styles.conteudoPrincipalEscrito}> 
                 <h1 className={styles.conteudoPrincipalEscritoTitulo}>Comece seu projeto no Project Ease!</h1>
-                <a1 className={styles.conteudoPrincipalEscritoSubtitulo}>Crie um projeto, selecione a categoria e adicione serviços para facilitar a organização.</a1>
+                <p className={styles.conteudoPrincipalEscritoSubtitulo}>Crie um projeto, selecione a categoria e adicione serviços para facilitar a organização.</p>
                 <Link to="/criarProjeto">
                     <button className={styles.conteudoPrincipalEscritoBotao}>Clique aqui</button>
                 </Link>

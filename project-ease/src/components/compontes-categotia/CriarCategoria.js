@@ -4,10 +4,10 @@ import MostrarCategoriaNaDiv from './ListaCategoria'
 
 
 function Categoria() {
-    const [categorias, setCategoria] = useState({});
+    const [categorias, setCategoria] = useState("");
 
     const handleSubmit = (e) => {
-        // e.preventDefault() // não atualiza a página
+        e.preventDefault() // não atualiza a página
         fetch('http://localhost:5000/categorias', {
             //post - publica,    get - pega,    patch/put - atualiza
             method: "POST",
@@ -15,12 +15,14 @@ function Categoria() {
             body: JSON.stringify(categorias)   //transforma em uma string json
         }).then((resp) => {  // pega a resposta do banco de dados
             return resp.json()  //transforma a string em um objeto
-        }).then((respJson) => console.log(respJson))  //imprime a resposta
+        }).then((respJson) => {console.log(respJson)
+            setCategoria("");
+        })  //imprime a resposta
             .catch((erro) => console.log("Erro ao inserir no banco de dados"))
-
+        e.target.reset();
     }
-    
-    
+
+
 
     function handleOnChange(e) {
         setCategoria({ ...categorias, [e.target.name]: e.target.value })
@@ -32,8 +34,6 @@ function Categoria() {
 
     return (
         <>
-            <button id={styles.botaoMostrar}>Mostrar formulário de categorias</button>
-
             <main>
                 <div id={styles.formulario}>
                     <div id={styles.idForm}>
@@ -41,7 +41,7 @@ function Categoria() {
                         <p style={{ marginLeft: '30px' }} id={styles.criarCategoria}>Crie uma categoria de projeto</p>
                         <form id={styles.estilosForm} onSubmit={handleSubmit}>
                             <input className={styles.input} placeholder="Insira o nome da categoria" type="text" name="categoria" value={categorias.categoria} onChange={handleOnChange} id={styles.nome}></input>
-                            <button className={styles.botaoForm}  style={{ width: '320px', height: '40px' }}>Cadastrar categoria</button>
+                            <button className={styles.botaoForm} style={{ width: '320px', height: '40px' }}>Cadastrar categoria</button>
                         </form>
                     </div>
                 </div>

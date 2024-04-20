@@ -1,6 +1,6 @@
 import React from 'react';
 import {useParams} from 'react-router-dom'
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import Conteiner from './layout/Conteiner'
 import styles from './layout/Projeto.module.css'
 import FormProjeto from './FormProjeto'
@@ -9,15 +9,16 @@ import ListaServico from './ListaServico'
 import Mensagem from './layout/Mensagem';
 import {parse, v4 as uuidv4} from 'uuid'
 
+import { useEffect, useReducer } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import rootReducer from './../redux/root-reducer';
+
 function Projeto(){
 
     const {id} = useParams()
-    const[projeto, setProjeto] = useState({})
-    const[servicos, setServicos] = useState({})
-    const[formularioProjeto, setFormularioProjeto] = useState(false)
-    const[formularioServico, setFormularioServico] = useState(false)
-    const[mensagem, setMensagem] = useState()
-    const[tipo, setTipo] = useState()
+    const dispatch = useDispatch();
+    const {projeto, mensagem, tipo, formularioProjeto, servicos, formularioServico} = useSelector(rootReducer=>rootReducer.projetoReducer)
+
 
     useEffect(() => {
         fetch(`http://localhost:5000/projetos/${id}`, {
@@ -28,20 +29,19 @@ function Projeto(){
         })
         .then((resp) => resp.json())
         .then((data) => {
-            setProjeto(data)
-            setServicos(data.servicos)
-            console.log(data)
+            dispatch({type: 'setProjeto', payload: data})
+            dispatch({type: 'setServicos', payload: data.servicos})
         })
         .catch((erro) => console.log(erro))
-    },[id])
+    },[id, dispatch])
 
 
     function editPost(projeto){
-        setMensagem('')
+        dispatch({type: 'setMensagem', payload: ''})
 
         if(projeto.orcamento < projeto.custo){
-            setMensagem('O orçamento não pode ser menor que o custo do projeto!')
-            setTipo('error')
+            dispatch({type: 'setMensagem', payload: 'O orçamento não pode ser menor que os custos do projeto!'})
+            dispatch({type: 'setTipo', payload: 'erro'})
             return false
         }
         
@@ -54,16 +54,16 @@ function Projeto(){
         })
         .then(resp => resp.json())
         .then((data) => {
-            setProjeto(data)
-            setFormularioProjeto(false)
-            setMensagem('Projeto atualizado!')
-            setTipo('sucesso')
+            dispatch({type: 'setProjeto', payload: data})
+            dispatch({type: 'setFormularioProjeto'})
+            dispatch({type: 'setMensagem', payload: 'Projeto atualizado!'})
+            dispatch({type: 'setTipo', payload: 'sucesso'})
         })
         .catch(err => console.log(err))
     }
 
     function criarServico() {
-        setMensagem('')
+        dispatch({type: 'setMensagem', payload: ''})
 
         //ultimo serviço
         const ultimoServico = projeto.servicos[projeto.servicos.length - 1]
@@ -73,8 +73,8 @@ function Projeto(){
 
         //validação de valor máximo
         if(novoCusto > parseFloat(projeto.orcamento)) {
-            setMensagem('Orçamento ultrapassado, verifique o valor do serviço')
-            setTipo('error')
+            dispatch({type: 'setMensagem', payload: 'Orçamento ultrapassado, verifique o valor do serviço'})
+            dispatch({type: 'setTipo', payload: 'error'})
             projeto.servicos.pop()
             return false
         }
@@ -92,14 +92,14 @@ function Projeto(){
         })
         .then((resp) => resp.json())
         .then((data) => {
-            setServicos(data.servicos)
-            setFormularioServico(false)
+            dispatch({type: 'setServicos', payload: data.servicos})  //data.servicos
+            dispatch({type: 'setFormularioServico'})
         })
         .catch((erro) => console.log(erro))
     }
 
     function removerServico(id, custo) {
-       setMensagem('') 
+        dispatch({type: 'setMensagem', payload: ''})
        
        const servicosAtualizado = projeto.servicos.filter(
         (servico) => servico.id != id
@@ -118,20 +118,69 @@ function Projeto(){
        })
        .then((resp) => resp.json())
        .then((data) => {
-            setProjeto(projetoAtualizado)
-            setServicos(servicosAtualizado)
-            setMensagem('Serviço removido')
+            dispatch({action: 'setProjeto', payload: projetoAtualizado})
+            dispatch({type: 'setServicos', payload: data.servicosAtualizado})    //servicosAtualizado
+            dispatch({type: 'setMensagem', payload: 'Serviço excluido'})
        })
        .catch(erro => console.log(erro))
     }
 
+    function editarServico(novoServico) {
+        dispatch({type: 'setMensagem', payload: ''})
+    
+        // Atualiza o serviço com os novos detalhes
+        const servicosAtualizados = projeto.servicos.map(servico => {
+            if (servico.id === novoServico.id) {
+                return {
+                    ...servico,
+                    nome: novoServico.nome,
+                    custo: novoServico.custo,
+                    descricao: novoServico.descricao
+                };
+            }
+            return servico;
+        });
+    
+        // Calcula o novo custo total do projeto
+        const novoCustoTotal = servicosAtualizados.reduce((total, servico) => total + parseFloat(servico.custo), 0);
+    
+        // Validação do orçamento
+        if (novoCustoTotal > parseFloat(projeto.orcamento)) {
+            dispatch({type: 'setMensagem', payload: 'Orçamento ultrapassado, verifique o valor do serviço'})
+            dispatch({type: 'setTipo', payload: 'error'})
+            return false;
+        }
+    
+        // Atualiza o custo total do projeto e os serviços
+        projeto.custo = novoCustoTotal;
+        projeto.servicos = servicosAtualizados;
+    
+        // Envia a solicitação PATCH para atualizar o projeto no servidor
+        fetch(`http://localhost:5000/projetos/${projeto.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(projeto)
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            dispatch({action: 'setProjeto', payload: data})
+            dispatch({type: 'setServicos', payload: data.servicos})    //servicosAtualizado
+            dispatch({type: 'setFormularioServico'})
+            dispatch({type: 'setMensagem', payload: 'Serviço atualizado'})
+            dispatch({type: 'setTipo', payload: 'sucesso'})
+        })
+        .catch(erro => console.log(erro));
+    }
+
 
     function ativarFormularioProjeto(){
-        setFormularioProjeto(!formularioProjeto)
+        dispatch({type: 'setFormularioProjeto'})
     }
 
     function ativarFormularioServico(){
-        setFormularioServico(!formularioServico)
+        dispatch({type: 'setFormularioServico'})
     }
 
     console.log(projeto)
@@ -200,6 +249,7 @@ function Projeto(){
                                 descricao={servico.descricao}
                                 key={servico.id}
                                 handleRemove={removerServico}
+                                handleEdit={editarServico}
                             />
                         ))
                     }

@@ -1,25 +1,40 @@
 import React, { useState } from 'react';
 import styles from '../layout/categoria.module.css'
-import MostrarCategoriaNaDiv from './ListaCategoria'
+import MostrarCategoriaNaDiv from './MostrarCategoriaDiv'
 
 
 function Categoria() {
     const [categorias, setCategoria] = useState("");
 
     const handleSubmit = (e) => {
-        e.preventDefault() // não atualiza a página
-        fetch('http://localhost:5000/categorias', {
-            //post - publica,    get - pega,    patch/put - atualiza
-            method: "POST",
-            headers: { "Content-type": 'application/json' },   // colocando um json
-            body: JSON.stringify(categorias)   //transforma em uma string json
-        }).then((resp) => {  // pega a resposta do banco de dados
-            return resp.json()  //transforma a string em um objeto
-        }).then((respJson) => {console.log(respJson)
-            setCategoria("");
-        })  //imprime a resposta
-            .catch((erro) => console.log("Erro ao inserir no banco de dados"))
-        e.target.reset();
+        e.preventDefault(); 
+        fetch(`http://localhost:5000/categorias`, {
+            method: "GET",
+            headers: { "Content-type": "application/json" }
+        })
+            .then((resp) => resp.json())
+            .then((categoriasExistentes) => {
+                const nomesCategoriasExistentes = categoriasExistentes.map(cat => cat.categoria);
+                if (nomesCategoriasExistentes.includes(categorias.categoria.trim())) {
+                    alert("Esta categoria já existe.");
+                } else {
+                    fetch('http://localhost:5000/categorias', {
+                        method: "POST",
+                        headers: { "Content-type": 'application/json' },
+                        body: JSON.stringify({ categoria: categorias.categoria.trim() })
+                    })
+                        .then((resp) => {
+                            if (resp.ok) {
+                                alert("Categoria inserida com sucesso!");
+                                setCategoria({ categoria: "" });
+                            } else {
+                                alert("Erro ao inserir categoria.");
+                            }
+                        })
+                        .catch((erro) => console.log("Erro ao inserir no banco de dados"));
+                }
+            })
+            .catch((erro) => console.log("Erro ao verificar categorias no banco de dados"));
     }
 
 

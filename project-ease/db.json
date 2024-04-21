@@ -4,7 +4,6 @@
       "id": "8131"
     },
     {
-      "id": "175e"
       "id": "175e",
       "nome": "Projeto teste",
       "orcamento": "2000",
@@ -112,82 +111,17 @@
   ],
   "categorias": [
     {
-      "id": "0236",
-      "categoria": "oi"
-    },
-    {
-      "id": "7ac7",
-      "categoria": "Financeiro"
-    },
-    {
-      "id": "7cce",
+      "id": "5b46",
       "categoria": "Design"
     }
   ],
   "login": [
     {
-      "id": "e479",
-      "CPF": "matheus",
-      "email": "123",
-      "senha": "U2FsdGVkX1/KzuiJPU5bJv3AT6Q80GMzRQIKkGBrRLY="
-    },
-    {
-      "id": "1ecb",
-      "senha": "U2FsdGVkX1+2UKg89shqnVuc3PpZYciTPZJyrJsIpsM="
+      "id": "4501",
+      "nome": "Sara neves Barbosa dos Santos",
+      "email": "nevessara2009@gmail.com",
+      "senha": "U2FsdGVkX1/RQ4+2fWc1anEgzd0JcLf6wOklX6OVs8M="
     }
   ],
-  "subcategoria": [
-    {
-      "id": "c580",
-      "idCategoria": "18bb",
-      "subcategoria": " Subcategoria da nova categoria"
-    },
-    {
-      "id": "162b",
-      "idCategoria": "18bb",
-      "subcategoria": " Subcategoria1 da nova categoria"
-    },
-    {
-      "id": "723b",
-      "idCategoria": "18bb",
-      "subcategoria": " Subcategoria2 da nova categoria"
-    },
-    {
-      "id": "5e85",
-      "idCategoria": "2840",
-      "subcategoria": "Subcategoria da categoria 1"
-    },
-    {
-      "id": "5e6d",
-      "idCategoria": "2840",
-      "subcategoria": "Subcategoria1 da categoria 1"
-    },
-    {
-      "id": "491d",
-      "idCategoria": "2840",
-      "subcategoria": "Subcategoria2 da categoria 1",
-      "categoria": "Engenharia"
-    },
-    {
-      "id": "0919",
-      "CPF": "17611551728",
-      "email": "nevessara2009@gmail.com",
-      "senha": "U2FsdGVkX18WQYqtXv651H1Rihc7W3dh1+/WJdlHIo0="
-    },
-    {
-      "id": "c842",
-      "idCategoria": "26f4",
-      "subcategoria": "SubcategoriaOI"
-    },
-    {
-      "id": "7803",
-      "idCategoria": "7ac7",
-      "subcategoria": "Subcategoria1"
-    },
-    {
-      "id": "f980",
-      "idCategoria": "7cce",
-      "subcategoria": "Front-end"
-    }
-  ]
+  "subcategoria": []
 }

@@ -67,7 +67,6 @@ function FormProjeto({handleSubmit, btnText, projectData}){
             id: selectedCategoryId,
             categoria: e.target.options[e.target.selectedIndex].text
         }})
-        
     }
 
     function handleSubcategorySelect(e) {

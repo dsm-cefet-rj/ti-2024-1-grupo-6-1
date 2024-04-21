@@ -5,22 +5,43 @@ function Modal({ onClose, id }) {
     const [subcategoria, setSubcategoria] = useState({});
 
     const handleCreateSubcategory = (event) => {
-       // event.preventDefault();
-        console.log('AQUII'+subcategoria)
+        event.preventDefault();
+        const novaSubcategoria = subcategoria.subcategoria.trim();
         fetch(`http://localhost:5000/subcategoria`, {
-            method: "POST",
-            headers: { "Content-type": 'application/json' },
-            body: JSON.stringify(subcategoria)
+            method: "GET",
+            headers: { "Content-type": "application/json" }
         })
-        .then((resp) => resp.json())
-        .then((respJson) => console.log(respJson))
-        .catch((erro) => console.log("Erro ao inserir no banco de dados"));
+            .then((resp) => resp.json())
+            .then((subcategoriasExistentes) => {
+                const nomesSubcategoriasExistentes = subcategoriasExistentes.map(subcat => subcat.subcategoria);
+                if (nomesSubcategoriasExistentes.includes(novaSubcategoria)) {
+                    alert("Esta subcategoria já existe.");
+                } else {
+                    fetch('http://localhost:5000/subcategoria', {
+                        method: "POST",
+                        headers: { "Content-type": 'application/json' },
+                        body: JSON.stringify({ subcategoria: novaSubcategoria, idCategoria: id })
+                    })
+                        .then((resp) => {
+                            if (resp.ok) {
+                                alert("Subcategoria inserida com sucesso!");
+                                setSubcategoria({ ...subcategoria, subcategoria: "" });
+                                window.location.href = '/categoria';
+                            } else {
+                                alert("Erro ao inserir subcategoria.");
+                            }
+                        })
+                        .catch((erro) => console.log("Erro ao inserir no banco de dados", erro));
+                }
+            })
+            .catch((erro) => console.log("Erro ao verificar subcategorias no banco de dados", erro));
     };
-    
+
+
     const handleOnChange = (e) => {
-        setSubcategoria({ ...subcategoria,idCategoria:id, [e.target.name]: e.target.value });
+        setSubcategoria({ ...subcategoria, idCategoria: id, [e.target.name]: e.target.value });
     };
-    
+
 
     return (
         <div className={styles.modalContainer}>

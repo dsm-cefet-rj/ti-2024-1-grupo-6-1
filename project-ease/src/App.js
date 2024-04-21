@@ -8,8 +8,10 @@ import Navbar from './components/layout/Navbar';
 import Projeto from './components/Projeto';
 import CriarProjeto from './components/CriarProjeto';
 import Categoria from './components/compontes-categotia/CriarCategoria';
-import Cadastrar from './components/cadastrarUsuario';
+import Editar from './components/compontes-categotia/EditarCategoria';
+import Cadastrar from './components/CadastrarUsuario';
 import Footer from './components/layout/Footer';
+import EditarSubcategoria from './components/compontes-categotia/EditarSubcategoria';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -32,6 +34,8 @@ function App() {
           <Route path="/projeto/:id" element={<Projeto />} />
           <Route path="/criarProjeto" element={<CriarProjeto />} />
           <Route path="/categoria" element={<Categoria />} />
+          <Route path={`/editarCategoria/:id`} element={<Editar />} />
+          <Route path={`/EditarSubcategoria/:id`} element={<EditarSubcategoria />} />
           <Route path="/cadastrar" element={<Cadastrar />} />
         </Routes>
         <Footer />

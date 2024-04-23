@@ -61,10 +61,18 @@ function MostrarCategoriaNaDiv() {
 
             {
                 categoria &&
+<<<<<<< HEAD:project-ease/src/components/compontes-categotia/MostrarCategoriaDiv.js
+                categoria
+                    .filter((categoria, index, self) => self.findIndex(c => c.id === categoria.id) === index) // Filtra categorias únicas
+                    .map((p) => (
+                        <ListaCategoria key={p.id} id={p.id} categoria={p.categoria} handleRemove={removerCategoria} />
+                    ))
+=======
                 categoria.map((p) => (   
                     <ListaCategoria key={p.id} id={p.id} categoria={p.categoria} handleRemove={removerCategoria} />
 
                 ))
+>>>>>>> main:project-ease/src/components/components-categoria/MostrarCategoriaDiv.js
             }
 
         </>

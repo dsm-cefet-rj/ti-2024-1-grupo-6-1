@@ -59,7 +59,7 @@ function ListaCategoria({ id, categoria, handleRemove }) {
                     {subcategoria.map((subcat) => {
                         if (subcat.idCategoria === id) {
                             return (
-                                <div className={styles.subcategoria} id='formSubCat'>
+                                <div key={subcat.id} className={styles.subcategoria} id='formSubCat'>
                                     <p id='subcategoriaPar'>Subcategoria: {subcat.subcategoria}</p>
                                     <Link to={`/EditarSubcategoria/${subcat.id}`}>
                                         <button id='botaoSub' className={styles.botaoExcluir}><FaPen /></button>

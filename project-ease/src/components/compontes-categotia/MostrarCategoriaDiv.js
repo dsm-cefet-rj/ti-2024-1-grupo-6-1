@@ -61,10 +61,11 @@ function MostrarCategoriaNaDiv() {
 
             {
                 categoria &&
-                categoria.map((p) => (   
-                    <ListaCategoria id={p.id} categoria={p.categoria} handleRemove={removerCategoria} />
-
-                ))
+                categoria
+                    .filter((categoria, index, self) => self.findIndex(c => c.id === categoria.id) === index) // Filtra categorias únicas
+                    .map((p) => (
+                        <ListaCategoria key={p.id} id={p.id} categoria={p.categoria} handleRemove={removerCategoria} />
+                    ))
             }
 
         </>

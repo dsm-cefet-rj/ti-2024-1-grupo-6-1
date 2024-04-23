@@ -8,7 +8,7 @@
       "nome": "Projeto teste",
       "orcamento": "2000",
       "categoria": {
-        "id": "26f4",
+        "id": "c179",
         "categoria": "oi"
       },
       "custo": 1500,
@@ -25,7 +25,11 @@
           "descricao": "Auxilio",
           "id": "59eca38f-cac9-4da6-9541-9996642f3c5b"
         }
-      ]
+      ],
+      "subcategoria": {
+        "id": "de0f",
+        "subcategoria": "oiaaaaaaa"
+      }
     },
     {
       "id": "4b06",
@@ -109,14 +113,49 @@
       "servicos": []
     }
   ],
-  "categorias": [],
+  "categorias": [
+    {
+      "id": "c179",
+      "categoria": "oi"
+    },
+    {
+      "id": "f5b6",
+      "categoria": "alo"
+    }
+  ],
   "login": [
     {
       "id": "de81",
       "nome": "sara neves barbosa ",
       "email": "sara.neves@admin.br",
-      "senha": "U2FsdGVkX19vjgdUI/9Lb7e5SK9rpdmzx9wP8c63/Oc="
+      "senha": "U2FsdGVkX1+bi+9F/DF/4OFxxaWYGFz1L+CkRQk4ib8="
     }
   ],
-  "subcategoria": []
+  "subcategoria": [
+    {
+      "id": "51f4",
+      "subcategoria": "oi",
+      "idCategoria": "c179"
+    },
+    {
+      "id": "de0f",
+      "subcategoria": "oiaaaaaaa",
+      "idCategoria": "c179"
+    },
+    {
+      "id": "786f",
+      "subcategoria": "alo",
+      "idCategoria": "c179"
+    },
+    {
+      "id": "fd1f",
+      "subcategoria": "ksksks",
+      "idCategoria": "c179"
+    },
+    {
+      "id": "84f1",
+      "subcategoria": "ksksksks",
+      "idCategoria": "c179"
+    }
+  ]
 }

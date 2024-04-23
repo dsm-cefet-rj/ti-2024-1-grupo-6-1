@@ -62,7 +62,7 @@ function MostrarCategoriaNaDiv() {
             {
                 categoria &&
                 categoria.map((p) => (   
-                    <ListaCategoria id={p.id} categoria={p.categoria} handleRemove={removerCategoria} />
+                    <ListaCategoria key={p.id} id={p.id} categoria={p.categoria} handleRemove={removerCategoria} />
 
                 ))
             }

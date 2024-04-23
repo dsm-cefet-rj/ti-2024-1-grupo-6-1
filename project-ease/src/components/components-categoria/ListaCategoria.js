@@ -5,7 +5,7 @@ import styles from '../layout/Categoria.module.css';
 import Modal from './EnviarSubcategoria';
 import { Link } from 'react-router-dom';
 
-function ListaCategoria({ id, categoria, handleRemove }) {
+function ListaCategoria({id, categoria, handleRemove }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [subcategoria, setSubcategoria] = useState([]);
     useEffect(() => {
@@ -44,7 +44,7 @@ function ListaCategoria({ id, categoria, handleRemove }) {
 
     return (
         <>
-            <div id={styles.divCategoria}>
+            <div key={id} id={styles.divCategoria}>
                 <div className={styles.nomeCategoria}>
                     <p className={styles.paragrafo}> Nome: {categoria}</p>
                     <div className={styles.botaoCategoria}>
@@ -59,7 +59,7 @@ function ListaCategoria({ id, categoria, handleRemove }) {
                     {subcategoria.map((subcat) => {
                         if (subcat.idCategoria === id) {
                             return (
-                                <div className={styles.subcategoria} id='formSubCat'>
+                                <div key={id} className={styles.subcategoria} id='formSubCat'>
                                     <p id='subcategoriaPar'>Subcategoria: {subcat.subcategoria}</p>
                                     <Link to={`/EditarSubcategoria/${subcat.id}`}>
                                         <button id='botaoSub' className={styles.botaoExcluir}><FaPen /></button>

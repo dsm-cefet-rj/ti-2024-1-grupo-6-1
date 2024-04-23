@@ -7,7 +7,7 @@ import FormProjeto from './FormProjeto'
 import FormServico from './FormServico';
 import ListaServico from './ListaServico'
 import Mensagem from './layout/Mensagem';
-import {parse, v4 as uuidv4} from 'uuid'
+import {v4 as uuidv4} from 'uuid'
 
 import { useEffect, useReducer } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

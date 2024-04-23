@@ -4,6 +4,7 @@ import { FaPlus, FaPen } from 'react-icons/fa';
 import styles from '../layout/Categoria.module.css';
 import Modal from './EnviarSubcategoria';
 import { Link } from 'react-router-dom';
+import {v4 as uuidv4} from 'uuid'
 
 function ListaCategoria({id, categoria, handleRemove }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -59,7 +60,7 @@ function ListaCategoria({id, categoria, handleRemove }) {
                     {subcategoria.map((subcat) => {
                         if (subcat.idCategoria === id) {
                             return (
-                                <div key={id} className={styles.subcategoria} id='formSubCat'>
+                                <div key={uuidv4()} className={styles.subcategoria} id='formSubCat'>
                                     <p id='subcategoriaPar'>Subcategoria: {subcat.subcategoria}</p>
                                     <Link to={`/EditarSubcategoria/${subcat.id}`}>
                                         <button id='botaoSub' className={styles.botaoExcluir}><FaPen /></button>

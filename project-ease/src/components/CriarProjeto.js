@@ -14,28 +14,33 @@ function CriarProjeto(){
     const navigate = useNavigate()
 
     const novoProjeto = (e)=>{
-        e.preventDefault() // não atualiza a página
-        projeto.custo = 0
-        projeto.servicos = []
+        e.preventDefault(); // Não atualiza a página
+        // Verifica se todos os campos obrigatórios foram preenchidos
+        if (!projeto.nome || !projeto.orcamento || !projeto.categoria || !projeto.subcategoria) {
+            alert('Por favor, preencha todos os campos.');
+            return;
+        }
+        projeto.custo = 0;
+        projeto.servicos = [];
         
         fetch('http://localhost:5000/projetos', {
-            //post - publica,    get - pega,    patch/put - atualiza
+            // Post - publica,    Get - pega,    Patch/Put - atualiza
             method: "POST",
-            headers: {"Content-type": 'application/json'},   // colocando um json
-            body: JSON.stringify(projeto)   //transforma em uma string json
-        }).then((resp) => {  // pega a resposta do banco de dados
-            return resp.json()  //transforma a string em um objeto
+            headers: {"Content-type": 'application/json'},   // Colocando um JSON
+            body: JSON.stringify(projeto)   // Transforma em uma string JSON
+        }).then((resp) => {  // Pega a resposta do banco de dados
+            return resp.json();  // Transforma a string em um objeto
         }).then((respJson) => {
-            console.log(respJson)
+            console.log(respJson);
             const state = { mensagem: "Projeto criado com sucesso!" };
             navigate("/projetos", {state});
-        })  //imprime a resposta
-        .catch((erro) => console.log("Erro ao inserir no banco de dados"))
+        })  // Imprime a resposta
+        .catch((erro) => console.log("Erro ao inserir no banco de dados"));
         
     }
 
-    const bdTemporario = "http://localhost:5000/categorias"
-    const bdTemporario2 = "http://localhost:5000/subcategoria"
+    const bdTemporario = "http://localhost:5000/categorias";
+    const bdTemporario2 = "http://localhost:5000/subcategoria";
 
     useEffect(
         () => {
@@ -46,30 +51,32 @@ function CriarProjeto(){
                 }
             })
             .then((categorias) => {
-                return categorias.json()
+                return categorias.json();
             })
             .then((categoriasJson) => {
-                setCategories(categoriasJson)
+                setCategories(categoriasJson);
             })
-            .catch(err=>console.log("Deu erro: " + err))
-        }, [])
+            .catch(err=>console.log("Deu erro: " + err));
+        }, []
+    );
 
-        useEffect(
-            () => {
-                fetch(bdTemporario2,{
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                .then((subcategorias) => {
-                    return subcategorias.json()
-                })
-                .then((subcategoriasJson) => {
-                    setSubCategories(subcategoriasJson)
-                })
-                .catch(err=>console.log("Deu erro: " + err))
-            }, [])
+    useEffect(
+        () => {
+            fetch(bdTemporario2,{
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then((subcategorias) => {
+                return subcategorias.json();
+            })
+            .then((subcategoriasJson) => {
+                setSubCategories(subcategoriasJson);
+            })
+            .catch(err=>console.log("Deu erro: " + err));
+        }, []
+    );
 
     //const [selectedSubcategory, setSelectedSubcategory] = useState('');
     const [filteredSubcategories, setFilteredSubcategories] = useState([]);
@@ -81,7 +88,7 @@ function CriarProjeto(){
         setProjeto({...projeto, categoria: {
             id: selectedCategoryId,
             categoria: e.target.options[e.target.selectedIndex].text
-        }})
+        }});
         
     }
 
@@ -100,18 +107,18 @@ function CriarProjeto(){
     
 
     function handleOnChange(e){
-        setProjeto({...projeto, [e.target.name]: e.target.value}) //projeto.nome, projeto.orcamento, projeto.categoria
-        console.log('projeto: ' + projeto.nome)
-        console.log('orcamento: ' + projeto.orcamento)
-        console.log('categoria: ' + projeto.categoria)
-        console.log('subcategoria: ' + projeto.subcategoria)
+        setProjeto({...projeto, [e.target.name]: e.target.value}); //projeto.nome, projeto.orcamento, projeto.categoria
+        console.log('projeto: ' + projeto.nome);
+        console.log('orcamento: ' + projeto.orcamento);
+        console.log('categoria: ' + projeto.categoria);
+        console.log('subcategoria: ' + projeto.subcategoria);
     }
 
     return(
         <div className={styles.estilo}>
             <h1 className={styles.titulo}> Crie o seu projeto</h1>
             <p className={styles.subtitulo}> Adicione serviços após a criação</p>
-            <form className={styles.estiloForm}onSubmit={novoProjeto}>
+            <form className={styles.estiloForm} onSubmit={novoProjeto}>
             <Input 
                 type="text"
                 text="Nome do projeto"
@@ -149,7 +156,7 @@ function CriarProjeto(){
 
             </form>
         </div>
-    )
+    );
 }
 
-export default CriarProjeto
+export default CriarProjeto;

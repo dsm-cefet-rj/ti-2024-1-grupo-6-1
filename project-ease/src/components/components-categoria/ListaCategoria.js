@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { FaTrash } from 'react-icons/fa';
 import { FaPlus, FaPen } from 'react-icons/fa';
-import styles from '../layout/categoria.module.css';
+import styles from '../layout/Categoria.module.css';
 import Modal from './EnviarSubcategoria';
 import { Link } from 'react-router-dom';
+import {v4 as uuidv4} from 'uuid'
 
-function ListaCategoria({ id, categoria, handleRemove }) {
+function ListaCategoria({id, categoria, handleRemove }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [subcategoria, setSubcategoria] = useState([]);
     useEffect(() => {
@@ -44,7 +45,7 @@ function ListaCategoria({ id, categoria, handleRemove }) {
 
     return (
         <>
-            <div id={styles.divCategoria}>
+            <div key={id} id={styles.divCategoria}>
                 <div className={styles.nomeCategoria}>
                     <p className={styles.paragrafo}> Nome: {categoria}</p>
                     <div className={styles.botaoCategoria}>
@@ -59,7 +60,11 @@ function ListaCategoria({ id, categoria, handleRemove }) {
                     {subcategoria.map((subcat) => {
                         if (subcat.idCategoria === id) {
                             return (
+<<<<<<< HEAD:project-ease/src/components/compontes-categotia/ListaCategoria.js
                                 <div key={subcat.id} className={styles.subcategoria} id='formSubCat'>
+=======
+                                <div key={uuidv4()} className={styles.subcategoria} id='formSubCat'>
+>>>>>>> main:project-ease/src/components/components-categoria/ListaCategoria.js
                                     <p id='subcategoriaPar'>Subcategoria: {subcat.subcategoria}</p>
                                     <Link to={`/EditarSubcategoria/${subcat.id}`}>
                                         <button id='botaoSub' className={styles.botaoExcluir}><FaPen /></button>

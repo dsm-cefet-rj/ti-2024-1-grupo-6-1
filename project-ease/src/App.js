@@ -9,7 +9,7 @@ import Projeto from './components/Projeto';
 import CriarProjeto from './components/CriarProjeto';
 import Categoria from './components/components-categoria/CriarCategoria';
 import Editar from './components/components-categoria/EditarCategoria';
-import Cadastrar from './components/CadastrarUsuario';
+import Cadastrar from './components/CadastrarUsuarios';
 import ResetSenha from './components/ResetarSenha';
 import Footer from './components/layout/Footer';
 import EditarSubcategoria from './components/components-categoria/EditarSubcategoria';

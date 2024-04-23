@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from '../layout/Categoria.module.css';
+import styles from '../layout/Categorias.module.css';
 import { useParams } from 'react-router-dom';
 
 function EditarSubcategoria() {

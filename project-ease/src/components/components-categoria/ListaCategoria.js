@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { FaTrash } from 'react-icons/fa';
 import { FaPlus, FaPen } from 'react-icons/fa';
-import styles from '../layout/Categoria.module.css';
+import styles from '../layout/Categorias.module.css';
 import Modal from './EnviarSubcategoria';
 import { Link } from 'react-router-dom';
-import {v4 as uuidv4} from 'uuid'
 
 function ListaCategoria({id, categoria, handleRemove }) {
     const [isModalOpen, setIsModalOpen] = useState(false);

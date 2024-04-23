@@ -1,187 +1,16 @@
 {
   "projetos": [
     {
-      "id": "175e",
-      "nome": "Projeto teste",
-      "orcamento": "2000",
-      "categoria": {
-        "id": "c179",
-        "categoria": "oi"
-      },
-      "custo": 1500,
-      "servicos": [
-        {
-          "nome": "Novo Serviço",
-          "custo": "1000",
-          "descricao": "teste",
-          "id": "d2328fd1-8430-4f5c-8657-0e96a5cef9f5"
-        },
-        {
-          "nome": "Seriço2",
-          "custo": "500",
-          "descricao": "Auxilio",
-          "id": "59eca38f-cac9-4da6-9541-9996642f3c5b"
-        }
-      ],
-      "subcategoria": {
-        "id": "de0f",
-        "subcategoria": "oiaaaaaaa"
-      }
-    },
-    {
-      "id": "4b06",
-      "nome": "abc",
+      "id": "81d7",
+      "nome": "PSW",
       "orcamento": "5000",
       "categoria": {
-        "id": "2840",
-        "categoria": "Categoria 1"
-      },
-      "subcategoria": {
-        "id": "5e85",
-        "subcategoria": "Subcategoria da categoria 1"
-      },
-      "custo": -400,
-      "servicos": []
-    },
-    {
-      "id": "a3b0",
-      "nome": "xyz",
-      "orcamento": "8000",
-      "categoria": {
-        "id": "7ac7",
-        "categoria": "Financeiro"
-      },
-      "subcategoria": {
-        "id": "7803",
-        "subcategoria": "Subcategoria1"
-      },
-      "custo": 5200,
-      "servicos": [
-        {
-          "nome": "Ajuda",
-          "custo": "800",
-          "id": "bc5ebe6f-c1e5-4f76-ab23-f5d12d77dbec"
-        },
-        {
-          "nome": "serviço2",
-          "custo": "1800",
-          "id": "6988d3e9-03b7-46d1-92d7-013596004d62",
-          "descricao": "Auxilio"
-        },
-        {
-          "nome": "Teste10",
-          "custo": "2000",
-          "id": "a256d19e-d4b1-42b6-9899-4ba735421bc8"
-        },
-        {
-          "nome": "Front",
-          "custo": "600",
-          "id": "fe45e6b2-16c5-41e2-8dbe-46f6b144f4e9",
-          "descricao": "aaa"
-        }
-      ]
-    },
-    {
-      "id": "d11d",
-      "nome": "Funciona",
-      "orcamento": "70000",
-      "categoria": {
-        "id": "26f4",
-        "categoria": "oi"
-      },
-      "subcategoria": {
-        "id": "c842",
-        "subcategoria": "SubcategoriaOI"
-      },
-      "custo": 0,
-      "servicos": []
-    },
-    {
-      "id": "8214",
-      "nome": "Funcionando",
-      "orcamento": "3000",
-      "categoria": {
-        "id": "26f4",
-        "categoria": "oi"
-      },
-      "subcategoria": {
-        "id": "c842",
-        "subcategoria": "SubcategoriaOI"
-      },
-      "custo": 0,
-      "servicos": []
-    },
-    {
-      "id": "c9d5",
-      "nome": "Contratar Dev Web",
-      "orcamento": "10000",
-      "categoria": {
-        "id": "031b",
+        "id": "326b",
         "categoria": "Desenvolvimento"
       },
       "subcategoria": {
-        "id": "bd79",
-        "subcategoria": "React"
-      },
-      "custo": 0,
-      "servicos": []
-    },
-    {
-      "id": "20b4",
-      "nome": "aa",
-      "orcamento": "660",
-      "categoria": {
-        "id": "031b",
-        "categoria": "Desenvolvimento"
-      },
-      "subcategoria": {
-        "id": "bd79",
-        "subcategoria": "React"
-      },
-      "custo": 0,
-      "servicos": []
-    },
-    {
-      "id": "ad6d",
-      "nome": "Contratar Dev Web",
-      "orcamento": "2000",
-      "categoria": {
-        "id": "031b",
-        "categoria": "Desenvolviment"
-      },
-      "subcategoria": {
-        "id": "bd79",
-        "subcategoria": "Reac"
-      },
-      "custo": 0,
-      "servicos": []
-    },
-    {
-      "id": "478e",
-      "nome": "Contratar Dev Web",
-      "orcamento": "10000",
-      "categoria": {
-        "id": "f5b6",
-        "categoria": "alo"
-      },
-      "subcategoria": {
-        "id": "04d1",
-        "subcategoria": "1teste"
-      },
-      "custo": 0,
-      "servicos": []
-    },
-    {
-      "id": "24ce",
-      "nome": "PSW2",
-      "orcamento": "4000",
-      "categoria": {
-        "id": "c179",
-        "categoria": "oi"
-      },
-      "subcategoria": {
-        "id": "84f1",
-        "subcategoria": "ksksksks"
+        "id": "f21e",
+        "subcategoria": "Front-end"
       },
       "custo": 0,
       "servicos": []
@@ -189,11 +18,11 @@
   ],
   "categorias": [
     {
-      "id": "c179",
-      "categoria": "oi"
+      "id": "326b",
+      "categoria": "Desenvolvimento"
     },
     {
-      "id": "fcfc",
+      "id": "ac9d",
       "categoria": "Design"
     }
   ],
@@ -207,39 +36,39 @@
   ],
   "subcategoria": [
     {
-      "id": "51f4",
-      "subcategoria": "oi",
-      "idCategoria": "c179"
+      "id": "f21e",
+      "subcategoria": "Front-end",
+      "idCategoria": "326b"
     },
     {
-      "id": "de0f",
-      "subcategoria": "oiaaaaaaa",
-      "idCategoria": "c179"
+      "id": "950d",
+      "subcategoria": "Back-end",
+      "idCategoria": "326b"
     },
     {
-      "id": "786f",
-      "subcategoria": "alo",
-      "idCategoria": "c179"
+      "id": "b590",
+      "subcategoria": "Full Stack",
+      "idCategoria": "326b"
     },
     {
-      "id": "fd1f",
-      "subcategoria": "ksksks",
-      "idCategoria": "c179"
+      "id": "2961",
+      "subcategoria": "Outro",
+      "idCategoria": "326b"
     },
     {
-      "id": "84f1",
-      "subcategoria": "ksksksks",
-      "idCategoria": "c179"
+      "id": "5708",
+      "subcategoria": "Design de Interface de Usuário",
+      "idCategoria": "ac9d"
     },
     {
-      "id": "8e37",
-      "subcategoria": "Tela",
-      "idCategoria": "fcfc"
+      "id": "4019",
+      "subcategoria": "Design de Experiência do Usuário",
+      "idCategoria": "ac9d"
     },
     {
-      "id": "b40a",
-      "subcategoria": "Cores",
-      "idCategoria": "fcfc"
+      "id": "d9b7",
+      "subcategoria": "Outro",
+      "idCategoria": "ac9d"
     }
   ]
 }

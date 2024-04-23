@@ -6,6 +6,7 @@ function ListaServico({id, nome, custo, descricao, handleRemove, handleEdit}) {
     const remover = (e) => {
         e.preventDefault()
         handleRemove(id, custo)
+        window.location.reload();
     }
 
     const editar = (e) => {
@@ -70,7 +71,7 @@ function ListaServico({id, nome, custo, descricao, handleRemove, handleEdit}) {
                     </div>
                 ) : (
                     <div>
-                       <button className={styles.excluir} onClick={() => handleRemove(id, custo)}>
+                       <button className={styles.excluir} onClick={remover}>
                             Excluir
                         </button>
                         <button className={styles.excluir} onClick={handleEditClick}>

@@ -1,9 +1,6 @@
 {
   "projetos": [
     {
-      "id": "8131"
-    },
-    {
       "id": "175e",
       "nome": "Projeto teste",
       "orcamento": "2000",
@@ -39,7 +36,7 @@
         "id": "5e85",
         "subcategoria": "Subcategoria da categoria 1"
       },
-      "custo": 0,
+      "custo": -400,
       "servicos": []
     },
     {
@@ -106,13 +103,6 @@
         "subcategoria": "SubcategoriaOI"
       },
       "custo": 0,
-      "servicos": []
-    },
-    {
-      "id": "7f36",
-      "nome": "Contratar Dev Web",
-      "orcamento": "10000",
-      "custo": -4000,
       "servicos": []
     },
     {

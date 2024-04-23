@@ -119,6 +119,21 @@
       },
       "custo": 0,
       "servicos": []
+    },
+    {
+      "id": "20b4",
+      "nome": "aa",
+      "orcamento": "660",
+      "categoria": {
+        "id": "031b",
+        "categoria": "Desenvolvimento"
+      },
+      "subcategoria": {
+        "id": "bd79",
+        "subcategoria": "React"
+      },
+      "custo": 0,
+      "servicos": []
     }
   ],
   "categorias": [

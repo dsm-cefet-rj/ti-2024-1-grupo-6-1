@@ -7,12 +7,12 @@ import Login from './components/Login';
 import Navbar from './components/layout/Navbar';
 import Projeto from './components/Projeto';
 import CriarProjeto from './components/CriarProjeto';
-import Categoria from './components/compontes-categotia/CriarCategoria';
-import Editar from './components/compontes-categotia/EditarCategoria';
+import Categoria from './components/components-categoria/CriarCategoria';
+import Editar from './components/components-categoria/EditarCategoria';
 import Cadastrar from './components/CadastrarUsuario';
 import ResetSenha from './components/ResetarSenha';
 import Footer from './components/layout/Footer';
-import EditarSubcategoria from './components/compontes-categotia/EditarSubcategoria';
+import EditarSubcategoria from './components/components-categoria/EditarSubcategoria';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

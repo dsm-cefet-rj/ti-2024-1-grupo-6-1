@@ -155,48 +155,39 @@
       },
       "custo": 0,
       "servicos": []
-    }
-  ],
-  "categorias": [
+    },
     {
-      "id": "85a0",
-      "categoria": "Desenvolvimento"
+      "id": "478e",
+      "nome": "Contratar Dev Web",
+      "orcamento": "10000",
+      "categoria": {
+        "id": "f5b6",
+        "categoria": "alo"
+      },
+      "subcategoria": {
+        "id": "04d1",
+        "subcategoria": "1teste"
+      },
+      "custo": 0,
+      "servicos": []
     }
   ],
-<<<<<<< HEAD
   "categorias": [
     {
       "id": "c179",
       "categoria": "oi"
-    },
-    {
-      "id": "f5b6",
-      "categoria": "alo"
     }
   ],
-=======
->>>>>>> main
   "login": [
     {
       "id": "de81",
       "nome": "sara neves barbosa ",
       "email": "sara.neves@admin.br",
-<<<<<<< HEAD
       "senha": "U2FsdGVkX1+bi+9F/DF/4OFxxaWYGFz1L+CkRQk4ib8="
-=======
-      "senha": "U2FsdGVkX19vjgdUI/9Lb7e5SK9rpdmzx9wP8c63/Oc="
-    },
-    {
-      "id": "ddf2",
-      "nome": "admin",
-      "email": "admin@admin.br",
-      "senha": "U2FsdGVkX1+yD1tMXY6edmhmbRunRrzrOIvHBJAxD80="
->>>>>>> main
     }
   ],
   "subcategoria": [
     {
-<<<<<<< HEAD
       "id": "51f4",
       "subcategoria": "oi",
       "idCategoria": "c179"
@@ -220,11 +211,6 @@
       "id": "84f1",
       "subcategoria": "ksksksks",
       "idCategoria": "c179"
-=======
-      "id": "ca59",
-      "subcategoria": "React",
-      "idCategoria": "85a0"
->>>>>>> main
     }
   ]
 }

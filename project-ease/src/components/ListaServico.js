@@ -31,6 +31,7 @@ function ListaServico({id, nome, custo, descricao, handleRemove, handleEdit}) {
         console.log('Salvar edições:', editarServico);
         setEmEdicao(false);
         handleEdit(editarServico);
+        window.location.reload();
     };
 
     const handleChange = (e) => {

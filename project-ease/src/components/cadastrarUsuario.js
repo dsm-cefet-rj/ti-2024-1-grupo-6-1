@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from './layout/categoria.module.css';
+import styles from './layout/Categoria.module.css';
 import CryptoJS from 'crypto-js';
 
 function CadastrarUsuario() {

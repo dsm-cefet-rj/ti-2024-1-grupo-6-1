@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FaTrash } from 'react-icons/fa';
 import { FaPlus, FaPen } from 'react-icons/fa';
-import styles from '../layout/categoria.module.css';
+import styles from '../layout/Categoria.module.css';
 import Modal from './EnviarSubcategoria';
 import { Link } from 'react-router-dom';
 

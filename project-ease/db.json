@@ -107,16 +107,55 @@
       },
       "custo": 0,
       "servicos": []
+    },
+    {
+      "id": "7f36",
+      "nome": "Contratar Dev Web",
+      "orcamento": "10000",
+      "custo": -4000,
+      "servicos": []
+    },
+    {
+      "id": "c9d5",
+      "nome": "Contratar Dev Web",
+      "orcamento": "10000",
+      "categoria": {
+        "id": "031b",
+        "categoria": "Desenvolvimento"
+      },
+      "subcategoria": {
+        "id": "bd79",
+        "subcategoria": "React"
+      },
+      "custo": 0,
+      "servicos": []
     }
   ],
-  "categorias": [],
+  "categorias": [
+    {
+      "id": "031b",
+      "categoria": "Desenvolvimento"
+    }
+  ],
   "login": [
     {
       "id": "de81",
       "nome": "sara neves barbosa ",
       "email": "sara.neves@admin.br",
       "senha": "U2FsdGVkX19vjgdUI/9Lb7e5SK9rpdmzx9wP8c63/Oc="
+    },
+    {
+      "id": "ddf2",
+      "nome": "admin",
+      "email": "admin@admin.br",
+      "senha": "U2FsdGVkX1+yD1tMXY6edmhmbRunRrzrOIvHBJAxD80="
     }
   ],
-  "subcategoria": []
+  "subcategoria": [
+    {
+      "id": "bd79",
+      "subcategoria": "React",
+      "idCategoria": "031b"
+    }
+  ]
 }

@@ -109,18 +109,13 @@
       "servicos": []
     }
   ],
-  "categorias": [
-    {
-      "id": "5b46",
-      "categoria": "Design"
-    }
-  ],
+  "categorias": [],
   "login": [
     {
-      "id": "4501",
-      "nome": "Sara neves Barbosa dos Santos",
-      "email": "nevessara2009@gmail.com",
-      "senha": "U2FsdGVkX1/RQ4+2fWc1anEgzd0JcLf6wOklX6OVs8M="
+      "id": "de81",
+      "nome": "sara neves barbosa ",
+      "email": "sara.neves@admin.br",
+      "senha": "U2FsdGVkX19vjgdUI/9Lb7e5SK9rpdmzx9wP8c63/Oc="
     }
   ],
   "subcategoria": []

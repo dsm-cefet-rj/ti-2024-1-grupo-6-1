@@ -10,6 +10,7 @@ import CriarProjeto from './components/CriarProjeto';
 import Categoria from './components/compontes-categotia/CriarCategoria';
 import Editar from './components/compontes-categotia/EditarCategoria';
 import Cadastrar from './components/CadastrarUsuario';
+import ResetSenha from './components/ResetarSenha';
 import Footer from './components/layout/Footer';
 import EditarSubcategoria from './components/compontes-categotia/EditarSubcategoria';
 
@@ -30,6 +31,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+          <Route path="/resetar-senha" element={<ResetSenha />} />
           <Route path="/projetos" element={<Projetos />} />
           <Route path="/projeto/:id" element={<Projeto />} />
           <Route path="/criarProjeto" element={<CriarProjeto />} />

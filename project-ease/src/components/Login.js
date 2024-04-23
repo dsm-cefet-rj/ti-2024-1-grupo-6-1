@@ -56,9 +56,12 @@ function Login({ setIsLoggedIn }) {
                     <form id={styles.estilosForm} onSubmit={acessarConta}>
                         <input onChange={handleOnChange} value={loginInput.email} className={styles.input} placeholder="Insira seu e-mail" type="text" name="email" id={styles.nome}></input>
                         <input onChange={handleOnChange} value={loginInput.senha} className={styles.input} placeholder="Insira sua senha" type="password" name="senha" id={styles.subcategoria}></input>
-                        <button className={styles.botaoForm} style={{ width: '320px', height: '40px' }}>Login</button>
+                        <button className={styles.botaoForm} style={{ width: '320px', height: '40px' }}>Login administrador</button>
                         <Link to="/cadastrar">
-                            <button className={styles.botaoForm} style={{ width: '320px', height: '40px' }}>Cadastrar</button>
+                            <button className={styles.botaoForm} style={{ width: '320px', height: '40px' }}>Cadastrar administrador</button>
+                        </Link>
+                        <Link to="/resetar-senha">
+                            <button className={styles.botaoForm} style={{ width: '320px', height: '40px', marginTop: '10px' }}>Esqueceu sua senha?</button>
                         </Link>
                     </form>
                 </div>
@@ -68,3 +71,4 @@ function Login({ setIsLoggedIn }) {
 }
 
 export default Login;
+ 

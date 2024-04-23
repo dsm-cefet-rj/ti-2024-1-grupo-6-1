@@ -17,8 +17,19 @@ function CadastrarUsuario() {
             return;
         }
 
+        if (!login.email) {
+            alert("Por favor, insira seu email");
+            return;
+        }
+
         if (!login.senha) {
             alert("Por favor, insira sua senha");
+            return;
+        }
+
+
+        if (!login.email.endsWith('@admin.br')) {
+            alert("Apenas administradores podem se cadastrar");
             return;
         }
 
@@ -79,7 +90,7 @@ function CadastrarUsuario() {
                             <input onChange={handleOnChange} className={styles.input} placeholder="Insira seu e-mail" type="email" name="email" id={styles.nome} value={login.email}></input>
                             <input onChange={handleOnChange} className={styles.input} placeholder="Insira sua senha" type="password" name="senha" id={styles.subcategoria} value={login.senha}></input>
 
-                            <button className={styles.botaoForm} style={{ width: '320px', height: '40px' }}>Cadastrar</button>
+                            <button className={styles.botaoForm} style={{ width: '320px', height: '40px' }}>Cadastrar administrador</button>
                         </form>
                     </div>
                 </div>

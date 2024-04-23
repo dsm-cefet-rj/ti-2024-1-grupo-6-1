@@ -47,6 +47,13 @@ function FormProjeto({handleSubmit, btnText, projectData}){
                 })
                 .catch(err=>console.log("Deu erro: " + err))
             }, [])
+        
+        useEffect(() => {
+            if (projeto.categoria) {
+                const filteredSubcategories = subcategories.filter(subcategoria => subcategoria.idCategoria === projeto.categoria.id);
+                setFilteredSubcategories(filteredSubcategories);
+            }
+        }, [projeto.categoria, subcategories]);
 
         const submit = (e) => {
             e.preventDefault()
@@ -71,15 +78,18 @@ function FormProjeto({handleSubmit, btnText, projectData}){
 
     function handleSubcategorySelect(e) {
         const selectedSubcategoryId = e.target.value;
-        const selectedSubcategory = filteredSubcategories.find(subcategoria => subcategoria.id === selectedSubcategoryId);
-    
-        setProjeto({
-            ...projeto,
-            subcategoria: {
-                id: selectedSubcategoryId,
-                subcategoria: selectedSubcategory.subcategoria
-            }
-        });
+        if (selectedSubcategoryId === '') {
+            setProjeto({ ...projeto, subcategoria: null });
+        } else {
+            const selectedSubcategory = filteredSubcategories.find(subcategoria => subcategoria.id === selectedSubcategoryId);
+            setProjeto({
+                ...projeto,
+                subcategoria: {
+                    id: selectedSubcategoryId,
+                    subcategoria: selectedSubcategory ? selectedSubcategory.subcategoria : ''
+                }
+            });
+        }
     }
         console.log(projeto)
 
@@ -104,19 +114,22 @@ function FormProjeto({handleSubmit, btnText, projectData}){
             
             <Select
                 name="category_id"
-                text={"Selecione a categoria"}
+                text="Selecione a categoria"
                 option={categorias}
                 handleOnChange={handleSelect}
                 value={projeto.categoria ? projeto.categoria.id : ''}
+                hideDefaultOption={true}
                 />
             
             <Select
                 name="subcategory_ig"
-                text={"Selecione a subcategoria"}
+                text="Selecione a subcategoria"
                 option={filteredSubcategories}
                 handleOnChange={handleSubcategorySelect}
                 value={projeto.subcategoria ? projeto.subcategoria.id : ''}
+                hideDefaultOption={true}
                 />
+                
             
             <SubmitButton text={btnText} />
 

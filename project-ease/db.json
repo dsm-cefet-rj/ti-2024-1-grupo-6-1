@@ -170,12 +170,31 @@
       },
       "custo": 0,
       "servicos": []
+    },
+    {
+      "id": "24ce",
+      "nome": "PSW2",
+      "orcamento": "4000",
+      "categoria": {
+        "id": "c179",
+        "categoria": "oi"
+      },
+      "subcategoria": {
+        "id": "84f1",
+        "subcategoria": "ksksksks"
+      },
+      "custo": 0,
+      "servicos": []
     }
   ],
   "categorias": [
     {
       "id": "c179",
       "categoria": "oi"
+    },
+    {
+      "id": "fcfc",
+      "categoria": "Design"
     }
   ],
   "login": [
@@ -211,6 +230,16 @@
       "id": "84f1",
       "subcategoria": "ksksksks",
       "idCategoria": "c179"
+    },
+    {
+      "id": "8e37",
+      "subcategoria": "Tela",
+      "idCategoria": "fcfc"
+    },
+    {
+      "id": "b40a",
+      "subcategoria": "Cores",
+      "idCategoria": "fcfc"
     }
   ]
 }

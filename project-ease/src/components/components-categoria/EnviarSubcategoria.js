@@ -12,6 +12,7 @@ function Modal({ onClose, id }) {
             headers: { "Content-type": "application/json" }
         })
             .then((resp) => resp.json())
+            .then(() => {
             .then((subcategoriasExistentes) => {
                 
                     fetch('http://localhost:5000/subcategoria', {
@@ -29,6 +30,8 @@ function Modal({ onClose, id }) {
                             }
                         })
                         .catch((erro) => console.log("Erro ao inserir no banco de dados", erro));
+                }
+          )
                 
             })
             .catch((erro) => console.log("Erro ao verificar subcategorias no banco de dados", erro));

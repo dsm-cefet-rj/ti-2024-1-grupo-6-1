@@ -18,6 +18,12 @@
   ],
   "categorias": [
     {
+      "id": "1170",
+      "categoria": "oi"
+    },
+    {
+      "id": "67a3",
+      "categoria": "alo"
       "id": "326b",
       "categoria": "Desenvolvimento"
     },
@@ -28,14 +34,63 @@
   ],
   "login": [
     {
-      "id": "de81",
-      "nome": "sara neves barbosa ",
+      "id": "4227",
+      "nome": "sar",
       "email": "sara.neves@admin.br",
-      "senha": "U2FsdGVkX1+bi+9F/DF/4OFxxaWYGFz1L+CkRQk4ib8="
+      "senha": "U2FsdGVkX195ctm2pbtI/i0+cSldWGUUHxkQxb3o9q8="
+
     }
   ],
   "subcategoria": [
     {
+      "id": "8bfc",
+      "subcategoria": "oi",
+      "idCategoria": "1170"
+    },
+    {
+      "id": "4ea7",
+      "subcategoria": "oijsjjs",
+      "idCategoria": "1170"
+    },
+    {
+      "id": "8b0f",
+      "subcategoria": "kjdksh",
+      "idCategoria": "1170"
+    },
+    {
+      "id": "3fcc",
+      "subcategoria": "kakakak",
+      "idCategoria": "67a3"
+    },
+    {
+      "id": "b42f",
+      "subcategoria": "allalalalaa",
+      "idCategoria": "67a3"
+    },
+    {
+      "id": "881d",
+      "subcategoria": "mxmxnxnx",
+      "idCategoria": "67a3"
+    },
+    {
+      "id": "5ca7",
+      "subcategoria": "lalala",
+      "idCategoria": "1170"
+    },
+    {
+      "id": "b18c",
+      "subcategoria": "",
+      "idCategoria": "1170"
+    },
+    {
+      "id": "b370",
+      "subcategoria": "oii",
+      "idCategoria": "1170"
+    },
+    {
+      "id": "fbd1",
+      "subcategoria": "oii",
+      "idCategoria": "1170"
       "id": "f21e",
       "subcategoria": "Front-end",
       "idCategoria": "326b"

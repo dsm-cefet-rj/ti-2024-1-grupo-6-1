@@ -1,20 +1,19 @@
-import styles from './Select.module.css'
+import styles from './Select.module.css';
 
-function Select({text, name, option, handleOnChange, value}){
-    return(
+function Select({ text, name, option, handleOnChange, value, hideDefaultOption }) {
+    return (
         <div className={styles.form_control}>
             <label htmlFor={name}>{text}:</label>
             <select name={name} id={name} onChange={handleOnChange} value={value || ''}>
-                <option>{text}</option>
-                {
-                    option.map((option)=>
-                    (
-                        <option value={option.id} key={option.id}>{option.categoria}{option.subcategoria}</option>
-                    )
-                )}
+                {!hideDefaultOption && <option>{text}</option>}
+                {option.map((opt) => (
+                    <option key={opt.id} value={opt.id}>
+                        {opt.categoria || opt.subcategoria}
+                    </option>
+                ))}
             </select>
         </div>
-    )
+    );
 }
 
-export default Select
+export default Select;

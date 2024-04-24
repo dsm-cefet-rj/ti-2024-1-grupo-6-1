@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styles from './layout/Categoria.module.css';
+import styles from './layout/Categorias.module.css';
 import { Link, useNavigate } from 'react-router-dom';
 import CryptoJS from 'crypto-js';
 

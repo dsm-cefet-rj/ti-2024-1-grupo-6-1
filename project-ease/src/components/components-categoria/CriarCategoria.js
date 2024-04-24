@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from '../layout/Categoria.module.css'
+import styles from '../layout/Categorias.module.css'
 import MostrarCategoriaNaDiv from './MostrarCategoriaDiv'
 
 

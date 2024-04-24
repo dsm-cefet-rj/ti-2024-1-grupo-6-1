@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from '../layout/Categoria.module.css';
+import styles from '../layout/Categorias.module.css';
 
 function Modal({ onClose, id }) {
     const [subcategoria, setSubcategoria] = useState({});
@@ -13,6 +13,7 @@ function Modal({ onClose, id }) {
         })
             .then((resp) => resp.json())
             .then(() => {
+            .then((subcategoriasExistentes) => {
                 
                     fetch('http://localhost:5000/subcategoria', {
                         method: "POST",
@@ -31,6 +32,8 @@ function Modal({ onClose, id }) {
                         .catch((erro) => console.log("Erro ao inserir no banco de dados", erro));
                 }
           )
+                
+            })
             .catch((erro) => console.log("Erro ao verificar subcategorias no banco de dados", erro));
     };
 

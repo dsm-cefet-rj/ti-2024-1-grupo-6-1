@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import styles from './layout/Categoria.module.css';
+import styles from './layout/Categorias.module.css';
 import CryptoJS from 'crypto-js';
 
-function CadastrarUsuario() {
+function CadastrarUsuarios() {
     const [login, setLogin] = useState({
         nome: '',
         email: '',
@@ -99,4 +99,4 @@ function CadastrarUsuario() {
     );
 }
 
-export default CadastrarUsuario;
+export default CadastrarUsuarios;

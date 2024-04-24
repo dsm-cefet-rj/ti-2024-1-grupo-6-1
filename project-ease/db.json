@@ -159,72 +159,72 @@
   ],
   "categorias": [
     {
-      "id": "85a0",
-      "categoria": "Desenvolvimento"
-    }
-  ],
-<<<<<<< HEAD
-  "categorias": [
-    {
-      "id": "c179",
+      "id": "1170",
       "categoria": "oi"
     },
     {
-      "id": "f5b6",
+      "id": "67a3",
       "categoria": "alo"
     }
   ],
-=======
->>>>>>> main
   "login": [
     {
-      "id": "de81",
-      "nome": "sara neves barbosa ",
+      "id": "4227",
+      "nome": "sar",
       "email": "sara.neves@admin.br",
-<<<<<<< HEAD
-      "senha": "U2FsdGVkX1+bi+9F/DF/4OFxxaWYGFz1L+CkRQk4ib8="
-=======
-      "senha": "U2FsdGVkX19vjgdUI/9Lb7e5SK9rpdmzx9wP8c63/Oc="
-    },
-    {
-      "id": "ddf2",
-      "nome": "admin",
-      "email": "admin@admin.br",
-      "senha": "U2FsdGVkX1+yD1tMXY6edmhmbRunRrzrOIvHBJAxD80="
->>>>>>> main
+      "senha": "U2FsdGVkX195ctm2pbtI/i0+cSldWGUUHxkQxb3o9q8="
     }
   ],
   "subcategoria": [
     {
-<<<<<<< HEAD
-      "id": "51f4",
+      "id": "8bfc",
       "subcategoria": "oi",
-      "idCategoria": "c179"
+      "idCategoria": "1170"
     },
     {
-      "id": "de0f",
-      "subcategoria": "oiaaaaaaa",
-      "idCategoria": "c179"
+      "id": "4ea7",
+      "subcategoria": "oijsjjs",
+      "idCategoria": "1170"
     },
     {
-      "id": "786f",
-      "subcategoria": "alo",
-      "idCategoria": "c179"
+      "id": "8b0f",
+      "subcategoria": "kjdksh",
+      "idCategoria": "1170"
     },
     {
-      "id": "fd1f",
-      "subcategoria": "ksksks",
-      "idCategoria": "c179"
+      "id": "3fcc",
+      "subcategoria": "kakakak",
+      "idCategoria": "67a3"
     },
     {
-      "id": "84f1",
-      "subcategoria": "ksksksks",
-      "idCategoria": "c179"
-=======
-      "id": "ca59",
-      "subcategoria": "React",
-      "idCategoria": "85a0"
->>>>>>> main
+      "id": "b42f",
+      "subcategoria": "allalalalaa",
+      "idCategoria": "67a3"
+    },
+    {
+      "id": "881d",
+      "subcategoria": "mxmxnxnx",
+      "idCategoria": "67a3"
+    },
+    {
+      "id": "5ca7",
+      "subcategoria": "lalala",
+      "idCategoria": "1170"
+    },
+    {
+      "id": "b18c",
+      "subcategoria": "",
+      "idCategoria": "1170"
+    },
+    {
+      "id": "b370",
+      "subcategoria": "oii",
+      "idCategoria": "1170"
+    },
+    {
+      "id": "fbd1",
+      "subcategoria": "oii",
+      "idCategoria": "1170"
     }
   ]
 }

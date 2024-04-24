@@ -60,11 +60,7 @@ function ListaCategoria({id, categoria, handleRemove }) {
                     {subcategoria.map((subcat) => {
                         if (subcat.idCategoria === id) {
                             return (
-<<<<<<< HEAD:project-ease/src/components/compontes-categotia/ListaCategoria.js
                                 <div key={subcat.id} className={styles.subcategoria} id='formSubCat'>
-=======
-                                <div key={uuidv4()} className={styles.subcategoria} id='formSubCat'>
->>>>>>> main:project-ease/src/components/components-categoria/ListaCategoria.js
                                     <p id='subcategoriaPar'>Subcategoria: {subcat.subcategoria}</p>
                                     <Link to={`/EditarSubcategoria/${subcat.id}`}>
                                         <button id='botaoSub' className={styles.botaoExcluir}><FaPen /></button>

@@ -12,11 +12,8 @@ function Modal({ onClose, id }) {
             headers: { "Content-type": "application/json" }
         })
             .then((resp) => resp.json())
-            .then((subcategoriasExistentes) => {
-                const nomesSubcategoriasExistentes = subcategoriasExistentes.map(subcat => subcat.subcategoria);
-                if (nomesSubcategoriasExistentes.includes(novaSubcategoria)) {
-                    alert("Esta subcategoria já existe.");
-                } else {
+            .then(() => {
+                
                     fetch('http://localhost:5000/subcategoria', {
                         method: "POST",
                         headers: { "Content-type": 'application/json' },
@@ -33,7 +30,7 @@ function Modal({ onClose, id }) {
                         })
                         .catch((erro) => console.log("Erro ao inserir no banco de dados", erro));
                 }
-            })
+          )
             .catch((erro) => console.log("Erro ao verificar subcategorias no banco de dados", erro));
     };
 

@@ -36,10 +36,21 @@ nav ul li {
   text-decoration: none;
   align-items: center;
   font-size: 20px;
-  font-size: px;
   color: black;
   background-color: white;
   text-align: center;
   width: 100px;
+  height: 30px;
+}
+
+.botaoItemCad a{
+  margin-right: 100px;
+  text-decoration: none;
+  align-items: center;
+  font-size: 20px;
+  color: black;
+  background-color: white;
+  text-align: center;
+  width: 150px;
   height: 30px;
 }

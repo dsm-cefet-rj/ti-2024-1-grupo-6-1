@@ -7,7 +7,7 @@ function Projetos() {
   const [projetos, setProjetos] = useState([]);
 
   useEffect(() => {
-    // Corrigir a URL para usar a porta correta do backend
+    // Certifique-se de que a URL e a porta do back-end estejam corretas
     fetch('http://localhost:3005/projetos', {
       method: 'GET',
       headers: { 'Content-type': 'application/json' },
@@ -18,7 +18,6 @@ function Projetos() {
   }, []);
 
   function removerProjeto(id) {
-    // Corrigir a URL para usar a porta correta do backend
     fetch(`http://localhost:3005/projetos/${id}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
@@ -41,7 +40,7 @@ function Projetos() {
             nome={projeto.nome}
             orcamento={projeto.orcamento}
             categoria={projeto.categoria ? projeto.categoria.categoria : null}
-            subcategoria={projeto.subcategoria}
+            subcategoria={projeto.subcategoria ? projeto.subcategoria.subcategoria : null}
             handleRemove={removerProjeto}
           />
         ))}

@@ -21,7 +21,7 @@ function Projeto(){
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/projetos/${id}`, {
+        fetch(`http://localhost:3005/projetos/${id}`, {  // porta corrigida para 3005
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -29,11 +29,11 @@ function Projeto(){
         })
         .then((resp) => resp.json())
         .then((data) => {
-            dispatch({type: 'setProjeto', payload: data})
-            dispatch({type: 'setServicos', payload: data.servicos})
+            dispatch({type: 'setProjeto', payload: data});
+            dispatch({type: 'setServicos', payload: data.servicos});
         })
         .catch((erro) => console.log(erro))
-    },[id, dispatch])
+    }, [id, dispatch]);
 
 
     function editPost(projeto){
@@ -45,7 +45,7 @@ function Projeto(){
             return false
         }
         
-        fetch(`http://localhost:5000/projetos/${projeto.id}`,{
+        fetch(`http://localhost:3005/projetos/${projeto.id}`,{
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ function Projeto(){
         projeto.custo = novoCusto
 
         //atualiza o projeto
-        fetch(`http://localhost:5000/projetos/${projeto.id}`, {
+        fetch(`http://localhost:3005/projetos/${projeto.id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',
@@ -109,7 +109,7 @@ function Projeto(){
        projetoAtualizado.servicos = servicosAtualizado
        projetoAtualizado.custo = parseFloat(projetoAtualizado.custo) - parseFloat(custo)
 
-       fetch(`http://localhost:5000/projetos/${projetoAtualizado.id}`,{
+       fetch(`http://localhost:3005/projetos/${projetoAtualizado.id}`,{
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
@@ -156,7 +156,7 @@ function Projeto(){
         projeto.servicos = servicosAtualizados;
     
         // Envia a solicitação PATCH para atualizar o projeto no servidor
-        fetch(`http://localhost:5000/projetos/${projeto.id}`, {
+        fetch(`http://localhost:3005/projetos/${projeto.id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'

@@ -36,30 +36,31 @@ function Projeto(){
     }, [id, dispatch]);
 
 
-    function editPost(projeto){
-        dispatch({type: 'setMensagem', payload: ''})
-
-        if(projeto.orcamento < projeto.custo){
-            dispatch({type: 'setMensagem', payload: 'O orçamento não pode ser menor que os custos do projeto!'})
-            dispatch({type: 'setTipo', payload: 'erro'})
-            return false
+    function editPost(projeto) {
+        dispatch({ type: 'setMensagem', payload: '' });
+    
+        if (projeto.orcamento < projeto.custo) {
+            dispatch({ type: 'setMensagem', payload: 'O orçamento não pode ser menor que os custos do projeto!' });
+            dispatch({ type: 'setTipo', payload: 'erro' });
+            return false;
         }
-        
-        fetch(`http://localhost:3005/projetos/${projeto.id}`,{
-            method: 'PATCH',
+    
+        // Use o método PUT ou PATCH, dependendo de como seu back-end está configurado
+        fetch(`http://localhost:3005/projetos/${projeto.id}`, {
+            method: 'PUT', // ou 'PATCH', dependendo de sua implementação no back-end
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(projeto),
+            body: JSON.stringify(projeto), // Enviar o projeto atualizado no corpo da requisição
         })
-        .then(resp => resp.json())
+        .then((resp) => resp.json())
         .then((data) => {
-            dispatch({type: 'setProjeto', payload: data})
-            dispatch({type: 'setFormularioProjeto'})
-            dispatch({type: 'setMensagem', payload: 'Projeto atualizado!'})
-            dispatch({type: 'setTipo', payload: 'sucesso'})
+            dispatch({ type: 'setProjeto', payload: data });
+            dispatch({ type: 'setFormularioProjeto' });
+            dispatch({ type: 'setMensagem', payload: 'Projeto atualizado!' });
+            dispatch({ type: 'setTipo', payload: 'sucesso' });
         })
-        .catch(err => console.log(err))
+        .catch((err) => console.log(err));
     }
 
     function criarServico() {

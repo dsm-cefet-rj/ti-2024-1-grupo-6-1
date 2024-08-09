@@ -1,6 +1,17 @@
+/* Estilos Gerais */
+body {
+    background: linear-gradient(to bottom, var(--cor-botao-texto), var(--cor-hover), var(--cor-fundo));
+    color: var(--cor-texto);
+    font-family: var(--font-primaria);
+    margin: 0;
+    padding: 0;
+
+}
+
+/* Estilos para Conteúdo */
 .conteudo {
     margin-bottom: 20px;
-    border-top: 0.4px solid black;
+    border-top: 0.4px solid var(--cor-texto);
 }
 
 .conteudoPrincipal {
@@ -8,6 +19,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    padding: 20px;
 }
 
 .conteudoPrincipalEscrito {
@@ -15,40 +27,74 @@
     flex-direction: column;
     align-items: center;
     gap: 32px;
+    text-align: center;
 }
 
 .conteudoPrincipalEscritoTitulo {
-    font-family: "Anta", sans-serif;
+    font-family: var(--font-secundaria);
     font-weight: 400;
-    font-size: 64px;
-    color: black;
+    font-size: 48px; /* Diminuído para melhor responsividade */
+    color: var(--cor-texto);
 }
 
-.conteudoPrincipalEscritoSubtitulo{
-    font-family: "Sarala", sans-serif;
+.conteudoPrincipalEscritoSubtitulo {
     font-weight: 400;
     font-size: 22px;
-    color: black;
+    color: var(--cor-texto-secundario);
 }
 
-.conteudoPrincipalEscritoBotao{
-    background-color: #ecd6c4;
+.conteudoPrincipalEscritoBotao {
+    background-color: var(--cor-escura);
     height: 60px;
     width: 180px;
-    border: none;   
-    box-shadow: 4px 5px 4px rgba(0, 0, 0, 0.25);
+    border: none;
+    text-shadow: 1px 1px 0px var(--cor-texto);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
-    font-family: "Sarala", sans-serif;
     font-weight: 400;
     font-size: 24px;
-    color: black;
+    color: var(--cor-botao-texto);
+    cursor: pointer;
 }
 
 .conteudoPrincipalEscritoBotao:hover {
-    background-color: rgba(236, 214, 196, 0.53);
+    background-color: var(--cor-hover);
 }
 
-.conteudoPrincipalImagem{
-    height: 430px;
+.conteudoPrincipalImagem {
+    height: auto;
+    max-width: 100%;
     margin-top: 47px;
+}
+
+/* Estilos Responsivos */
+@media (min-width: 768px) {
+    .conteudoPrincipalEscritoTitulo {
+        font-size: 64px;
+    }
+
+    .conteudoPrincipalEscritoBotao {
+        height: 60px;
+        width: 180px;
+    }
+}
+
+@media (max-width: 767px) {
+    .conteudoPrincipalEscritoTitulo {
+        font-size: 36px;
+    }
+
+    .conteudoPrincipalEscritoSubtitulo {
+        font-size: 18px;
+    }
+
+    .conteudoPrincipalEscritoBotao {
+        height: 50px;
+        width: 160px;
+        font-size: 20px;
+    }
+
+    .conteudoPrincipalImagem {
+        margin-top: 20px;
+    }
 }

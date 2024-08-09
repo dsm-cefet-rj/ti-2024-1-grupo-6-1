@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+    --cor-fundo: #1F1F1F; /* Cinza Escuro */
+    --cor-texto: #000000; /* Preto */
+    --cor-texto-secundario: #1F1F1F; /* Cinza Escuro */
+    --cor-escura: #565A95;
+    --cor-primaria: #6A6FB7; /* Roxo Suave */
+    --cor-secundaria: #6F74BF; /* Roxo Claro */
+    --cor-hover: #9198FB; /* Roxo Muito Claro */
+    --cor-botao-texto: #FFFFFF; /* Branco */
+    --font-primaria: 'Roboto', sans-serif;
+    --font-secundaria: 'Lato', sans-serif;
+}

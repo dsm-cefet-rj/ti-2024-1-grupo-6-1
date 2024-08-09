@@ -1,69 +1,159 @@
-.projetos{
-    margin-top: 80px;
+.projetos {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alinha os itens no centro */
+    justify-content: space-around;
+    padding: 20px;
+    margin-bottom: 100%;
 }
 
-.meusProjetos{
-    margin-left: 280px;
+.meusProjetos {
     font-size: 50px;
+    font-family: var(--font-secundaria);
+    text-align: center; /* Centraliza o texto dentro do elemento */
 }
 
-.criarProjeto{
-    font-size: 25px;
-    padding: 8px;
-    margin-left: 300px;
-
+.criarProjeto {
+    background-color: var(--cor-escura);
+    height: 60px;
+    width: 180px;
+    border: none;
+    text-shadow: 1px 1px 0px var(--cor-texto);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--cor-botao-texto);
+    cursor: pointer;
+    margin-top: 20px;
 }
 
-.verProjetos{
+.criarProjeto:hover {
+    background-color: var(--cor-hover);
+}
+
+.verProjetos {
     margin-top: 30px;
-    margin-left: 230px;
+    font-family: var(--font-primaria);
     display: flex;
     flex-direction: row;
     align-items: baseline;
-    justify-content: flex-start;
+    justify-content: center; /* Centraliza o conteúdo */
     flex-wrap: wrap;
-
 }
 
-.projeto{
-    width: 220px; 
-    padding: 20px; 
-    border: 4px solid #ccc; 
-    border-radius: 5px; 
+.projeto {
+    width: 220px;
+    padding: 20px;
+    border: 4px solid #ccc;
+    border-radius: 5px;
     margin-top: 15px;
     margin-left: 15px;
 }
 
-.nomeProjeto{
-    background-color:gray;
-    padding: 10px; 
-    border-radius: 5px; 
+.nomeProjeto {
+    background-color: gray;
+    padding: 10px;
+    border-radius: 5px;
     display: inline-block;
     font-size: 30px;
 }
 
-.orçamento{
+.orçamento {
     font-size: 20px;
     margin-bottom: 10px;
     margin-top: 1px;
 }
 
-.categoria{
+.categoria {
     display: flex;
     flex-wrap: wrap;
     font-size: 18px;
 }
 
-.editar{
+.editar {
     height: 35px;
     width: 84px;
     margin-top: 17px;
     font-size: 15px;
 }
 
-.excluir{
+.excluir {
     height: 35px;
     width: 70px;
     margin-left: 10px;
     font-size: 15px;
+}
+
+/* Responsivo para telas menores */
+@media (max-width: 1200px) {
+    .meusProjetos {
+        font-size: 40px;
+    }
+    .criarProjeto {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 992px) {
+    .meusProjetos {
+        font-size: 36px;
+    }
+    .criarProjeto {
+        font-size: 20px;
+    }
+    .projeto {
+        width: 200px;
+    }
+    .nomeProjeto {
+        font-size: 26px;
+    }
+    .orçamento {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .meusProjetos {
+        font-size: 30px;
+    }
+    .criarProjeto {
+        font-size: 18px;
+    }
+    .projeto {
+        width: 180px;
+    }
+    .nomeProjeto {
+        font-size: 22px;
+    }
+    .orçamento {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 576px) {
+    .meusProjetos {
+        font-size: 24px;
+    }
+    .criarProjeto {
+        font-size: 16px;
+    }
+    .verProjetos {
+        flex-direction: column;
+        align-items: center;
+    }
+    .projeto {
+        width: 100%;
+        margin-left: 0;
+    }
+    .nomeProjeto {
+        font-size: 20px;
+    }
+    .orçamento {
+        font-size: 14px;
+    }
+    .editar, .excluir {
+        width: 100%;
+        font-size: 14px;
+    }
 }

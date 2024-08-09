@@ -11,7 +11,7 @@
 .detalhesProjeto h1{
     font-size: 35px;
     background-color: #9c9999;
-    color: #050505;
+    color: var(--cor-texto);
     padding: 0.4em;
 }
 

@@ -12,7 +12,7 @@ function ListaProjetos({id, nome, orcamento, categoria, handleRemove}){
 
     return(
         
-            <div className ={styles.projeto}>
+            <div className ={styles.projetos}>
                 <h1 className ={styles.nomeProjeto}><strong>{nome}</strong></h1>
                 <p className ={styles.orçamento}><strong>Orçamento: </strong>R${orcamento}</p>
                 <p className ={styles.categoria}><strong>Categoria: </strong>{categoria}</p>

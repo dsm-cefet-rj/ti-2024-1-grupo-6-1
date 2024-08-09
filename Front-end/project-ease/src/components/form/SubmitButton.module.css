@@ -1,11 +1,17 @@
 .btn{
-    background-color: #8f8f8f;
-    padding: 0.5em 1em;
-    cursor: pointer;
+    background-color: var(--cor-escura);
+    height: 60px;
+    width: 180px;
     border: none;
-    font-size: 14px;
+    text-shadow: 1px 1px 0px var(--cor-texto);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--cor-botao-texto);
+    cursor: pointer;
 }
 
 .btn:hover{
-    color: #ffbb33;
+    color: var(--color-hover);
 }

@@ -2,6 +2,7 @@
     margin: 0 auto;
     width: 50%;
     margin-top: 80px;
+    margin-bottom: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,13 +10,15 @@
     border: 2px solid rgb(61, 60, 60);
     border-radius: 5px; 
     padding: 50px; 
-    background-color:rgb(179, 178, 178)
+    background-color: var(--cor-secundaria);
+
 }
 
 .titulo {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: var(--font-secundaria);
 }
 
 .subtitulo {
@@ -24,6 +27,7 @@
     flex-direction: column;
     align-items: center;
     margin-top: 30px; 
+    font-family: var(--font-secundaria);
 }
 
 .estiloForm {
@@ -35,6 +39,7 @@
 
 .texto{
     font-size: 20px;
+    font-family: var(--font-primaria);
 }
 
 .input{

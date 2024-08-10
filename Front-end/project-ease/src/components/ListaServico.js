@@ -49,26 +49,26 @@ function ListaServico({id, nome, custo, descricao, handleRemove, handleEdit}) {
             <div>
                 {emEdicao ? (
                     <div>
-                        <input
+                        <input className={styles.input}
                             type="text"
                             name="nome"
                             value={editarServico.nome}
                             onChange={handleChange}
                         />
-                        <input
+                        <input className={styles.input}
                             type="text"
                             name="custo"
                             value={editarServico.custo}
                             onChange={handleChange}
                         />
-                        <input
+                        <input className={styles.input}
                             type="text"
                             name="descricao"
                             value={editarServico.descricao}
                             onChange={handleChange}
                         />
-                        <button onClick={handleSaveEdit}>Salvar</button>
-                        <button onClick={handleCancelEdit}>Cancelar</button>
+                        <button className={styles.excluir} onClick={handleSaveEdit}>Salvar</button>
+                        <button className={styles.excluir} onClick={handleCancelEdit}>Cancelar</button>
                     </div>
                 ) : (
                     <div>

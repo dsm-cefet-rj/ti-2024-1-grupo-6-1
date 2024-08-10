@@ -1,26 +1,36 @@
-.detalhesProjeto{
+* {
+    box-sizing: border-box;
+}
+
+.detalhesProjeto {
     padding: 2em;
+    max-width: 100%;
 }
 
 .detalhesProjeto h1,
 .detalhesProjeto h2,
-.detalhesProjeto p{
+.detalhesProjeto p {
     margin-bottom: 0.5em;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
-.detalhesProjeto h1{
+.detalhesProjeto h1 {
     font-size: 35px;
-    background-color: #9c9999;
+    font-family: var(--font-secundaria);
+    background-color: var(--cor-primaria);
+    border-radius: 5px;
     color: var(--cor-texto);
     padding: 0.4em;
+    max-width: 100%;
 }
 
-.detalhesProjeto span{
+.detalhesProjeto span {
     font-weight: bold;
 }
 
 .detalhesConteiner,
-.formularioContainer{
+.formularioContainer {
     border-bottom: 1px solid #7a7a7a;
     margin-bottom: 1.2em;
     padding-bottom: 1.2em;
@@ -28,19 +38,77 @@
     justify-content: space-between;
     align-items: baseline;
     flex-wrap: wrap;
+    max-width: 100%;
 }
 
-.botao{
+.botao {
     padding: 0.5em 1em;
     font-size: 18px;
     text-decoration: none;
     margin: 10px;
     cursor: pointer;
     max-height: 40px;
+    background-color: var(--cor-escura);
+    height: 60px;
+    width: 180px;
     border: none;
+    border-radius: 5px;
+    text-shadow: 1px 1px 0px var(--cor-texto);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
+    color: var(--cor-botao-texto);
+    cursor: pointer;
+    max-width: 100%;
 }
 
-.infoProjeto{
+.botao:hover {
+    background-color: var(--cor-hover);
+}
+
+.infoProjeto {
     width: 100%;
     font-size: 20px;
+    font-family: var(--font-secundaria);
+    max-width: 100%;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .detalhesProjeto {
+        padding: 1.5em;
+    }
+
+    .detalhesProjeto h1 {
+        font-size: 28px;
+        padding: 0.3em;
+    }
+
+    .botao {
+        font-size: 16px;
+        height: 50px;
+    }
+
+    .infoProjeto {
+        font-size: 18px;
+    }
+}
+
+/* Responsividade para telas muito pequenas (ex: celulares) */
+@media (max-width: 480px) {
+    .detalhesProjeto {
+        padding: 1em;
+    }
+
+    .detalhesProjeto h1 {
+        font-size: 24px;
+        padding: 0.2em;
+    }
+
+    .botao {
+        font-size: 14px;
+        height: 40px;
+    }
+
+    .infoProjeto {
+        font-size: 16px;
+    }
 }

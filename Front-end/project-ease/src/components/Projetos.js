@@ -27,7 +27,7 @@ function Projetos() {
   }
 
   return (
-    <div className={styles.projetos}>
+    <div className={styles.projetoContainer}>
       <h1 className={styles.meusProjetos}><strong>Meus Projetos</strong></h1>
       <Link to="/criarProjeto">
         <button className={styles.criarProjeto}>Criar Projeto</button>

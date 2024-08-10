@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const router = express.Router();
 const bodyParser = require('body-parser');
+const Projetos = require('../models/projetos');
 
 router.use(cors());
 router.use(bodyParser.json());
@@ -41,8 +42,17 @@ let projetos = [
 
 // Endpoint para obter projetos
 router.route('/')
-  .get((req, res) => {
+  .get((req, res, next) => {
     res.status(200).json(projetos);
+
+    Projetos.find({})
+      .then((projetosBanco) => {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+        res.json(projetosBanco); 
+      }, (err) => next(err))
+      .catch((err) => next(err));
+
   })
   .post((req, res) => {
     let proxId = (1 + Math.max(...projetos.map(p => parseInt(p.id, 16)))).toString(16);

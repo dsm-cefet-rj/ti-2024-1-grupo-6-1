@@ -7,6 +7,15 @@ var cors = require('cors'); // Importar CORS
 var indexRouter = require('./routes/index');
 var projetosRouter = require('./routes/projetos');
 
+const mongoose = require('mongoose');
+
+const url = 'mongodb://localhost:27017/pragmapm';
+const connect = mongoose.connect(url);
+
+connect.then((db) => {
+    console.log("Connected correctly to server");
+}, (err) => { console.log(err); });
+
 var app = express();
 
 app.use(cors()); // Usar CORS globalmente

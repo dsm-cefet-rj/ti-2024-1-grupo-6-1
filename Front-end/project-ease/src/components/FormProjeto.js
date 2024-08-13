@@ -11,7 +11,7 @@ function FormProjeto({handleSubmit, btnText, projectData}){
     const [projeto, setProjeto] = useState(projectData || {})
     const [subcategories, setSubCategories] = useState([]);
 
-    const bdTemporario = "http://localhost:5000/categorias"
+    const bdTemporario = "http://localhost:3005/categorias"
     const bdTemporario2 = "http://localhost:5000/subcategoria"
 
     useEffect(

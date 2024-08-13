@@ -35,7 +35,7 @@ function App() {
           <Route path="/projetos" element={<Projetos />} />
           <Route path="/projeto/:id" element={<Projeto />} />
           <Route path="/criarProjeto" element={<CriarProjeto />} />
-          <Route path="/categoria" element={<Categoria />} />
+          <Route path="/categorias" element={<Categoria />} />
           <Route path={`/editarCategoria/:id`} element={<Editar />} />
           <Route path={`/EditarSubcategoria/:id`} element={<EditarSubcategoria />} />
           <Route path="/cadastrar" element={<Cadastrar />} />

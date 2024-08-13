@@ -9,14 +9,14 @@ function Editar() {
     const [categoriaOriginal, setCategoriaOriginal] = useState('');
 
     useEffect(() => {
-        fetch(`http://localhost:5000/categorias/${id}`, {
+        fetch(`http://localhost:3005/categorias/${id}`, {
             method: 'GET',
             headers: { "Content-type": 'application/json' },
         }).then((resp) => {
             return resp.json()
         }).then((respJson) => setCategoriaOriginal(respJson))  // leva a resposta para o setProjeto para ter acesso aos dados
             .catch((erro) => console.log("Erro ao pegar seus projetos " + erro))
-    }, [categoriaOriginal])
+    }, [])
 
 
     console.log(id);
@@ -29,14 +29,14 @@ function Editar() {
             return;
         }
 
-        fetch(`http://localhost:5000/categorias/${id}`, {
-            method: "PATCH",
+        fetch(`http://localhost:3005/categorias/${id}`, {
+            method: "PUT",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ categoria: categoria })
         }).then((resp) => {
             if (resp.ok) {
                 alert("Categoria atualizada com sucesso!");
-                window.location.href = '/categoria';
+                window.location.href = '/categorias';
             } else {
                 alert("Erro ao atualizar categoria");
             }
@@ -48,7 +48,7 @@ function Editar() {
     };
 
     const handleVoltar = () => {
-        window.location.href = '/categoria';
+        window.location.href = '/categorias';
     }
 
 

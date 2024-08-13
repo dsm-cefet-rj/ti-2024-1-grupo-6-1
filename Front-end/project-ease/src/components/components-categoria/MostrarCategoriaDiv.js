@@ -7,7 +7,7 @@ function MostrarCategoriaNaDiv() {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/categorias', {
+        fetch('http://localhost:3005/categorias', {
             method: 'GET',
             headers: { "Content-type": 'application/json' },
         }).then((resp) => {
@@ -17,7 +17,7 @@ function MostrarCategoriaNaDiv() {
     }, [categoria])
 
     useEffect(() => {
-        fetch('http://localhost:5000/subcategoria', {
+        fetch('http://localhost:3005/subcategoria', {
             method: 'GET',
             headers: { "Content-type": 'application/json' },
         }).then((resp) => {
@@ -28,7 +28,7 @@ function MostrarCategoriaNaDiv() {
 
     function removerCategoria(id) {
         console.log("IDCATEGORIA" + id)
-        fetch(`http://localhost:5000/categorias/${id}`, {
+        fetch(`http://localhost:3005/categorias/${id}`, {
             method: "DELETE",
             headers: { 'Content-Type': 'application/json' },
         }).then((resp) => {
@@ -41,7 +41,7 @@ function MostrarCategoriaNaDiv() {
         if (subcategoria) {
             subcategoria.forEach((subcat) => {
                 if (subcat.idCategoria === id) {
-                    fetch(`http://localhost:5000/subcategoria/${subcat.id}`, {
+                    fetch(`http://localhost:3005/subcategoria/${subcat.id}`, {
                         method: "DELETE",
                         headers: { 'Content-Type': 'application/json' },
                     })

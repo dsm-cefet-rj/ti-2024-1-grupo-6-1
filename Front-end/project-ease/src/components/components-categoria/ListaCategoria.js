@@ -9,7 +9,7 @@ function ListaCategoria({id, categoria, handleRemove }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [subcategoria, setSubcategoria] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/subcategoria', {
+        fetch('http://localhost:3005/subcategoria', {
             method: 'GET',
             headers: { "Content-type": 'application/json' },
         })
@@ -23,7 +23,7 @@ function ListaCategoria({id, categoria, handleRemove }) {
     }
 
     function handleRemoveSubcategoria(id) {
-        fetch(`http://localhost:5000/subcategoria/${id}`, {
+        fetch(`http://localhost:3005/subcategoria/${id}`, {
             method: "DELETE",
             headers: { 'Content-Type': 'application/json' },
         }).then((resp) => {

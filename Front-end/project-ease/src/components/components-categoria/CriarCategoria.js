@@ -4,11 +4,12 @@ import MostrarCategoriaNaDiv from './MostrarCategoriaDiv'
 
 
 function Categoria() {
-    const [categorias, setCategoria] = useState("");
+    const [categorias, setCategoria] = useState({ categoria: "" });
+
 
     const handleSubmit = (e) => {
         e.preventDefault(); 
-        fetch(`http://localhost:5000/categorias`, {
+        fetch(`http://localhost:3005/categorias`, {
             method: "GET",
             headers: { "Content-type": "application/json" }
         })
@@ -18,7 +19,7 @@ function Categoria() {
                 if (nomesCategoriasExistentes.includes(categorias.categoria.trim())) {
                     alert("Esta categoria já existe.");
                 } else {
-                    fetch('http://localhost:5000/categorias', {
+                    fetch('http://localhost:3005/categorias', {
                         method: "POST",
                         headers: { "Content-type": 'application/json' },
                         body: JSON.stringify({ categoria: categorias.categoria.trim() })

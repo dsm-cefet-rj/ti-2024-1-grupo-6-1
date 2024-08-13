@@ -18,7 +18,14 @@ function Projeto(){
     const {id} = useParams()
     const dispatch = useDispatch();
     const {projeto, mensagem, tipo, formularioProjeto, servicos, formularioServico} = useSelector(rootReducer=>rootReducer.projetoReducer)
-
+    const initialState = {
+        projeto: {},
+        mensagem: '',
+        tipo: '',
+        formularioProjeto: false,
+        servicos: [], // Inicialize como um array vazio
+        formularioServico: false
+      };
 
     useEffect(() => {
         fetch(`http://localhost:3005/projetos/${id}`, {  // porta corrigida para 3005
@@ -30,7 +37,7 @@ function Projeto(){
         .then((resp) => resp.json())
         .then((data) => {
             dispatch({type: 'setProjeto', payload: data});
-            dispatch({type: 'setServicos', payload: data.servicos});
+            dispatch({type: 'setServicos', payload: data.servicos || [] });
         })
         .catch((erro) => console.log(erro))
     }, [id, dispatch]);
@@ -241,19 +248,19 @@ function Projeto(){
                 </div>
                 <h2>Serviços</h2>
                 <Conteiner customClass='start'>
-                    {servicos.length > 0 && 
-                        servicos.map((servico) => (
-                            <ListaServico 
-                                id={servico.id}
-                                nome={servico.nome}
-                                custo={servico.custo}
-                                descricao={servico.descricao}
-                                key={servico.id}
-                                handleRemove={removerServico}
-                                handleEdit={editarServico}
-                            />
-                        ))
-                    }
+                {servicos && servicos.length > 0 &&
+                    servicos.map((servico) => (
+                        <ListaServico 
+                            id={servico.id}
+                            nome={servico.nome}
+                            custo={servico.custo}
+                            descricao={servico.descricao}
+                            key={servico.id}
+                            handleRemove={removerServico}
+                            handleEdit={editarServico}
+                        />
+                    ))
+                }
                     {servicos.length === 0 && <p>Não há serviços cadastrados.</p>}
                 </Conteiner>
             </Conteiner>

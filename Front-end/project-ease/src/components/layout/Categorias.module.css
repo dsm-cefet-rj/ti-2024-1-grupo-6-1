@@ -6,7 +6,8 @@ body {
 
 .botaoForm {
   background-color: var(--cor-escura);
-  font-size: 15px;
+  font-family: var(--font-secundaria);
+  font-size: 17px;
   color: var(--cor-texto);
   border-radius: 5px;
   margin-top: 10px;
@@ -46,6 +47,8 @@ body {
 }
 
 #estilosForm {
+  font-size: 20px;
+  font-family: var(--font-secundaria);
   display: flex;
   height: auto;
   flex-direction: column;
@@ -54,29 +57,32 @@ body {
 
 .input {
   border: none;
-  box-shadow: 2px 2px 4px gray;
+  border-radius: 5px;
+  box-shadow: 2px 2px 3px black;
   margin-top: 20px;
+  margin-bottom: 1em;
   width: 100%;
   max-width: 320px;
   height: 42px;
 }
 
 #categoria {
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
+  margin-left: 3em;
+  margin-right: 3em;
+  font-family: var(--font-secundaria);
 }
 
 #divCategoria {
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 1px 8px gray;
+  box-shadow: 0px 1px 8px black;
   border-radius: 5px;
   width: 100%;
   margin-bottom: 15px;
   padding: 10px;
   height: auto;
   align-items: center;
+  font-family: var(--font-primaria);
 }
 
 .botaoExcluir {
@@ -120,26 +126,24 @@ body {
   top: 0;
   left: 0;
   display: flex;
-  background-color: rgb(220, 222, 224);
-  width: 100%;
+  background: linear-gradient(to bottom, var(--cor-botao-texto), var(--cor-hover), var(--cor-fundo));  width: 100%;
   height: 100%;
 }
 
 .modal {
   display: flex;
   flex-direction: column;
-  box-shadow: 2px 2px 4px gray;
+  box-shadow: 2px 2px 3px black;
   padding: 30px;
+  margin-top: 3em;
   align-items: center;
-  background-color: white;
+  background-color: var(--cor-secundaria);
   border-radius: 10px;
   width: 90%;
+  height: 50%;
   max-width: 400px;
-  position: fixed;
   top: 20%;
   left: 50%;
-  transform: translateX(-50%);
-  z-index: 999;
   justify-content: center;
 }
 
@@ -168,7 +172,7 @@ body {
 .nomeCategoria {
   display: flex;
   align-items: center;
-  box-shadow: 0px 2px 8px gray;
+  box-shadow: 0px 2px 8px black;
   justify-content: space-between;
   border-radius: 5px;
   width: 100%;

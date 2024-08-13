@@ -1,12 +1,12 @@
 .estilo{
     margin: 0 auto;
     width: 50%;
+    max-width: 400px;
     margin-top: 80px;
     margin-bottom: 80px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 300px;
     border: 2px solid rgb(61, 60, 60);
     border-radius: 5px; 
     padding: 50px; 
@@ -45,6 +45,7 @@
 .input{
     width: 250px;
     margin-top: 20px;
+    box-shadow: 2px 2px 4px black;
 }
 
 .botao{

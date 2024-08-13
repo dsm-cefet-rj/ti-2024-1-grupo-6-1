@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const router = express.Router();
 const bodyParser = require('body-parser');
+const Projetos = require('../models/projetos');
 
 router.use(cors());
 router.use(bodyParser.json());
@@ -11,16 +12,6 @@ let projetos = [
     id: "81d7",
     nome: "PSW",
     orcamento: "5000",
-    categoria: {
-      id: "326b",
-      categoria: "Desenvolvimento"
-    },
-    subcategoria: {
-      id: "f21e",
-      subcategoria: "Front-end"
-    },
-    custo: 0,
-    servicos: []
   },
   {
     id: "81d9",
@@ -41,15 +32,24 @@ let projetos = [
 
 // Endpoint para obter projetos
 router.route('/')
-  .get((req, res) => {
-    res.status(200).json(projetos);
+  .get((req, res, next) => {
+    Projetos.find({})
+      .then((projetosBanco) => {
+        if (projetosBanco.length > 0) {
+          res.status(200).json(projetosBanco);
+        } else {
+          res.status(200).json(projetos); // Retornar projetos locais se banco de dados estiver vazio
+        }
+      })
+      .catch((err) => next(err));
   })
-  .post((req, res) => {
-    let proxId = (1 + Math.max(...projetos.map(p => parseInt(p.id, 16)))).toString(16);
-    let projeto = { ...req.body, id: proxId };
-    projetos.push(projeto);
-
-    res.status(200).json(projeto);
+  .post((req, res, next) => {
+    Projetos.create(req.body)
+      .then((projeto) => {
+        console.log('Projeto criado ', projeto);
+        res.status(200).json(projeto); 
+      })
+      .catch((err) => next(err));
   });
 
 router.route('/:id')

@@ -75,4 +75,81 @@ router.route('/:id')
     }
   });
 
+  // Rota para adicionar um serviço a um projeto
+router.post('/:id/servicos', (req, res) => {
+  const { id } = req.params;
+  const servico = req.body;
+
+  Projetos.findById(id)
+    .then(projeto => {
+      if (!projeto) {
+        return res.status(404).json({ message: "Projeto não encontrado" });
+      }
+
+      // Adiciona o serviço ao projeto
+      projeto.servicos.push(servico);
+      projeto.custo += servico.custo; // Atualiza o custo total do projeto
+
+      return projeto.save();
+    })
+    .then(projetoAtualizado => res.status(200).json(projetoAtualizado))
+    .catch(err => res.status(500).json({ message: err.message }));
+});
+
+// Rota para editar um serviço existente
+router.put('/:id/servicos/:servicoId', (req, res) => {
+  const { id, servicoId } = req.params;
+  const servicoAtualizado = req.body;
+
+  Projetos.findById(id)
+    .then(projeto => {
+      if (!projeto) {
+        return res.status(404).json({ message: "Projeto não encontrado" });
+      }
+
+      // Encontra o serviço pelo ID
+      const servicoIndex = projeto.servicos.findIndex(serv => serv.id === servicoId);
+      if (servicoIndex === -1) {
+        return res.status(404).json({ message: "Serviço não encontrado" });
+      }
+
+      // Atualiza o serviço
+      projeto.servicos[servicoIndex] = { ...projeto.servicos[servicoIndex], ...servicoAtualizado };
+
+      // Atualiza o custo total do projeto
+      projeto.custo = projeto.servicos.reduce((total, servico) => total + servico.custo, 0);
+
+      return projeto.save();
+    })
+    .then(projetoAtualizado => res.status(200).json(projetoAtualizado))
+    .catch(err => res.status(500).json({ message: err.message }));
+});
+
+// Rota para remover um serviço de um projeto
+router.delete('/:id/servicos/:servicoId', (req, res) => {
+  const { id, servicoId } = req.params;
+
+  Projetos.findById(id)
+    .then(projeto => {
+      if (!projeto) {
+        return res.status(404).json({ message: "Projeto não encontrado" });
+      }
+
+      // Filtra o serviço a ser removido
+      const servicosAtualizados = projeto.servicos.filter(serv => serv.id !== servicoId);
+
+      // Atualiza o projeto sem o serviço removido
+      projeto.servicos = servicosAtualizados;
+
+      // Recalcula o custo total do projeto
+      projeto.custo = servicosAtualizados.reduce((total, servico) => total + servico.custo, 0);
+
+      return projeto.save();
+    })
+    .then(projetoAtualizado => res.status(200).json(projetoAtualizado))
+    .catch(err => res.status(500).json({ message: err.message }));
+});
+
+
+
 module.exports = router;

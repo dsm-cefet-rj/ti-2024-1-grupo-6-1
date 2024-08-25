@@ -5,37 +5,36 @@ import MostrarCategoriaNaDiv from './MostrarCategoriaDiv'
 
 function Categoria() {
     const [categorias, setCategoria] = useState({ categoria: "" });
-
+    const [categoriasAntigas, setCategoriasAntigas] = useState({ categoria: "" });
 
     const handleSubmit = (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
         fetch(`http://localhost:3005/categorias`, {
             method: "GET",
             headers: { "Content-type": "application/json" }
         })
-            .then((resp) => resp.json())
-            .then((categoriasExistentes) => {
-                const nomesCategoriasExistentes = categoriasExistentes.map(cat => cat.categoria);
-                if (nomesCategoriasExistentes.includes(categorias.categoria.trim())) {
-                    alert("Esta categoria já existe.");
-                } else {
-                    fetch('http://localhost:3005/categorias', {
-                        method: "POST",
-                        headers: { "Content-type": 'application/json' },
-                        body: JSON.stringify({ categoria: categorias.categoria.trim() })
-                    })
-                        .then((resp) => {
-                            if (resp.ok) {
-                                alert("Categoria inserida com sucesso!");
-                                setCategoria({ categoria: "" });
-                            } else {
-                                alert("Erro ao inserir categoria.");
-                            }
-                        })
-                        .catch((erro) => console.log("Erro ao inserir no banco de dados"));
-                }
-            })
-            .catch((erro) => console.log("Erro ao verificar categorias no banco de dados"));
+        .then((resp) => resp.json())
+        .then((categoriasExistentes) => {
+            const nomesCategoriasExistentes = categoriasExistentes.map(cat => cat.categoria);
+            if (nomesCategoriasExistentes.includes(categorias.categoria.trim())) {
+                alert("Esta categoria já existe.");
+            } else {
+                fetch('http://localhost:3005/categorias', {
+                    method: "POST",
+                    headers: { "Content-type": 'application/json' },
+                    body: JSON.stringify({ categoria: categorias.categoria.trim() })
+                })
+                .then((resp) => resp.json()) // Atualize o estado com a nova categoria
+                .then((novaCategoria) => {
+                    setCategoria({ categoria: "" });
+                    alert("Categoria inserida com sucesso!");
+                    // Atualize o estado para incluir a nova categoria
+                    setCategoriasAntigas((categoriasAntigas) => [...categoriasAntigas, novaCategoria]);
+                })
+                .catch((erro) => console.log("Erro ao inserir no banco de dados"));
+            }
+        })
+        .catch((erro) => console.log("Erro ao verificar categorias no banco de dados"));
     }
 
 

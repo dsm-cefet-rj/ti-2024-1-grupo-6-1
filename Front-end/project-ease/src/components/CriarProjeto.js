@@ -6,38 +6,52 @@ import Select from './form/Select';
 import SubmitButton from './form/SubmitButton';
 import { useNavigate } from 'react-router-dom'
 
-function CriarProjeto(){
+function CriarProjeto(projetoData){
 
     const [projeto, setProjeto] = useState({})
     const [categories, setCategories] = useState([]);
     const [subcategories, setSubCategories] = useState([]);
     const navigate = useNavigate()
 
-    const novoProjeto = (e)=>{
-        e.preventDefault(); // Não atualiza a página
-        // Verifica se todos os campos obrigatórios foram preenchidos
-        if (!projeto.nome || !projeto.orcamento || !projeto.categoria || !projeto.subcategoria) {
-            alert('Por favor, preencha todos os campos.');
-            return;
-        }
-        projeto.custo = 0;
-        projeto.servicos = [];
-        
-        fetch('http://localhost:5000/projetos', {
-            // Post - publica,    Get - pega,    Patch/Put - atualiza
-            method: "POST",
-            headers: {"Content-type": 'application/json'},   // Colocando um JSON
-            body: JSON.stringify(projeto)   // Transforma em uma string JSON
-        }).then((resp) => {  // Pega a resposta do banco de dados
-            return resp.json();  // Transforma a string em um objeto
-        }).then((respJson) => {
-            console.log(respJson);
-            const state = { mensagem: "Projeto criado com sucesso!" };
-            navigate("/projetos", {state});
-        })  // Imprime a resposta
-        .catch((erro) => console.log("Erro ao inserir no banco de dados"));
-        
+    const novoProjeto = (e) => {
+    e.preventDefault();
+
+    // Verifica se todos os campos obrigatórios foram preenchidos
+    if (!projeto.nome || !projeto.orcamento || !projeto.categoria) {
+        alert('Por favor, preencha todos os campos.');
+        return;
     }
+
+    
+    const projetoData = {
+        ...projeto,
+        custo: 0,
+        servicos: []
+    };
+
+    fetch('http://localhost:3005/projetos', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(projetoData),
+    })
+    .then(resp => {
+        if (!resp.ok) {
+            throw new Error('Erro na criação do projeto');
+        }
+        console.log(resp)
+        return resp.json();
+    })
+    .then(data => {
+        console.log('Projeto criado com sucesso:', data);
+        navigate('/projetos'); // Redireciona para a página de projetos
+    })
+    .catch(error => console.error('Erro ao criar projeto:', error))
+
+    console.log(projetoData)
+
+    };
 
     const bdTemporario = "http://localhost:3005/categorias";
     const bdTemporario2 = "http://localhost:5000/subcategoria";
@@ -81,27 +95,19 @@ function CriarProjeto(){
     //const [selectedSubcategory, setSelectedSubcategory] = useState('');
     const [filteredSubcategories, setFilteredSubcategories] = useState([]);
 
-    function handleSelect(e){
+    function handleSelect(e) {
         const selectedCategoryId = e.target.value;
-        const filteredSubcategories = subcategories.filter(subcategoria => subcategoria.idCategoria === selectedCategoryId);
-        setFilteredSubcategories(filteredSubcategories);
-        setProjeto({...projeto, categoria: {
-            id: selectedCategoryId,
-            categoria: e.target.options[e.target.selectedIndex].text
-        }});
-        
-    }
-
-    function handleSubcategorySelect(e) {
-        const selectedSubcategoryId = e.target.value;
-        const selectedSubcategory = filteredSubcategories.find(subcategoria => subcategoria.id === selectedSubcategoryId);
-    
         setProjeto({
             ...projeto,
-            subcategoria: {
-                id: selectedSubcategoryId,
-                subcategoria: selectedSubcategory.subcategoria
-            }
+            categoria: selectedCategoryId // Armazena o ID da categoria
+        });
+    }
+    
+    function handleSubcategorySelect(e) {
+        const selectedSubcategoryId = e.target.value;
+        setProjeto({
+            ...projeto,
+            subcategoria: selectedSubcategoryId // Use diretamente o ID
         });
     }
     
@@ -137,12 +143,12 @@ function CriarProjeto(){
             />
             
             <Select
-                name="category_ig"
+                name="category_id"
                 text={"Selecione a categoria"}
                 option={categories}
                 handleOnChange={handleSelect}
-                value={projeto.categoria ? projeto.categoria.id : ''}
-                />
+                value={projeto.categoria ? projeto.categoria : ''}
+            />
             
             <Select
                 name="subcategory_ig"

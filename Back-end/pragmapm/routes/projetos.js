@@ -3,6 +3,7 @@ const cors = require('cors');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const Projetos = require('../models/projetos');
+const Categoria = require('../models/categorias');
 
 router.use(cors());
 router.use(bodyParser.json());
@@ -33,6 +34,7 @@ let projetos = [
 // Endpoint para obter projetos
 router.route('/')
   .get((req, res, next) => {
+    console.log("Requisição GET recebida");
     Projetos.find({})
       .then((projetosBanco) => {
         if (projetosBanco.length > 0) {
@@ -43,37 +45,57 @@ router.route('/')
       })
       .catch((err) => next(err));
   })
-  .post((req, res, next) => {
-    Projetos.create(req.body)
-      .then((projeto) => {
-        console.log('Projeto criado ', projeto);
-        res.status(200).json(projeto); 
-      })
-      .catch((err) => next(err));
-  });
+  .post( (req, res, next) => {
+    try {
+        const categoria = Categoria.findById(req.body.categoria);
+        if (!categoria) {
+            return res.status(404).json({ message: "Categoria não encontrada" });
+        }
+
+        const projeto = new Projetos({
+              method:"post",
+            nome: req.body.nome,
+            orcamento: req.body.orcamento,
+            categoria: categoria._id,
+            servicos: req.body.servicos || [],
+        });
+
+        const novoProjeto = projeto.save();
+        res.status(200).json(novoProjeto);
+    } catch (err) {
+        next(err);
+    }
+});
 
 router.route('/:id')
   .get((req, res) => {
-    const projeto = projetos.find(p => p.id === req.params.id);
-    if (projeto) {
-      res.status(200).json(projeto);
-    } else {
-      res.status(404).json({ message: "Projeto não encontrado" });
-    }
+    Projetos.findById(req.params.id)
+      .then(projeto => {
+        if (projeto) {
+          res.status(200).json(projeto);
+        } else {
+          res.status(404).json({ message: "Projeto não encontrado" });
+        }
+      })
+      .catch(err => res.status(500).json({ message: err.message }));
   })
   .delete((req, res) => {
-    projetos = projetos.filter(p => p.id !== req.params.id);
-    res.status(200).json(req.params.id);
+    Projetos.findByIdAndDelete(req.params.id)
+      .then(() => res.status(200).json({ message: "Projeto deletado com sucesso" }))
+      .catch(err => res.status(500).json({ message: err.message }));
   })
   .put((req, res) => {
-    const index = projetos.findIndex(p => p.id === req.params.id);
-    if (index !== -1) {
-      projetos[index] = { ...projetos[index], ...req.body }; // Atualiza o projeto com os novos dados
-      res.status(200).json(projetos[index]);
-    } else {
-      res.status(404).json({ message: "Projeto não encontrado" });
-    }
+    Projetos.findByIdAndUpdate(req.params.id, req.body, { new: true })
+      .then(projeto => {
+        if (projeto) {
+          res.status(200).json(projeto);
+        } else {
+          res.status(404).json({ message: "Projeto não encontrado" });
+        }
+      })
+      .catch(err => res.status(500).json({ message: err.message }));
   });
+
 
   // Rota para adicionar um serviço a um projeto
 router.post('/:id/servicos', (req, res) => {

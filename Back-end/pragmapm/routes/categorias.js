@@ -2,24 +2,26 @@ var express = require('express');
 const cors = require('cors');
 const router = express.Router();
 const bodyParser = require('body-parser');
+const Categoria = require('../models/categorias'); 
 
 router.use(cors());
 router.use(bodyParser.json());
 
-let categorias = [
+let categoria = [
     { "id": "326b", "categoria": "Desenvolvimento" },
     { "id": "ac9d", "categoria": "Design" }
 ];
 
 router.route('/')
   .get((req, res) => {
-      res.status(200).json(categorias);
+      Categoria.find({}) // Garantir que o método 'find' esteja sendo chamado corretamente
+        .then((categorias) => res.status(200).json(categorias))
+        .catch((err) => res.status(500).json({ message: err.message }));
   })
   .post((req, res) => {
-      let proxId = (Math.max(...categorias.map(p => parseInt(p.id, 16))) + 1).toString(16);
-      let categoria = { ...req.body, id: proxId };
-      categorias.push(categoria);
-      res.status(200).json(categoria);
+      Categoria.create(req.body) // Certifique-se de que 'create' está sendo usado corretamente
+        .then((categoria) => res.status(200).json(categoria))
+        .catch((err) => res.status(500).json({ message: err.message }));
   });
 
 router.route('/:id')

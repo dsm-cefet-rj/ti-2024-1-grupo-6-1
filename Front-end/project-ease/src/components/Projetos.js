@@ -7,12 +7,16 @@ function Projetos() {
   const [projetos, setProjetos] = useState([]);
 
   useEffect(() => {
-    // Certifique-se de que a URL e a porta do back-end estejam corretas
     fetch('http://localhost:3005/projetos', {
       method: 'GET',
       headers: { 'Content-type': 'application/json' },
     })
-      .then((resp) => resp.json())
+      .then((resp) => {
+        if (!resp.ok) {
+          throw new Error('Erro na requisição');
+        }
+        return resp.json();
+      })
       .then((data) => setProjetos(data))
       .catch((error) => console.log('Erro ao obter projetos:', error));
   }, []);
@@ -35,7 +39,7 @@ function Projetos() {
       <div className={styles.verProjetos}>
         {projetos.length > 0 && projetos.map((projeto) => (
           <ListaProjetos
-            key={projeto.id}
+            key={projeto.id || Math.random()}  // Garantindo uma key única
             id={projeto.id}
             nome={projeto.nome}
             orcamento={projeto.orcamento}

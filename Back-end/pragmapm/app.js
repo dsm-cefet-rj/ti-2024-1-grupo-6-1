@@ -5,8 +5,10 @@ var logger = require('morgan');
 var cors = require('cors'); // Importar CORS
 
 var indexRouter = require('./routes/index');
-var projetosRouter = require('./routes/projetos');
+const projetosRouter = require('./routes/projetos');
 var categoriasRouter = require('./routes/categorias');
+
+
 
 const mongoose = require('mongoose');
 
@@ -28,8 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/projetos', projetosRouter); // Certifique-se de que esta rota está correta
+app.use('/projetos', projetosRouter); 
 app.use('/categorias', categoriasRouter);
-
 
 module.exports = app;

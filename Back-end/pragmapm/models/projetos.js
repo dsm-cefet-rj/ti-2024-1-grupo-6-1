@@ -19,26 +19,34 @@ const ServicoSchema = new Schema({
     }
 });
 
-const projetoSchema = new Schema({
-    nome: {
+const projetoSchema = new mongoose.Schema({
+    nome: { 
         type: String,
-        required: true,
+        required: true 
     },
-    orcamento: {
-        type: String,
-        required: true,
-    },
-    custo: { 
+    orcamento: { 
         type: Number, 
-        default: 0,
+        required: true 
     },
-    categorias: {
-      id: String,
-      categoria: String
+    categoria: { 
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'Categoria', 
+        required: false 
     },
-    servicos: [ServicoSchema]  // Array de serviço
+},
+{
+    timestamps: true,
+    versionKey: false,
+    id: true,
+    toJSON: {
+      transform(doc, ret){
+        ret.id = ret._id
+        delete ret._id
+      }
+    }
 })
 
-var Projetos = mongoose.model('Projeto', projetoSchema);
 
+
+var Projetos = mongoose.model('Projeto', projetoSchema);
 module.exports = Projetos;

@@ -86,6 +86,12 @@ router.post('/:id/servicos', (req, res) => {
         return res.status(404).json({ message: "Projeto não encontrado" });
       }
 
+      
+      // Verifica se o array `servicos` existe e inicializa se necessário
+      if (!Array.isArray(projeto.servicos)) {
+        projeto.servicos = [];
+      } 
+
       // Adiciona o serviço ao projeto
       projeto.servicos.push(servico);
       projeto.custo += servico.custo; // Atualiza o custo total do projeto

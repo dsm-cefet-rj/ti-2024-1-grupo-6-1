@@ -36,10 +36,6 @@ const projetoSchema = new Schema({
       id: String,
       categoria: String
     },
-    subcategorias: {
-      id: String,
-      subcategoria: String
-    },
     servicos: [ServicoSchema]  // Array de serviço
 })
 

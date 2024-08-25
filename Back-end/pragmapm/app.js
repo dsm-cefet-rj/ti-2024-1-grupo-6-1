@@ -7,9 +7,6 @@ var cors = require('cors'); // Importar CORS
 var indexRouter = require('./routes/index');
 var projetosRouter = require('./routes/projetos');
 var categoriasRouter = require('./routes/categorias');
-var subcategoriasRouter = require('./routes/subcategorias');
-
-
 
 const mongoose = require('mongoose');
 
@@ -19,6 +16,7 @@ const connect = mongoose.connect(url);
 connect.then((db) => {
     console.log("Connected correctly to server");
 }, (err) => { console.log(err); });
+
 
 var app = express();
 
@@ -32,8 +30,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/projetos', projetosRouter); // Certifique-se de que esta rota está correta
 app.use('/categorias', categoriasRouter);
-app.use('/subcategorias', subcategoriasRouter);
-
 
 
 module.exports = app;

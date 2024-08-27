@@ -8,29 +8,6 @@ const Categoria = require('../models/categorias');
 router.use(cors());
 router.use(bodyParser.json());
 
-let projetos = [
-  {
-    id: "81d7",
-    nome: "PSW",
-    orcamento: "5000",
-  },
-  {
-    id: "81d9",
-    nome: "Metodologia",
-    orcamento: "5000",
-    categoria: {
-      id: "326b",
-      categoria: "Desenvolvimento"
-    },
-    subcategoria: {
-      id: "f21e",
-      subcategoria: "Front-end"
-    },
-    custo: 0,
-    servicos: []
-  }
-];
-
 // Endpoint para obter projetos
 router.route('/')
   .get((req, res, next) => {

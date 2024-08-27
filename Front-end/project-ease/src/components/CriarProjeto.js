@@ -17,7 +17,7 @@ function CriarProjeto(projetoData){
     e.preventDefault();
 
     // Verifica se todos os campos obrigatórios foram preenchidos
-    if (!projeto.nome || !projeto.orcamento || !projeto.categoria) {
+    if (!projeto.nome || !projeto.orcamento) {
         alert('Por favor, preencha todos os campos.');
         return;
     }
@@ -54,7 +54,7 @@ function CriarProjeto(projetoData){
     };
 
     const bdTemporario = "http://localhost:3005/categorias";
-    const bdTemporario2 = "http://localhost:5000/subcategoria";
+    //const bdTemporario2 = "http://localhost:5000/subcategoria";
 
     useEffect(
         () => {
@@ -69,24 +69,6 @@ function CriarProjeto(projetoData){
             })
             .then((categoriasJson) => {
                 setCategories(categoriasJson);
-            })
-            .catch(err=>console.log("Deu erro: " + err));
-        }, []
-    );
-
-    useEffect(
-        () => {
-            fetch(bdTemporario2,{
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then((subcategorias) => {
-                return subcategorias.json();
-            })
-            .then((subcategoriasJson) => {
-                setSubCategories(subcategoriasJson);
             })
             .catch(err=>console.log("Deu erro: " + err));
         }, []

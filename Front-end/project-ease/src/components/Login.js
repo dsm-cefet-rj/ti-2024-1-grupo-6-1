@@ -21,27 +21,21 @@ function Login({ setIsLoggedIn }) {
 
     function acessarConta(e) {
         e.preventDefault();
-        fetch('http://localhost:5000/login', {
-            method: "GET",
-            headers: { "Content-type": 'application/json' },
-        }).then((resp) => {
-            return resp.json();
-        }).then((respJson) => {
-            const usuarioEncontrado = respJson.find((usuario) => usuario.email === loginInput.email);
-            if (usuarioEncontrado) {
-                const senhaDescriptografada = CryptoJS.AES.decrypt(usuarioEncontrado.senha, 'chave_secreta').toString(CryptoJS.enc.Utf8);
-                if (senhaDescriptografada === loginInput.senha) {
-                    alert("Usuário encontrado. Realizando login.");
-                    localStorage.setItem('isLoggedIn', 'true');
-                    navigate('/');
-                    setIsLoggedIn(true);
-                } else {
-                    alert("Senha incorreta. Por favor, verifique suas credenciais.");
-                }
-            } else {
-                alert("Usuário não encontrado. Por favor, verifique suas credenciais.");
+        fetch('http://localhost:3005/users/login', {
+            method: "POST",
+            headers: {
+                "Authorization": "Basic " + btoa(loginInput.email + ":" + loginInput.senha),
+                "Content-type": 'application/json'
             }
-        }).catch((erro) => console.log("Erro ao pegar seus projetos " + erro));
+        }).then((resp) => {
+            if (resp.ok) {
+                localStorage.setItem('isLoggedIn', 'true');
+                navigate('/');
+                setIsLoggedIn(true);
+            } else {
+                alert("Login falhou. Verifique suas credenciais.");
+            }
+        }).catch((erro) => console.log("Erro ao fazer login: " + erro));
     }
 
     const estilo = {

@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// Esquema do Serviço
 const ServicoSchema = new Schema({
     id: { 
         type: String, 
-        required: true 
+        required: true,
+        default: () => new mongoose.Types.ObjectId().toString()  // Geração automática de ID
     },
     nome: { 
         type: String, 
@@ -19,6 +21,7 @@ const ServicoSchema = new Schema({
     }
 });
 
+// Esquema do Projeto
 const projetoSchema = new mongoose.Schema({
     nome: { 
         type: String,
@@ -36,21 +39,23 @@ const projetoSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Categoria', 
     },
-    servicos: [ServicoSchema]  // Array de serviço
-},
+    servicos: { 
+        type: [ServicoSchema],  // Array de serviços
+        default: []  // Inicializa como array vazio
+    }
+}, 
 {
     timestamps: true,
     versionKey: false,
     id: true,
     toJSON: {
-      transform(doc, ret){
-        ret.id = ret._id
-        delete ret._id
-      }
+        transform(doc, ret) {
+            ret.id = ret._id;
+            delete ret._id;
+        }
     }
-})
+});
 
-
-
-var Projetos = mongoose.model('Projeto', projetoSchema);
+// Modelo do Projeto
+const Projetos = mongoose.model('Projeto', projetoSchema);
 module.exports = Projetos;

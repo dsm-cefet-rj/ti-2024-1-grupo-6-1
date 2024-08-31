@@ -97,32 +97,27 @@ router.route('/:id')
   });
 
 
-  // Rota para adicionar um serviço a um projeto
-router.post('/:id/servicos', (req, res) => {
-  const { id } = req.params;
-  const servico = req.body;
-
-  Projetos.findById(id)
-    .then(projeto => {
+  router.post('/:id/servicos', async (req, res) => {
+    try {
+      const { id } = req.params;
+      const servico = req.body;
+  
+      console.log("Dados do serviço recebido:", servico);  // Log para debugging
+  
+      const projeto = await Projetos.findById(id);
       if (!projeto) {
         return res.status(404).json({ message: "Projeto não encontrado" });
       }
-
-      
-      // Verifica se o array `servicos` existe e inicializa se necessário
-      if (!Array.isArray(projeto.servicos)) {
-        projeto.servicos = [];
-      } 
-
-      // Adiciona o serviço ao projeto
+  
       projeto.servicos.push(servico);
       projeto.custo += servico.custo; // Atualiza o custo total do projeto
-
-      return projeto.save();
-    })
-    .then(projetoAtualizado => res.status(200).json(projetoAtualizado))
-    .catch(err => res.status(500).json({ message: err.message }));
-});
+  
+      const projetoAtualizado = await projeto.save();
+      res.status(200).json(projetoAtualizado);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  });
 
 // Rota para editar um serviço existente
 router.put('/:id/servicos/:servicoId', (req, res) => {
@@ -146,6 +141,24 @@ router.put('/:id/servicos/:servicoId', (req, res) => {
 
       // Atualiza o custo total do projeto
       projeto.custo = projeto.servicos.reduce((total, servico) => total + servico.custo, 0);
+
+      return projeto.save();
+    })
+    .then(projetoAtualizado => res.status(200).json(projetoAtualizado))
+    .catch(err => res.status(500).json({ message: err.message }));
+});
+
+router.patch('/:id', (req, res) => {
+  Projetos.findById(req.params.id)
+    .then(projeto => {
+      if (!projeto) {
+        return res.status(404).json({ message: "Projeto não encontrado" });
+      }
+
+      // Atualiza apenas as partes do projeto enviadas no corpo da requisição
+      Object.keys(req.body).forEach(key => {
+        projeto[key] = req.body[key];
+      });
 
       return projeto.save();
     })

@@ -28,11 +28,15 @@ const projetoSchema = new mongoose.Schema({
         type: Number, 
         required: true 
     },
+    custo: { 
+        type: Number, 
+        default: 0,
+    },
     categoria: { 
         type: mongoose.Schema.Types.ObjectId, 
         ref: 'Categoria', 
-        required: false 
     },
+    servicos: [ServicoSchema]  // Array de serviço
 },
 {
     timestamps: true,

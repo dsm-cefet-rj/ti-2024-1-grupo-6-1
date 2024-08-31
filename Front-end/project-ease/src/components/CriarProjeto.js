@@ -17,7 +17,7 @@ function CriarProjeto(projetoData){
     e.preventDefault();
 
     // Verifica se todos os campos obrigatórios foram preenchidos
-    if (!projeto.nome || !projeto.orcamento || !projeto.categoria) {
+    if (!projeto.nome || !projeto.orcamento) {
         alert('Por favor, preencha todos os campos.');
         return;
     }

@@ -3,7 +3,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors'); // Importar CORS
-const User = require('./models/user')
+const User = require('./models/user');
+require('dotenv').config();
 
 var indexRouter = require('./routes/index');
 const projetosRouter = require('./routes/projetos');
@@ -16,7 +17,7 @@ const jwt = require('jsonwebtoken');
 
 const mongoose = require('mongoose');
 
-const url = 'mongodb+srv://matman:math1912@cluster0.x21yu.mongodb.net/';
+//const url = 'mongodb+srv://matman:math1912@cluster0.x21yu.mongodb.net/';
 
 var app = express();
 
@@ -141,10 +142,10 @@ const dbPassword = process.env.DB_PASS;
 
 mongoose
     .connect(
-        `mongodb+srv://${dbUser}:${dbPassword}@cluster0.x21yu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
+        `mongodb+srv://matman:math1912@cluster0.x21yu.mongodb.net/`  //mongodb+srv://${dbUser}:${dbPassword}@cluster0.x21yu.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
     )
     .then(() => {
-        app.listen(3000)
+        app.listen(3005)
         console.log('Conectou ao banco!');
 })
 .catch((err) => console.log(err))

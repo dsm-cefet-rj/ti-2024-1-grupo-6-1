@@ -54,7 +54,7 @@ function CriarProjeto(projetoData){
     };
 
     const bdTemporario = "http://localhost:3005/categorias";
-    const bdTemporario2 = "http://localhost:5000/subcategoria";
+  
 
     useEffect(
         () => {
@@ -74,23 +74,6 @@ function CriarProjeto(projetoData){
         }, []
     );
 
-    useEffect(
-        () => {
-            fetch(bdTemporario2,{
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then((subcategorias) => {
-                return subcategorias.json();
-            })
-            .then((subcategoriasJson) => {
-                setSubCategories(subcategoriasJson);
-            })
-            .catch(err=>console.log("Deu erro: " + err));
-        }, []
-    );
 
     //const [selectedSubcategory, setSelectedSubcategory] = useState('');
     const [filteredSubcategories, setFilteredSubcategories] = useState([]);
@@ -149,14 +132,6 @@ function CriarProjeto(projetoData){
                 handleOnChange={handleSelect}
                 value={projeto.categoria ? projeto.categoria : ''}
             />
-            
-            <Select
-                name="subcategory_ig"
-                text={"Selecione a subcategoria"}
-                option={filteredSubcategories}
-                handleOnChange={handleSubcategorySelect}
-                value={projeto.subcategoria ? projeto.subcategoria.id : ''}
-                />
 
             <SubmitButton text={'Criar Projeto'} />
 

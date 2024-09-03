@@ -12,7 +12,7 @@ function FormProjeto({handleSubmit, btnText, projectData}){
     const [subcategories, setSubCategories] = useState([]);
 
     const bdTemporario = "http://localhost:3005/categorias"
-    const bdTemporario2 = "http://localhost:5000/subcategoria"
+    
 
     useEffect(
         () => {
@@ -31,22 +31,6 @@ function FormProjeto({handleSubmit, btnText, projectData}){
             .catch(err=>console.log("Deu erro: " + err))
         }, [])
 
-        useEffect(
-            () => {
-                fetch(bdTemporario2,{
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                .then((subcategorias) => {
-                    return subcategorias.json()
-                })
-                .then((subcategoriasJson) => {
-                    setSubCategories(subcategoriasJson)
-                })
-                .catch(err=>console.log("Deu erro: " + err))
-            }, [])
         
         useEffect(() => {
             if (projeto.categoria) {

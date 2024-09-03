@@ -14,6 +14,7 @@ router.route('/')
   .get((req, res, next) => {
     console.log("Requisição GET recebida");
     Projetos.find({})
+      .populate('categoria')
       .then((projetosBanco) => {
         if (projetosBanco.length > 0) {
           res.status(200).json(projetosBanco);
@@ -31,7 +32,6 @@ router.route('/')
         }
 
         const projeto = new Projetos({
-              method:"post",
             nome: req.body.nome,
             orcamento: req.body.orcamento,
             categoria: categoria._id,

@@ -21,7 +21,7 @@ function ResetSenha() {
         e.preventDefault();
 
         try {
-            const response = await fetch(`http://localhost:5000/login`);
+            const response = await fetch(`http://localhost:3005/user`);
             const data = await response.json();
             if (response.ok && data) {
                 const user = data.find(user => user.email === email);
@@ -34,7 +34,7 @@ function ResetSenha() {
                     };
 
                     setUserExists(true);
-                    const patchResponse = await fetch(`http://localhost:5000/login/${user.id}`, {
+                    const patchResponse = await fetch(`http://localhost:3005/auth/register/${user.id}`, {
                         method: "PATCH",
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(loginCriptografado) 

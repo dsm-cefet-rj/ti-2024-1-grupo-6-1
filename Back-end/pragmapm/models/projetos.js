@@ -36,8 +36,7 @@ const projetoSchema = new mongoose.Schema({
         default: 0,
     },
     categoria: { 
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Categoria', 
+        type: String
     },
     servicos: { 
         type: [ServicoSchema],  // Array de serviços

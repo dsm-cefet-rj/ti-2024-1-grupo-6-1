@@ -14,7 +14,6 @@ router.route('/')
   .get((req, res, next) => {
     console.log("Requisição GET recebida");
     Projetos.find({})
-      .populate('categoria')
       .then((projetosBanco) => {
         if (projetosBanco.length > 0) {
           res.status(200).json(projetosBanco);
@@ -26,15 +25,11 @@ router.route('/')
   })
   .post( (req, res, next) => {
     try {
-        const categoria = Categoria.findById(req.body.categoria);
-        if (!categoria) {
-            return res.status(404).json({ message: "Categoria não encontrada" });
-        }
 
         const projeto = new Projetos({
             nome: req.body.nome,
             orcamento: req.body.orcamento,
-            categoria: categoria._id,
+            categoria: req.body.categoria,
             servicos: req.body.servicos || [],
         });
 

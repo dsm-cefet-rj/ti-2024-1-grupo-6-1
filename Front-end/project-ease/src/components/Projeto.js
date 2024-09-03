@@ -206,7 +206,7 @@ function Projeto(){
                         <div className={styles.infoProjeto}>
                             {projeto.categoria && (
                                 <p>
-                                    <span>Categoria: </span> {projeto.categoria.categoria}
+                                    <span>Categoria: </span> {projeto.categoria}
                                 </p>
                             )}
                             {projeto.subcategoria && (

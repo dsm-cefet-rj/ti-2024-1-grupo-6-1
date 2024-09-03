@@ -43,8 +43,9 @@ function Projetos() {
             id={projeto.id}
             nome={projeto.nome}
             orcamento={projeto.orcamento}
-            categoria={projeto.categoria ? projeto.categoria.categoria : null}
-            subcategoria={projeto.subcategoria ? projeto.subcategoria.subcategoria : null}
+            // Acesso direto à string da categoria e subcategoria
+            categoria={projeto.categoria || 'Sem categoria'}
+            subcategoria={projeto.subcategoria || 'Sem subcategoria'}
             handleRemove={removerProjeto}
           />
         ))}
